@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <script src="js/ionic.bundle.min.js"></script>
+        <script src="js/app.js"></script>
+        <link rel="stylesheet" href="css/ionic.min.css" />
+
+        <title>KennelKeeper</title>
+    </head>
+
+    <body ng-app="kennelkeeper">
+        <div ng-controller="ContentController">
+
+            </div>
+
+            <ion-side-menus>
+              <!-- Left menu -->
+              <ion-side-menu side="left">
+                <p>Hello</p>
+              </ion-side-menu>
+
+              <ion-side-menu-content>
+                <div class="bar bar-header">
+                <ion-nav-bar>
+                    <ion-nav-buttons side="left">
+                        <button class="button button-icon icon ion-navicon" menu-toggle="left" ng-click="toggleLeft()"></button>
+                        <div class="h1 title">Kennel Keeper</div>
+                    </ion-nav-buttons>
+                </ion-nav-bar>
+              <!-- Main content, usually <ion-nav-view> -->
+              
+              </ion-side-menu-content>
+
+              <!-- Right menu -->
+              <ion-side-menu side="right">
+            </ion-side-menu>
+        </div>
+
+    </body>
+
+</html>
