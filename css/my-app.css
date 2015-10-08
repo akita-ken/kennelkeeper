@@ -1,0 +1,30 @@
+/* Reduce vertical space for content blocks */
+.content-block-title {
+	margin: 8px 16px;
+}
+.content-block {
+	margin: 8px 0;
+}
+
+/* Add 30-70 splits to layout grid */
+.row .col-30 {
+  width: 30%;
+  width: -webkit-calc((100% - 16px*2) / 3.333333333333334);
+  width: calc((100% - 16px*2) / 3.333333333333334);
+}
+.row.no-gutter .col-30 {
+  width: 30%;
+}
+.row .col-70 {
+  width: 70%;
+  width: -webkit-calc((100% - 16px*2) / 1.428573428571428);
+  width: calc((100% - 16px*2) / 1.428573428571428);
+}
+.row.no-gutter .col-70 {
+  width: 70%;
+}
+
+/* Don't uppercase all button text */
+.button {
+	text-transform: none;
+}
