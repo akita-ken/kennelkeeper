@@ -12,3 +12,9 @@ var $$ = Dom7;
 var mainView = myApp.addView('.view-main', {
 
 });
+
+// Put JS that you want to run when the page is loaded in Page Callbacks
+// because if you put it in the page fragments, they don't get run.
+myApp.onPageInit('dog', function(page) {
+	// code here gets run when 'dog' page (<div data-page="dog">) is loaded
+});
