@@ -40,3 +40,14 @@
 	background-size: cover;
 	background-position: center;
 }
+
+/* 
+Override the default behaviour of reverting the active .panel element to
+display: none;, because that stops the transitionend event from firing.
+
+Either do this or comment out "activePanel.css({display: ''});" in framework7.js
+app.closePanel.
+*/
+.panel {
+  display: block;
+}
