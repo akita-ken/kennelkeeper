@@ -1,9 +1,9 @@
 /* Reduce vertical space for content blocks */
 .content-block-title {
-	margin: 8px 16px;
+  margin: 8px 16px;
 }
 .content-block {
-	margin: 8px 0;
+  margin: 8px 0;
 }
 
 /* Add 30-70 splits to layout grid */
@@ -26,7 +26,7 @@
 
 /* Don't uppercase all button text */
 .button {
-	text-transform: none;
+  text-transform: none;
 }
 
 /* Center icons in list-block items' media */
