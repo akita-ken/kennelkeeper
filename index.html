@@ -130,7 +130,15 @@
               </div>
               <div class="card">
                 <div class="card-header color-white bg-blue">Coco</div>
-                <div style="background-image: url(http://i284.photobucket.com/albums/ll2/clement20/Dog_0013.jpg);" valign="bottom" class="card-header card-image-header color-white no-border"></div>
+                <!-- Slider container -->
+                <div class="swiper-container swiper-init" data-pagination=".swiper-pagination">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="http://i284.photobucket.com/albums/ll2/clement20/Dog_0013.jpg" width="100%"></div>
+                    <div class="swiper-slide">Slide 2</div>
+                    <div class="swiper-slide"><img src="http://placehold.it/400x300" width="100%"></div>
+                  </div>
+                  <div class="swiper-pagination"></div><!-- populated automatically -->
+                </div>
                 <div class="card-content">
                   <div class="card-content-inner">
                     <p><strong>Behaviour Notes</strong></p>
