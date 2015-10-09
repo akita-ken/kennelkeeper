@@ -29,6 +29,11 @@
 	text-transform: none;
 }
 
+/* Center icons in list-block items' media */
+.list-block > ul > li .item-content > .item-media > i {
+  margin: 0 auto;
+}
+
 /*Ongoing card*/
 .demo-card-header-pic .card-header {
 	height: 40vw;
