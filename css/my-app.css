@@ -34,8 +34,8 @@
   margin: 0 auto;
 }
 
-/*Ongoing card*/
-.demo-card-header-pic .card-header {
+/* Allow cards to have an image header (on top of the normal card header) */
+.card .card-header.card-image-header {
 	height: 40vw;
 	background-size: cover;
 	background-position: center;
