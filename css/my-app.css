@@ -1,11 +1,3 @@
-/* Reduce vertical space for content blocks */
-.content-block-title {
-	margin: 8px 16px;
-}
-.content-block {
-	margin: 8px 0;
-}
-
 /* Add 30-70 splits to layout grid */
 .row .col-30 {
   width: 30%;
@@ -26,16 +18,24 @@
 
 /* Don't uppercase all button text */
 .button {
-	text-transform: none;
+  text-transform: none;
+}
+
+/* Reduce vertical space for content blocks */
+.content-block-title {
+  margin: 8px 16px;
+}
+.content-block {
+  margin: 8px 0;
 }
 
 /* Center icons in list-block items' media */
-.list-block > ul > li .item-content > .item-media > i {
+.list-block .item-content .item-media > i {
   margin: 0 auto;
 }
 
-/*Ongoing card*/
-.demo-card-header-pic .card-header {
+/* Allow cards to have an image header (on top of the normal card header) */
+.card .card-header.card-image-header {
 	height: 40vw;
 	background-size: cover;
 	background-position: center;
