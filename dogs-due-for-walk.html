@@ -1,4 +1,4 @@
-<div data-page="Dogs out for a Walk" class="page">
+<div data-page="Dogs due for walk" class="page">
   <!-- search bar -->
   <form class="searchbar searchbar-init" data-search-list=".dogs-list" data-search-in=".item-title" data-found=".searchbar-found" data-not-found=".searchbar-not-found">
     <div class="searchbar-input">
@@ -15,7 +15,7 @@
   <div class="navbar">
     <div class="navbar-inner">
       <div class="left"><a href="#" class="link icon-only open-panel"><i class="icon icon-bars"></i></a></div>
-      <div class="center">Dogs being walked</div>
+      <div class="center">Dogs due for walk</div>
       <div class="right">
         <a href="create-dog.html" class="link icon-only"> <i class="icon icon-plus"></i></a>
       </div>
@@ -30,15 +30,29 @@
     <div class="list-block media-list list-block-search searchbar-found" style="margin-top: 0;">
       <ul class="dogs-list">
         <li>
+          <a href="dog.html" class="item-link"><!-- dog.html?id={{id}} -->
+            <div class="item-content">
+              <div class="item-media"><img src="http://placehold.it/48x48"></div>
+              <div class="item-inner">
+                <div class="item-title-row">
+                  <div class="item-title">Lego</div>
+                  <div class="item-after"><span class="badge bg-indigo">S</span>&nbsp;<span class="badge bg-brown">W</span></div>
+                </div>
+                <div class="item-subtitle">Last walked 4 Aug (1 day ago)</div>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li>
           <a href="#" class="item-link"><!-- dog.html?id={{id}} -->
             <div class="item-content">
               <div class="item-media"><img src="http://placehold.it/48x48"></div>
               <div class="item-inner">
                 <div class="item-title-row">
-                  <div class="item-title">Coco</div>
+                  <div class="item-title">Ginger</div>
                   <div class="item-after"><span class="badge bg-brown">W</span></div>
                 </div>
-                <div class="item-subtitle">Out since 1:47pm (40 min ago)</div>
+                <div class="item-subtitle">Last walked 3 Aug (2 days ago)</div>
               </div>
             </div>
           </a>
