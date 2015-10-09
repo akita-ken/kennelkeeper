@@ -28,3 +28,8 @@
 .button {
 	text-transform: none;
 }
+
+/* Center icons in list-block items' media */
+.list-block > ul > li .item-content > .item-media > i {
+  margin: 0 auto;
+}
