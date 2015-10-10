@@ -1,7 +1,9 @@
 // This observable array contains hardcoded dogs
-var anotherObservableArray = ko.observableArray([
+var dogs = ko.observableArray([
     { 
-      name: "Candy", 
+      name: "Candy",
+      gender: 0,
+      kennel: 14,
       showered: "2015-08-02T18:25:43.511Z",
       walked: true,
       behaviour: "",
@@ -12,11 +14,12 @@ var anotherObservableArray = ko.observableArray([
     },
     { 
       name: "Coco",
-      showered: "2015-08-02T18:25:43.511Z"
+      gender: 0,
+      kennel: 4,
+      showered: "2015-08-02T18:25:43.511Z",
       walked: false,
       behaviour: "Aggressive towards cyclists. Attacks other dogs.",
-      medical: "Limb injury. If she starts limping again, please feed her with 25mg of metacam, that can be found in the medical box labelled 1A in the kitchen.
-",
+      medical: "Limb injury. If she starts limping again, please feed her with 25mg of metacam, that can be found in the medical box labelled 1A in the kitchen.",
       incident: [
         {
           log: "Attacked a passer-by, who got scratched quite badly. Be careful!",
@@ -32,6 +35,8 @@ var anotherObservableArray = ko.observableArray([
     },
     { 
       name: "Dee Dee", 
+      gender: 0,
+      kennel: 18,
       showered: "2015-08-02T18:25:43.511Z",
       walked: true,
       behaviour: "",
@@ -42,6 +47,8 @@ var anotherObservableArray = ko.observableArray([
     },
     { 
       name: "Lego", 
+      gender: 1,
+      kennel: 20,
       showered: "2015-08-02T18:25:43.511Z",
       walked: true,
       behaviour: "",
@@ -52,6 +59,8 @@ var anotherObservableArray = ko.observableArray([
     },
     { 
       name: "Ginger", 
+      gender: 0,
+      kennel: 12,
       showered: "2015-08-02T18:25:43.511Z",
       walked: true,
       behaviour: "",
@@ -62,6 +71,8 @@ var anotherObservableArray = ko.observableArray([
     },
     { 
       name: "Lucky", 
+      gender: 1,
+      kennel: 14,
       showered: "2015-08-02T18:25:43.511Z",
       walked: true,
       behaviour: "",
@@ -72,6 +83,8 @@ var anotherObservableArray = ko.observableArray([
     },
     { 
       name: "Mentos", 
+      gender: 1,
+      kennel: 16,
       showered: "2015-08-02T18:25:43.511Z",
       walked: true,
       behaviour: "",
@@ -81,7 +94,9 @@ var anotherObservableArray = ko.observableArray([
       ] 
     },
     { 
-      name: "Dee Dee", 
+      name: "Charlie", 
+      gender: 1,
+      kennel: 2,
       showered: "2015-08-02T18:25:43.511Z",
       walked: true,
       behaviour: "",
@@ -91,3 +106,28 @@ var anotherObservableArray = ko.observableArray([
       ]
     }
 ]);
+
+function AppViewModel() {
+  var self = this;
+
+  self.dog = dogs;
+
+  self.addDog = function(name, gender, behaviour, medical) {
+    self.dog.push(
+      {
+        name: name,
+        gender: gender,
+        kennel: 0,
+        showered: null,
+        walked: false,
+        behaviour: behaviour,
+        medical: medical,
+        incident: []
+      }
+    )
+  }
+
+  self.removeDog = function() {
+    self.dog.remove(this)
+  }
+}
