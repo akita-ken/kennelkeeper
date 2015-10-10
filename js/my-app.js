@@ -26,14 +26,14 @@ myApp.onPageInit('kennelmap', function(page) {
 
   var map = L.map('map', {
     center: [0, 0],
-    zoom: 1,
-    minZoom: 1,
+    zoom: 2,
+    minZoom: 2,
     maxZoom: 2,
     /*touchZoom: false,
     scrollWheelZoom: false,
     doubleClickZoom: false,
-    boxZoom: false,
-    zoomControl: false,*/
+    boxZoom: false,*/
+    zoomControl: false,
     attributionControl: false,
     keyboard: false,
     unloadInvisibleTiles: true,
@@ -71,10 +71,26 @@ myApp.onPageInit('kennelmap', function(page) {
   ]).addTo(map);
   */
 
-  
+  var mentos = L.polygon(computeBounds(-79, -98, 0, 35)).addTo(map);
   var pingpong = L.polygon(computeBounds(-138, -159, 0, 35)).addTo(map);
   var ccd = L.polygon(computeBounds(-159, -180, 0, 35)).addTo(map);
   var lucky = L.polygon(computeBounds(-180, -200, 0, 35)).addTo(map);
+  var harry = L.polygon(computeBounds(-202, -223, 0, 35)).addTo(map);
+
+  var pringles = L.polygon(computeBounds(-79, -98, 80, 113)).addTo(map);
+  var ris = L.polygon(computeBounds(-98, -120, 80, 113)).addTo(map);
+  var kpm = L.polygon(computeBounds(-138, -159, 80, 113)).addTo(map);
+  var ffdd = L.polygon(computeBounds(-159, -180, 80, 113)).addTo(map);
+
+  var candy = L.polygon(computeBounds(-58, -98, 176, 208)).addTo(map);
+  var lego = L.polygon(computeBounds(-120, -160, 176, 208)).addTo(map);
+
+  var dd = L.polygon(computeBounds(-65, -92, 242, 292)).addTo(map);
+  var ginger = L.polygon(computeBounds(-92, -131, 242, 268)).addTo(map);
+  var argyle = L.polygon(computeBounds(-112, -131, 268, 292)).addTo(map);
+
+
+
 
   /*
       +x
