@@ -58,3 +58,5 @@ app.closePanel.
 .panel {
   display: block;
 }
+
+#map { height: 640px; }
