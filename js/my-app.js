@@ -19,6 +19,10 @@ myApp.onPageInit('dog', function(page) {
     // code here gets run when 'dog' page (<div data-page="dog">) is loaded
 });
 
+myApp.onPageInit('all-dogs', function(page) {
+  ko.applyBindings(new AppViewModel());
+});
+
 myApp.onPageInit('kennelmap', function(page) {
   //var southWest = L.latLng(0, 0),
     //northEast = L.latLng(800, 500),
