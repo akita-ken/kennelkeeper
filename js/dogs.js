@@ -109,6 +109,7 @@ var dogs = ko.observableArray([
 
 function AppViewModel() {
   var self = this;
+  var activeDog = null;
 
   self.dog = dogs;
 
@@ -128,6 +129,10 @@ function AppViewModel() {
   }
 
   self.removeDog = function() {
-    self.dog.remove(this)
+    self.dog.remove(this);
+  }
+
+  self.retrieveDog = function(dog) {
+    activeDog = dog;
   }
 }
