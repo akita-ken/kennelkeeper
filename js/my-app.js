@@ -8,13 +8,10 @@ var myApp = new Framework7({
 // Export selectors engine
 var $$ = Dom7;
 
-var appViewModel = new AppViewModel();
-
 // Add view
 var mainView = myApp.addView('.view-main', {
-});
 
-ko.applyBindings(appViewModel);
+});
 
 // Put JS that you want to run when the page is loaded in Page Callbacks
 // because if you put it in the page fragments, they don't get run.
@@ -23,8 +20,7 @@ myApp.onPageInit('dog', function(page) {
 });
 
 myApp.onPageInit('all-dogs', function(page) {
-  ko.cleanNode();
-  ko.applyBindings(appViewModel);
+  ko.applyBindings(new AppViewModel());
 });
 
 myApp.onPageInit('kennelmap', function(page) {
@@ -97,28 +93,7 @@ myApp.onPageInit('kennelmap', function(page) {
   var ginger = L.polygon(computeBounds(-92, -131, 242, 268)).addTo(map);
   var argyle = L.polygon(computeBounds(-112, -131, 268, 292)).addTo(map);
 
-  ccd.on('click', function(e) {
-    var buttons = [
-        {
-            text: 'Dogs in kennel',
-            bold: true,
-            label: true
-        },
-        {
-            text: 'Coco',
-            bold: true
-        },
-        {
-            text: 'Charlie',
-            bold: true
-        },
-        {
-            text: 'Donut',
-            bold: true
-        },
-    ];
-    myApp.actions(buttons);
-  });
+
 
 
   /*
@@ -133,4 +108,5 @@ myApp.onPageInit('kennelmap', function(page) {
   function computeBounds(x1, x2, y1, y2) {
     return [[x1, y1], [x2, y1], [x2, y2], [x1,y2]];
   }
+
 });
