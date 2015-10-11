@@ -20,7 +20,9 @@ myApp.onPageInit('dog', function(page) {
 });
 
 myApp.onPageInit('all-dogs', function(page) {
-  ko.applyBindings(new AppViewModel());
+  // find the HTMLElement (not Dom7) with page-name of the currently loaded page
+  var pageElement = $$('.page[data-page="' + page.name + '"]')[0];
+  ko.applyBindings(new AppViewModel(), pageElement);
 });
 
 myApp.onPageInit('kennelmap', function(page) {
