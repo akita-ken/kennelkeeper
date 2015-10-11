@@ -99,8 +99,28 @@ myApp.onPageInit('kennelmap', function(page) {
   var ginger = L.polygon(computeBounds(-92, -131, 242, 268)).addTo(map);
   var argyle = L.polygon(computeBounds(-112, -131, 268, 292)).addTo(map);
 
-
-
+  ccd.on('click', function(e) {
+    var buttons = [
+        {
+            text: 'Dogs in kennel',
+            bold: true,
+            label: true
+        },
+        {
+            text: 'Coco',
+            bold: true
+        },
+        {
+            text: 'Charlie',
+            bold: true
+        },
+        {
+            text: 'Donut',
+            bold: true
+        },
+    ];
+    myApp.actions(buttons);
+  });
 
   /*
       +x
