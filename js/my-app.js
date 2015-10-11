@@ -13,16 +13,20 @@ var mainView = myApp.addView('.view-main', {
 
 });
 
+var appViewModel = new AppViewModel();
+
 // Put JS that you want to run when the page is loaded in Page Callbacks
 // because if you put it in the page fragments, they don't get run.
 myApp.onPageInit('dog', function(page) {
     // code here gets run when 'dog' page (<div data-page="dog">) is loaded
+  var pageElement = $$('.page[data-page="' + page.name + '"]')[0];
+  ko.applyBindings(appViewModel, pageElement);
 });
 
 myApp.onPageInit('all-dogs', function(page) {
   // find the HTMLElement (not Dom7) with page-name of the currently loaded page
   var pageElement = $$('.page[data-page="' + page.name + '"]')[0];
-  ko.applyBindings(new AppViewModel(), pageElement);
+  ko.applyBindings(appViewModel, pageElement);
 });
 
 myApp.onPageInit('kennelmap', function(page) {

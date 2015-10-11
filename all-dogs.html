@@ -31,7 +31,7 @@
       <ul class="dogs-list" data-bind="foreach: dog">
 
         <li>
-          <a href="#" class="item-link"><!-- dog.html?id={{id}} -->
+          <a href="dog.html" class="item-link" data-bind="click: $parent.retrieveDog"><!-- dog.html?id={{id}} -->
             <div class="item-content">
               <div class="item-media"><img src="http://placehold.it/48x48"></div>
               <div class="item-inner">
