@@ -28,10 +28,10 @@
           <strong>Walked today?</strong>
         </div>
         <div class="col-30" style="line-height: 36px; text-align: center;">
-          <span class="color-red">No</span>
+          <span data-bind="text: activeDog.walked ? 'Yes' : 'No'">No</span>
         </div>
         <div class="col-30">
-          <a href="#" class="button button-raised button-fill color-teal" style="text-transform: none">Walk</a>
+          <a href="#" class="button button-raised button-fill color-teal" style="text-transform: none" data-bind="click: walkDog"><span data-bind="text: walkStatus"></span></a>
         </div>
       </div>
       <div class="row">
@@ -39,7 +39,7 @@
           <strong>Last showered</strong>
         </div>
         <div class="col-30" style="height: 36px; line-height: 1.1; text-align: center;">
-          2 Aug<br><span class="color-gray">44 days ago</span>
+          <span data-bind="text: activeDog.showered"></span><br><span class="color-gray">44 days ago</span>
         </div>
         <div class="col-30">
           <a href="#" class="button button-raised button-fill color-indigo" style="text-transform: none">Shower</a>
@@ -49,30 +49,24 @@
     <!-- Behaviour notes -->
     <div class="content-block-title color-black"><strong>Behaviour Notes</strong></div>
     <div class="content-block">
-      Aggressive towards cyclists. Attacks other dogs.
+      <span data-bind="text: activeDog.behaviour"></span>
     </div>
     <!-- Medical notes -->
     <div class="content-block-title color-black"><strong>Medical Notes</strong></div>
     <div class="content-block">
-      Limb injury. If she starts limping again, please feed her with 25mg of metacam, that can be found in the medical box labelled 1A in the kitchen.
+      <span data-bind="text: activeDog.medical"></span>
     </div>
     <!-- Incident logs -->
     <div class="content-block-title color-black"><strong>Incident Log</strong></div>
-    <div class="card">
-      <div class="card-content">
-        <div class="card-content-inner">
-          Attacked a passer-by, who got scratched quite badly. Be careful!
+    <div data-bind="foreach: activeDog.incident">
+      <div class="card">
+        <div class="card-content">
+          <div class="card-content-inner">
+            <span data-bind="text: log"></span>
+          </div>
         </div>
+        <div class="card-footer"><span data-bind="text: submitter"></span> posted on <span data-bind="text: date"></span></div>
       </div>
-      <div class="card-footer">Kristine posted on 18 Jul 2015 1:50pm</div>
-    </div>
-    <div class="card">
-      <div class="card-content">
-        <div class="card-content-inner">
-          Suddenly jumped out at a passing cyclist, causing him to swerve and nearly fall! Short leash and keep her away from cyclists.
-        </div>
-      </div>
-      <div class="card-footer">Alex posted on 7 May 2015 2:47pm</div>
     </div>
     <div class="card">
       <!-- TODO: handle create all-incidents list page -->

@@ -113,12 +113,14 @@ function AppViewModel() {
   self.activeDog = null;
   self.dog = dogs;
 
+  self.walking = [];
+
   self.addDog = function(name, gender, behaviour, medical) {
     self.dog.push(
       {
         name: name,
         gender: gender,
-        kennel: 0,
+        kennel: 0, // this needs to be changed to a function
         showered: null,
         walked: false,
         behaviour: behaviour,
@@ -126,14 +128,25 @@ function AppViewModel() {
         incident: []
       }
     )
-  }
+  };
 
   self.removeDog = function() {
     self.dog.remove(this);
-  }
+  };
 
   self.retrieveDog = function(dog) {
     self.activeDog = dog;
     return true;
-  }
+  };
+
+  self.walkDog = function() {
+    self.activeDog.walked = "walking";
+  };
+
+  self.walkStatus = ko.computed(function() {
+    if(self.activeDog != null && self.activeDog.walked == "walking") {
+      return "End walk";
+    }
+    return "Walk";
+  });
 }
