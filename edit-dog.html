@@ -17,7 +17,7 @@
             <div class="item-inner">
               <div class="item-title label">Name</div>
               <div class="item-input">
-                <input type="text" placeholder="Name" value="Coco">
+                <input type="text" placeholder="Name" data-bind="value: activeDog.name">
               </div>
             </div>
           </div>
@@ -27,10 +27,7 @@
             <div class="item-inner">
               <div class="item-title label">Gender</div>
               <div class="item-input">
-                <select>
-                  <option>Male</option>
-                  <option selected>Female</option>
-                </select>
+                <select data-bind="options: availableGenders, selectedOptions: activeDog.gender"></select>
               </div>
             </div>
           </div>
@@ -40,7 +37,7 @@
             <div class="item-inner">
               <div class="item-title label">Behaviour Notes</div>
               <div class="item-input">
-                <textarea placeholder="Behaviour Notes">Aggressive towards cyclists. Attacks other dogs.</textarea>
+                <textarea placeholder="Behaviour Notes" data-bind="textInput: activeDog.behaviour"></textarea>
               </div>
             </div>
           </div>
@@ -50,14 +47,14 @@
             <div class="item-inner">
               <div class="item-title label">Medical Notes</div>
               <div class="item-input">
-                <textarea placeholder="Medical Notes">Limb injury. If she starts limping again, please feed her with 25mg of metacam, that can be found in the medical box labelled 1A in the kitchen.</textarea>
+                <textarea placeholder="Medical Notes" data-bind="textInput: activeDog.medical"></textarea>
               </div>
             </div>
           </div>
         </li>
         <!--TODO: Photo Browser goes here -->
         <li>
-          <input type="submit" class="button button-raised button-fill" value="Save" style="border: 0;">
+          <a href="dog.html" class="button button-raised button-fill" style="border: 0;">Save</a>
         </li>
       </ul>
     </div>
