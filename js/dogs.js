@@ -4,7 +4,7 @@ var dogs = ko.observableArray([
       name: "Candy",
       gender: 0,
       kennel: 14,
-      showered: new Date("2015-08-02T18:25:43"),
+      showered: ko.observable(new Date("2015-08-02T18:25:43")),
       walked: ko.observable("Yes"),
       behaviour: "",
       medical: "",
@@ -16,7 +16,7 @@ var dogs = ko.observableArray([
       name: "Coco",
       gender: 0,
       kennel: 4,
-      showered: new Date("2015-08-02T18:25:43"),
+      showered: ko.observable(new Date("2015-08-02T18:25:43")),
       walked: ko.observable("No"),
       behaviour: "Aggressive towards cyclists. Attacks other dogs.",
       medical: "Limb injury. If she starts limping again, please feed her with 25mg of metacam, that can be found in the medical box labelled 1A in the kitchen.",
@@ -37,7 +37,7 @@ var dogs = ko.observableArray([
       name: "Dee Dee", 
       gender: 0,
       kennel: 18,
-      showered: new Date("2015-08-02T18:25:43"),
+      showered: ko.observable(new Date("2015-08-02T18:25:43")),
       walked: ko.observable("Yes"),
       behaviour: "",
       medical: "",
@@ -49,7 +49,7 @@ var dogs = ko.observableArray([
       name: "Lego", 
       gender: 1,
       kennel: 20,
-      showered: new Date("2015-08-02T18:25:43"),
+      showered: ko.observable(new Date("2015-08-02T18:25:43")),
       walked: ko.observable("Yes"),
       behaviour: "",
       medical: "",
@@ -61,7 +61,7 @@ var dogs = ko.observableArray([
       name: "Ginger", 
       gender: 0,
       kennel: 12,
-      showered: new Date("2015-08-02T18:25:43"),
+      showered: ko.observable(new Date("2015-08-02T18:25:43")),
       walked: ko.observable("Yes"),
       behaviour: "",
       medical: "",
@@ -73,7 +73,7 @@ var dogs = ko.observableArray([
       name: "Lucky", 
       gender: 1,
       kennel: 14,
-      showered: new Date("2015-08-02T18:25:43"),
+      showered: ko.observable(new Date("2015-08-02T18:25:43")),
       walked: ko.observable("Yes"),
       behaviour: "",
       medical: "",
@@ -85,7 +85,7 @@ var dogs = ko.observableArray([
       name: "Mentos", 
       gender: 1,
       kennel: 16,
-      showered: new Date("2015-08-02T18:25:43"),
+      showered: ko.observable(new Date("2015-08-02T18:25:43")),
       walked: ko.observable("Yes"),
       behaviour: "",
       medical: "",
@@ -97,7 +97,7 @@ var dogs = ko.observableArray([
       name: "Charlie", 
       gender: 1,
       kennel: 2,
-      showered: new Date("2015-08-02T18:25:43"),
+      showered: ko.observable(new Date("2015-08-02T18:25:43")),
       walked: ko.observable("Yes"),
       behaviour: "",
       medical: "",
@@ -115,19 +115,26 @@ function AppViewModel() {
 
   self.walking = [];
 
-  self.addDog = function(name, gender, behaviour, medical) {
-    self.dog.push(
-      {
-        name: name,
-        gender: gender,
+  self.availableGenders = ['Male', 'Female'];
+  self.createDogGender = ko.observable("");
+  self.createDogName = ko.observable("");
+  self.createDogBehaviour = ko.observable("");
+  self.createDogMedical = ko.observable("");
+
+  self.addDog = function() {
+    var newDog = {
+        name: self.createDogName,
+        gender: self.createDogGender,
         kennel: 0, // this needs to be changed to a function
-        showered: null,
-        walked: false,
-        behaviour: behaviour,
-        medical: medical,
+        showered: ko.observable(null),
+        walked: ko.observable("No"),
+        behaviour: self.createDogBehaviour,
+        medical: self.createDogMedical,
         incident: []
       }
-    )
+    self.dog.push(newDog);
+    self.activeDog = newDog;
+    return true;
   };
 
   self.removeDog = function() {
@@ -136,21 +143,63 @@ function AppViewModel() {
 
   self.retrieveDog = function(dog) {
     self.activeDog = dog;
-    self.activeDogWalkStatus = ko.observable(self.activeDog.walked);
     return true;
   };
 
-  self.walkDog = function() {
-    self.activeDog.walked("Walking");
-    self.walking.push(
-      {
-        name: self.activeDog.name,
-        started: Date.now()
-      }
-    )
+  self.walkButton = function() {
+    if(self.activeDog.walked() == "No") {
+      self.activeDog.walked("Walking");
+      self.walking.push(
+        {
+          name: self.activeDog.name,
+          started: Date.now(),
+          walker: "TestUser"
+        }
+      )
+    } else if(self.activeDog.walked() == "Walking") {
+      alert("Dog is happy, let's go! :3");
+      pos = self.walking.map(function(e) {
+        return e.name; 
+      }).indexOf(self.activeDog.name);
+      self.walking.splice(pos, 1);
+      self.activeDog.walked("Yes");
+    } else {
+      alert("Dog has already been walked. Let it rest.");
+    }
   };
 
-  self.walkStatus = ko.computed(function() {
-    
-  });
+  self.walkStatus = ko.computed(
+    {
+      read: function() {
+        if(self.activeDog.walked() == "No") {
+          return "Walk";
+        } else if(self.activeDog.walked() == "Walking") {
+          return "End walk";
+        } else {
+          return "Already walked today";
+        }
+      },
+      deferEvaluation: true
+    }
+  );
+
+  self.showerDog = function() {
+    console.log("hey");
+    self.activeDog.showered(new Date());
+  }
+
+  // self.editButton = function() {
+  //   self.inputDogName = self.activeDog.name;
+  //   self.inputDogGender = self.activeDog.gender;
+  //   self.inputDogBehaviour = self.activeDog.behaviour;
+  //   self.inputDogMedical = self.activeDog.medical;
+  // }
+
+  // self.editDog = function() {
+  //   self.inputDogName = ko.observable("");
+  //   self.inputDogGender = ko.observable("");
+  //   self.inputDogBehaviour = ko.observable("");
+  //   self.inputDogMedical = ko.observable("");
+  //   return true;
+  // }
 }
