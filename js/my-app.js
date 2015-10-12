@@ -29,6 +29,36 @@ myApp.onPageInit('all-dogs', function(page) {
   ko.applyBindings(appViewModel, pageElement);
 });
 
+myApp.onPageInit('create-dog', function(page) {
+  // find the HTMLElement (not Dom7) with page-name of the currently loaded page
+  var pageElement = $$('.page[data-page="' + page.name + '"]')[0];
+  ko.applyBindings(appViewModel, pageElement);
+});
+
+myApp.onPageInit('edit-dog', function(page) {
+  // find the HTMLElement (not Dom7) with page-name of the currently loaded page
+  var pageElement = $$('.page[data-page="' + page.name + '"]')[0];
+  ko.applyBindings(appViewModel, pageElement);
+});
+
+myApp.onPageInit('showerme', function(page) {
+  // find the HTMLElement (not Dom7) with page-name of the currently loaded page
+  var pageElement = $$('.page[data-page="' + page.name + '"]')[0];
+  ko.applyBindings(appViewModel, pageElement);
+});
+
+myApp.onPageInit('walkme', function(page) {
+  // find the HTMLElement (not Dom7) with page-name of the currently loaded page
+  var pageElement = $$('.page[data-page="' + page.name + '"]')[0];
+  ko.applyBindings(appViewModel, pageElement);
+});
+
+myApp.onPageInit('walkingnow', function(page) {
+  // find the HTMLElement (not Dom7) with page-name of the currently loaded page
+  var pageElement = $$('.page[data-page="' + page.name + '"]')[0];
+  ko.applyBindings(appViewModel, pageElement);
+});
+
 myApp.onPageInit('kennelmap', function(page) {
   //var southWest = L.latLng(0, 0),
     //northEast = L.latLng(800, 500),
@@ -36,9 +66,9 @@ myApp.onPageInit('kennelmap', function(page) {
 
   var map = L.map('map', {
     center: [0, 0],
-    zoom: 2,
-    minZoom: 2,
-    maxZoom: 2,
+    zoom: 1.5,
+    minZoom: 1.5,
+    maxZoom: 1.5,
     /*touchZoom: false,
     scrollWheelZoom: false,
     doubleClickZoom: false,
