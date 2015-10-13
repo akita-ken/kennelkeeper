@@ -17,46 +17,16 @@ var appViewModel = new AppViewModel();
 
 // Put JS that you want to run when the page is loaded in Page Callbacks
 // because if you put it in the page fragments, they don't get run.
-myApp.onPageInit('dog', function(page) {
-    // code here gets run when 'dog' page (<div data-page="dog">) is loaded
+//
+// apply knockout.js bindings on all these page inits
+function applyKoBindings(page) {
   var pageElement = $$('.page[data-page="' + page.name + '"]')[0];
   ko.applyBindings(appViewModel, pageElement);
-});
+}
 
-myApp.onPageInit('all-dogs', function(page) {
-  // find the HTMLElement (not Dom7) with page-name of the currently loaded page
-  var pageElement = $$('.page[data-page="' + page.name + '"]')[0];
-  ko.applyBindings(appViewModel, pageElement);
-});
-
-myApp.onPageInit('create-dog', function(page) {
-  // find the HTMLElement (not Dom7) with page-name of the currently loaded page
-  var pageElement = $$('.page[data-page="' + page.name + '"]')[0];
-  ko.applyBindings(appViewModel, pageElement);
-});
-
-myApp.onPageInit('edit-dog', function(page) {
-  // find the HTMLElement (not Dom7) with page-name of the currently loaded page
-  var pageElement = $$('.page[data-page="' + page.name + '"]')[0];
-  ko.applyBindings(appViewModel, pageElement);
-});
-
-myApp.onPageInit('showerme', function(page) {
-  // find the HTMLElement (not Dom7) with page-name of the currently loaded page
-  var pageElement = $$('.page[data-page="' + page.name + '"]')[0];
-  ko.applyBindings(appViewModel, pageElement);
-});
-
-myApp.onPageInit('walkme', function(page) {
-  // find the HTMLElement (not Dom7) with page-name of the currently loaded page
-  var pageElement = $$('.page[data-page="' + page.name + '"]')[0];
-  ko.applyBindings(appViewModel, pageElement);
-});
-
-myApp.onPageInit('walkingnow', function(page) {
-  // find the HTMLElement (not Dom7) with page-name of the currently loaded page
-  var pageElement = $$('.page[data-page="' + page.name + '"]')[0];
-  ko.applyBindings(appViewModel, pageElement);
+var pages = ['dog', 'all-dogs', 'create-dig', 'edit-dog', 'showerme', 'walkme', 'walking now'];
+pages.forEach(function(page) {
+  myApp.onPageInit(page, applyKoBindings);
 });
 
 myApp.onPageInit('kennelmap', function(page) {
