@@ -58,3 +58,6 @@ app.closePanel.
 .panel {
   display: block;
 }
+
+/* 56 px reserved for navbar */
+#map { height: calc(100% - 56px); }
