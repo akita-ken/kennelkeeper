@@ -30,10 +30,6 @@ pages.forEach(function(page) {
 });
 
 myApp.onPageInit('kennelmap', function(page) {
-  //var southWest = L.latLng(0, 0),
-    //northEast = L.latLng(800, 500),
-   // bounds = L.latLngBounds(southWest, northEast);
-
   var map = L.map('map', {
     center: [0, 0],
     zoom: 1.5,
