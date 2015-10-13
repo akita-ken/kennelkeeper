@@ -84,7 +84,7 @@ function AppViewModel() {
       } else if (self.activeDog.walked() == "Walking") {
         return "End walk";
       } else {
-        return "Already walked";
+        return "Walked";
       }
     },
     deferEvaluation: true
