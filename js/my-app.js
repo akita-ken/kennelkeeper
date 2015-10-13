@@ -120,14 +120,11 @@ myApp.onPageInit('kennelmap', function(page) {
   var pringles = L.polygon(computeBounds(-79, -98, 80, 113)).addTo(map);
   var ris = L.polygon(computeBounds(-98, -120, 80, 113)).addTo(map);
   var kpm = L.polygon(computeBounds(-138, -159, 80, 113)).addTo(map);
-  var ffdd = L.polygon(computeBounds(-159, -180, 80, 113)).addTo(map);
 
   var candy = L.polygon(computeBounds(-58, -98, 176, 208)).addTo(map);
   var lego = L.polygon(computeBounds(-120, -160, 176, 208)).addTo(map);
 
-  var dd = L.polygon(computeBounds(-65, -92, 242, 292)).addTo(map);
   var ginger = L.polygon(computeBounds(-92, -131, 242, 268)).addTo(map);
-  var argyle = L.polygon(computeBounds(-112, -131, 268, 292)).addTo(map);
 
   ccd.on('click', function(e) {
     var buttons = [
