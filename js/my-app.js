@@ -31,7 +31,7 @@ pages.forEach(function(page) {
 
 myApp.onPageInit('kennelmap', function(page) {
   var map = L.map('map', {
-    center: [0, 0],
+    center: [-140, -50],
     zoom: 1.5,
     minZoom: 1.5,
     maxZoom: 1.5,
