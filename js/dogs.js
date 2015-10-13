@@ -78,18 +78,15 @@ function AppViewModel() {
     }
   };
 
-  self.walkStatus = ko.computed({
-    read: function() {
-      if (self.activeDog.walked() == "No") {
-        return "Walk";
-      } else if (self.activeDog.walked() == "Walking") {
-        return "End walk";
-      } else {
-        return "Walked";
-      }
-    },
-    deferEvaluation: true
-  });
+  self.walkStatus = function() {
+    if (self.activeDog.walked() == "No") {
+      return "Walk";
+    } else if (self.activeDog.walked() == "Walking") {
+      return "End walk";
+    } else {
+      return "Walked";
+    }
+  }
 
   self.showerDog = function() {
     console.log("hey");
