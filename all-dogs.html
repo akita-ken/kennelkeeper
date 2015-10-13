@@ -37,8 +37,10 @@
               <div class="item-inner">
                 <div class="item-title-row">
                   <div class="item-title"><span data-bind="text: name"></span></div>
-                  <div class="item-after"><span class="badge bg-indigo" data-bind="visible: $parent.showerBadge($data)">S</span></div>
-                  <div class="item-after"><span class="badge bg-teal" data-bind="visible: $parent.walkBadge($data)">W</span></div>
+                  <div class="item-after">
+                    <span class="badge bg-indigo" data-bind="visible: $parent.showerBadge($data)">S</span> &nbsp;
+                    <span class="badge bg-teal" data-bind="visible: $parent.walkBadge($data)">W</span>
+                  </div>
                 </div>
                 <div class="item-subtitle">Kennel <span data-bind="text: kennel"></span></div>
               </div>

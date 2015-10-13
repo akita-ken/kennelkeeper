@@ -25,14 +25,14 @@ function applyKoBindings(page) {
   ko.applyBindings(appViewModel, pageElement);
 }
 
-var pages = ['index', 'dog', 'all-dogs', 'create-dig', 'edit-dog', 'showerme', 'walkme', 'walking now'];
+var pages = ['index', 'dog', 'all-dogs', 'create-dog', 'edit-dog', 'showerme', 'walkme', 'walkingnow'];
 pages.forEach(function(page) {
   myApp.onPageInit(page, applyKoBindings);
 });
 
 myApp.onPageInit('kennelmap', function(page) {
   var map = L.map('map', {
-    center: [0, 0],
+    center: [-140, -50],
     zoom: 1.5,
     minZoom: 1.5,
     maxZoom: 1.5,
