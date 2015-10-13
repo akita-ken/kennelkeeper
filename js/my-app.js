@@ -14,6 +14,7 @@ var mainView = myApp.addView('.view-main', {
 });
 
 var appViewModel = new AppViewModel();
+ko.applyBindings(appViewModel);
 
 // Put JS that you want to run when the page is loaded in Page Callbacks
 // because if you put it in the page fragments, they don't get run.
@@ -24,7 +25,7 @@ function applyKoBindings(page) {
   ko.applyBindings(appViewModel, pageElement);
 }
 
-var pages = ['dog', 'all-dogs', 'create-dig', 'edit-dog', 'showerme', 'walkme', 'walking now'];
+var pages = ['index', 'dog', 'all-dogs', 'create-dig', 'edit-dog', 'showerme', 'walkme', 'walking now'];
 pages.forEach(function(page) {
   myApp.onPageInit(page, applyKoBindings);
 });

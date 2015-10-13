@@ -63,7 +63,8 @@ function AppViewModel() {
       self.walking.push({
         name: self.activeDog.name,
         started: Date.now(),
-        walker: "TestUser"
+        walker: "TestUser",
+        behaviour: self.activeDog.behaviour
       });
       alert("Dog is happy, let's go! :3");
     } else if (self.activeDog.walked() == "Walking") {
@@ -140,4 +141,5 @@ function AppViewModel() {
     self.activeDog.incident.push(newIncident);
     self.initVars();
   }
+
 }
