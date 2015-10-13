@@ -112,8 +112,8 @@ function AppViewModel() {
   }
 
   self.showerBadge = function(dog) {
-    // insert shower date duration calculation logic here
-    return false;
+    // dogs all need showers when at least 1 month
+    return moment().diff(dog.showered(), 'months') >= 1;
   }
 
   self.walkBadge = function(dog) {
