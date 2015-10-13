@@ -95,20 +95,12 @@ function AppViewModel() {
     self.activeDog.showered(new Date());
   }
 
-  self.showerAbsoluteDate = function() {
-    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-    var date = self.activeDog.showered();
-    return date.getDay() + " " + months[date.getMonth()];
-  }
-
   self.showerRelativeDate = function() {
     var now = new Date();
     var date = self.activeDog.showered();
 
     // compute difference in days, using the milliseconds since epoch
-    var days = (now.getTime() - date.getTime()) / (1000 * 60 * 60 * 24);
-    // round off to integer
-    days = Math.round(days);
+    var days = moment().diff(self.activeDog.showered(), 'days');
 
     if (days == 0) {
       return "today";
