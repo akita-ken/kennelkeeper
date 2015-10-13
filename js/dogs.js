@@ -120,6 +120,7 @@ function AppViewModel() {
   
   self.activeDog = null;
   self.dog = dogs;
+  self.justAddedDog = false;
 
   self.walking = [];
 
@@ -150,8 +151,13 @@ function AppViewModel() {
     self.dog.push(newDog);
     self.activeDog = newDog;
     self.initVars();
+    self.justAddedDog = true;
     return true;
   };
+
+  self.resetButton = function() {
+    self.justAddedDog = false;
+  }
 
   self.removeDog = function() {
     self.dog.remove(this);
