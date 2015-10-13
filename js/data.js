@@ -112,5 +112,70 @@ var dogs = ko.observableArray([
       incident: [
         
       ]
+    },
+    { 
+      name: "Pringles", 
+      gender: 1,
+      kennel: 20,
+      showered: ko.observable(new Date("2015-08-02T18:25:43")),
+      walked: ko.observable("Yes"),
+      lastWalked: ko.observable(new Date("2015-08-02T18:25:43")),
+      behaviour: "",
+      medical: "",
+      incident: [
+        
+      ]
+    },
+    { 
+      name: "Ris", 
+      gender: 1,
+      kennel: 2,
+      showered: ko.observable(new Date("2015-08-02T18:25:43")),
+      walked: ko.observable("Yes"),
+      lastWalked: ko.observable(new Date("2015-08-02T18:25:43")),
+      behaviour: "",
+      medical: "",
+      incident: [
+        
+      ]
+    },
+    { 
+      name: "Kyoto", 
+      gender: 1,
+      kennel: 19,
+      showered: ko.observable(new Date("2015-08-02T18:25:43")),
+      walked: ko.observable("Yes"),
+      lastWalked: ko.observable(new Date("2015-08-02T18:25:43")),
+      behaviour: "",
+      medical: "",
+      incident: [
+        
+      ]
+    },
+    { 
+      name: "Muthu", 
+      gender: 1,
+      kennel: 21,
+      showered: ko.observable(new Date("2015-08-02T18:25:43")),
+      walked: ko.observable("Yes"),
+      lastWalked: ko.observable(new Date("2015-08-02T18:25:43")),
+      behaviour: "",
+      medical: "",
+      incident: [
+        
+      ]
+    },
+    { 
+      name: "Pappy", 
+      gender: 1,
+      kennel: 17,
+      showered: ko.observable(new Date("2015-08-02T18:25:43")),
+      walked: ko.observable("Yes"),
+      lastWalked: ko.observable(new Date("2015-08-02T18:25:43")),
+      behaviour: "",
+      medical: "",
+      incident: [
+        
+      ]
     }
 ]);
