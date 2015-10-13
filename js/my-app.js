@@ -60,9 +60,6 @@ myApp.onPageInit('walkingnow', function(page) {
 });
 
 myApp.onPageInit('kennelmap', function(page) {
-  //var southWest = L.latLng(0, 0),
-    //northEast = L.latLng(800, 500),
-   // bounds = L.latLngBounds(southWest, northEast);
 
   var map = L.map('map', {
     center: [0, 0],
@@ -111,20 +108,30 @@ myApp.onPageInit('kennelmap', function(page) {
   ]).addTo(map);
   */
 
-  var mentos = L.polygon(computeBounds(-79, -98, 0, 35)).addTo(map);
-  var pingpong = L.polygon(computeBounds(-138, -159, 0, 35)).addTo(map);
-  var ccd = L.polygon(computeBounds(-159, -180, 0, 35)).addTo(map);
-  var lucky = L.polygon(computeBounds(-180, -200, 0, 35)).addTo(map);
-  var harry = L.polygon(computeBounds(-202, -223, 0, 35)).addTo(map);
+  var mentos = L.polygon(computeBounds(-79, -98, 0, 35), { fillOpacity: 0.0 }).addTo(map);
+  var pingpong = L.polygon(computeBounds(-138, -159, 0, 35), { fillOpacity: 0.0 }).addTo(map);
+  var ccd = L.polygon(computeBounds(-159, -180, 0, 35), { fillOpacity: 0.0 }).addTo(map);
+  var lucky = L.polygon(computeBounds(-180, -200, 0, 35), { fillOpacity: 0.0 }).addTo(map);
+  var harry = L.polygon(computeBounds(-202, -223, 0, 35), { fillOpacity: 0.0 }).addTo(map);
 
-  var pringles = L.polygon(computeBounds(-79, -98, 80, 113)).addTo(map);
-  var ris = L.polygon(computeBounds(-98, -120, 80, 113)).addTo(map);
-  var kpm = L.polygon(computeBounds(-138, -159, 80, 113)).addTo(map);
+  var pringles = L.polygon(computeBounds(-79, -98, 80, 113), { fillOpacity: 0.0 }).addTo(map);
+  var ris = L.polygon(computeBounds(-98, -120, 80, 113), { fillOpacity: 0.0 }).addTo(map);
+  var kpm = L.polygon(computeBounds(-138, -159, 80, 113), { fillOpacity: 0.0 }).addTo(map);
 
-  var candy = L.polygon(computeBounds(-58, -98, 176, 208)).addTo(map);
-  var lego = L.polygon(computeBounds(-120, -160, 176, 208)).addTo(map);
+  var candy = L.polygon(computeBounds(-58, -98, 176, 208), { fillOpacity: 0.0 }).addTo(map);
+  var lego = L.polygon(computeBounds(-120, -160, 176, 208), { fillOpacity: 0.0 }).addTo(map);
 
-  var ginger = L.polygon(computeBounds(-92, -131, 242, 268)).addTo(map);
+  var ginger = L.polygon(computeBounds(-92, -131, 242, 268), { fillOpacity: 0.0 }).addTo(map);
+
+  mentos.on('click', function(e) {
+    appViewModel.findDogAndLoad('Mentos');
+    mainView.router.loadPage('dog.html');
+  });
+
+  pingpong.on('click', function(e) {
+    appViewModel.findDogAndLoad('Ping Pong');
+    mainView.router.loadPage('dog.html');
+  })
 
   ccd.on('click', function(e) {
     var buttons = [
@@ -135,18 +142,100 @@ myApp.onPageInit('kennelmap', function(page) {
         },
         {
             text: 'Coco',
-            bold: true
+            bold: true,
+            onClick: function() {
+              appViewModel.findDogAndLoad('Coco');
+              mainView.router.loadPage('dog.html');
+            }
         },
         {
             text: 'Charlie',
-            bold: true
+            bold: true,
+            onClick: function() {
+              appViewModel.findDogAndLoad('Charlie');
+              mainView.router.loadPage('dog.html');
+            }
         },
         {
             text: 'Donut',
-            bold: true
+            bold: true,
+            onClick: function() {
+              appViewModel.findDogAndLoad('Donut');
+              mainView.router.loadPage('dog.html');
+            }
         },
     ];
     myApp.actions(buttons);
+  });
+
+  lucky.on('click', function(e) {
+    appViewModel.findDogAndLoad('Lucky');
+    mainView.router.loadPage('dog.html');
+  });
+
+  harry.on('click', function(e) {
+    appViewModel.findDogAndLoad('Harry');
+    mainView.router.loadPage('dog.html');
+  });
+
+  pringles.on('click', function(e) {
+    appViewModel.findDogAndLoad('Pringles');
+    mainView.router.loadPage('dog.html');
+  });
+
+  ris.on('click', function(e) {
+    appViewModel.findDogAndLoad('Ris');
+    mainView.router.loadPage('dog.html');
+  });
+
+  kpm.on('click', function(e) {
+    var buttons = [
+        {
+            text: 'Dogs in kennel',
+            bold: true,
+            label: true
+        },
+        {
+            text: 'Kyoto',
+            bold: true,
+            onClick: function() {
+              appViewModel.findDogAndLoad('Kyoto');
+              mainView.router.loadPage('dog.html');
+            }
+        },
+        {
+            text: 'Muthu',
+            bold: true,
+            onClick: function() {
+              appViewModel.findDogAndLoad('Muthu');
+              mainView.router.loadPage('dog.html');
+            }
+        },
+        {
+            text: 'Pappy',
+            bold: true,
+            onClick: function() {
+              appViewModel.findDogAndLoad('Pappy');
+              mainView.router.loadPage('dog.html');
+            }
+        },
+    ];
+    myApp.actions(buttons);
+  });
+
+  candy.on('click', function(e) {
+    appViewModel.findDogAndLoad('Candy');
+    mainView.router.loadPage('dog.html');
+  });
+
+  lego.on('click', function(e) {
+    appViewModel.findDogAndLoad('Lego');
+    mainView.router.loadPage('dog.html');
+  });
+
+  ginger.on('click', function(e) {
+    appViewModel.findDogAndLoad('Ginger');
+    mainView.router.loadPage('dog.html');
   });
 
   /*
