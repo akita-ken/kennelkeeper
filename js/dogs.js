@@ -206,6 +206,12 @@ function AppViewModel() {
     self.activeDog.showered(new Date());
   }
 
+  self.showerAbsoluteDate = function() {
+    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var date = self.activeDog.showered();
+    return date.getDay() + " " + months[date.getMonth()];
+  }
+
   self.showerBadge = function(dog) {
     // insert shower date duration calculation logic here
     return false;
