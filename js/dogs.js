@@ -64,9 +64,9 @@ function AppViewModel() {
         name: self.activeDog.name,
         started: Date.now(),
         walker: "TestUser"
-      })
-    } else if (self.activeDog.walked() == "Walking") {
+      });
       alert("Dog is happy, let's go! :3");
+    } else if (self.activeDog.walked() == "Walking") {
       pos = self.walking.map(function(e) {
         return e.name; 
       }).indexOf(self.activeDog.name);
