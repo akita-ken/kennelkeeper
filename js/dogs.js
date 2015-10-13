@@ -188,6 +188,18 @@ function AppViewModel() {
     self.activeDog.showered(new Date());
   }
 
+  self.showerBadge = function(dog) {
+    // insert shower date duration calculation logic here
+    return false;
+  }
+
+  self.walkBadge = function(dog) {
+    if(dog.walked() == "No") {
+      return true;
+    }
+    return false;
+  }
+
   // self.editButton = function() {
   //   self.inputDogName = self.activeDog.name;
   //   self.inputDogGender = self.activeDog.gender;
