@@ -6,6 +6,7 @@ var dogs = ko.observableArray([
       kennel: 14,
       showered: ko.observable(new Date("2015-08-02T18:25:43")),
       walked: ko.observable("Yes"),
+      lastWalked: ko.observable(new Date("2015-08-02T18:25:43")),
       behaviour: "",
       medical: "",
       incident: [
@@ -18,6 +19,7 @@ var dogs = ko.observableArray([
       kennel: 4,
       showered: ko.observable(new Date("2015-08-02T18:25:43")),
       walked: ko.observable("No"),
+      lastWalked: ko.observable(new Date("2015-08-02T18:25:43")),
       behaviour: "Aggressive towards cyclists. Attacks other dogs.",
       medical: "Limb injury. If she starts limping again, please feed her with 25mg of metacam, that can be found in the medical box labelled 1A in the kitchen.",
       incident: [
@@ -39,6 +41,7 @@ var dogs = ko.observableArray([
       kennel: 18,
       showered: ko.observable(new Date("2015-08-02T18:25:43")),
       walked: ko.observable("Yes"),
+      lastWalked: ko.observable(new Date("2015-08-02T18:25:43")),
       behaviour: "",
       medical: "",
       incident: [
@@ -51,6 +54,7 @@ var dogs = ko.observableArray([
       kennel: 20,
       showered: ko.observable(new Date("2015-08-02T18:25:43")),
       walked: ko.observable("Yes"),
+      lastWalked: ko.observable(new Date("2015-08-02T18:25:43")),
       behaviour: "",
       medical: "",
       incident: [
@@ -63,6 +67,7 @@ var dogs = ko.observableArray([
       kennel: 12,
       showered: ko.observable(new Date("2015-08-02T18:25:43")),
       walked: ko.observable("Yes"),
+      lastWalked: ko.observable(new Date("2015-08-02T18:25:43")),
       behaviour: "",
       medical: "",
       incident: [
@@ -75,6 +80,7 @@ var dogs = ko.observableArray([
       kennel: 14,
       showered: ko.observable(new Date("2015-08-02T18:25:43")),
       walked: ko.observable("Yes"),
+      lastWalked: ko.observable(new Date("2015-08-02T18:25:43")),
       behaviour: "",
       medical: "",
       incident: [
@@ -87,6 +93,7 @@ var dogs = ko.observableArray([
       kennel: 16,
       showered: ko.observable(new Date("2015-08-02T18:25:43")),
       walked: ko.observable("Yes"),
+      lastWalked: ko.observable(new Date("2015-08-02T18:25:43")),
       behaviour: "",
       medical: "",
       incident: [
@@ -99,6 +106,7 @@ var dogs = ko.observableArray([
       kennel: 2,
       showered: ko.observable(new Date("2015-08-02T18:25:43")),
       walked: ko.observable("Yes"),
+      lastWalked: ko.observable(new Date("2015-08-02T18:25:43")),
       behaviour: "",
       medical: "",
       incident: [
