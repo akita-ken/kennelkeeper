@@ -32,7 +32,8 @@
           <span data-bind="text: activeDog.walked">No</span>
         </div>
         <div class="col-30">
-          <a href="#" class="button button-raised button-fill color-teal" style="text-transform: none" data-bind="click: walkButton"><span data-bind="text: walkStatus"></span></a>
+          <a href="#" class="button button-raised button-fill color-teal" style="text-transform: none" data-bind="click: walkButton, visible: activeDog.walked() != 'Yes'"><span data-bind="text: walkStatus"></span></a>
+          <a href="#" class="button button-raised button-fill color-gray" style="text-transform: none" data-bind="click: walkButton, visible: activeDog.walked() == 'Yes'"><span data-bind="text: walkStatus"></span></a>
         </div>
       </div>
       <div class="row">
