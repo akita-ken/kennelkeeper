@@ -212,6 +212,24 @@ function AppViewModel() {
     return date.getDay() + " " + months[date.getMonth()];
   }
 
+  self.showerRelativeDate = function() {
+    var now = new Date();
+    var date = self.activeDog.showered();
+
+    // compute difference in days, using the milliseconds since epoch
+    var days = (now.getTime() - date.getTime()) / (1000 * 60 * 60 * 24);
+    // round off to integer
+    days = Math.round(days);
+
+    if (days == 0) {
+      return "today";
+    } else if (days == 1) {
+      return "1 day ago";
+    } else {
+      return days + " days ago"
+    }
+  }
+
   self.showerBadge = function(dog) {
     // insert shower date duration calculation logic here
     return false;
