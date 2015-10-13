@@ -34,7 +34,7 @@ var dogs = ko.observableArray([
       ]
     },
     { 
-      name: "Dee Dee", 
+      name: "Donut", 
       gender: 0,
       kennel: 18,
       showered: ko.observable(new Date("2015-08-02T18:25:43")),
@@ -115,11 +115,18 @@ function AppViewModel() {
 
   self.walking = [];
 
-  self.availableGenders = ['Male', 'Female'];
-  self.createDogGender = ko.observable("");
-  self.createDogName = ko.observable("");
-  self.createDogBehaviour = ko.observable("");
-  self.createDogMedical = ko.observable("");
+  self.initVars = function() {
+    self.availableGenders = ['Male', 'Female'];
+    self.createDogGender = ko.observable("");
+    self.createDogName = ko.observable("");
+    self.createDogBehaviour = ko.observable("");
+    self.createDogMedical = ko.observable("");
+
+    self.createIncidentLog = ko.observable("");
+    self.createIncidentSubmitter = "Tester"; // hardcoded for the moment
+  }
+
+  self.initVars();
 
   self.addDog = function() {
     var newDog = {
@@ -134,6 +141,7 @@ function AppViewModel() {
       }
     self.dog.push(newDog);
     self.activeDog = newDog;
+    self.initVars();
     return true;
   };
 
@@ -176,7 +184,7 @@ function AppViewModel() {
         } else if(self.activeDog.walked() == "Walking") {
           return "End walk";
         } else {
-          return "Already walked today";
+          return "Already walked";
         }
       },
       deferEvaluation: true
@@ -200,18 +208,13 @@ function AppViewModel() {
     return false;
   }
 
-  // self.editButton = function() {
-  //   self.inputDogName = self.activeDog.name;
-  //   self.inputDogGender = self.activeDog.gender;
-  //   self.inputDogBehaviour = self.activeDog.behaviour;
-  //   self.inputDogMedical = self.activeDog.medical;
-  // }
-
-  // self.editDog = function() {
-  //   self.inputDogName = ko.observable("");
-  //   self.inputDogGender = ko.observable("");
-  //   self.inputDogBehaviour = ko.observable("");
-  //   self.inputDogMedical = ko.observable("");
-  //   return true;
-  // }
+  self.addIncident = function() {
+    var newIncident = {
+      log: self.createIncidentLog,
+      date: Date.now(),
+      submitter: self.createIncidentSubmitter
+    }
+    self.activeDog.incident.push(newIncident);
+    self.initVars();
+  }
 }
