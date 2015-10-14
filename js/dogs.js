@@ -125,9 +125,9 @@ function AppViewModel() {
     var timeString = moment(walkingDog.started).format("h:mm a");
 
     if (includeDogName) {
-      return "Walking " + walkingDog.name + " since " + timeString + " (" + mins +" min ago)";
+      return "Walking " + walkingDog.name + " since " + timeString + " (" + mins + " min ago)";
     }
-    return "Walking since " + timeString + " (" + mins +" min ago)";
+    return "Walking since " + timeString + " (" + mins + " min ago)";
   };
 
   self.showerBadge = function(dog) {
@@ -144,7 +144,7 @@ function AppViewModel() {
   };
 
   self.confirmWalk = function() {
-    if(self.activeDog.walked() != "Yes") {
+    if (self.activeDog.walked() != "Yes") {
       // either to start walk or to end walk
       myApp.confirm("Are you sure?", "Kennel Keeper", function() {
         self.walkButton();
@@ -157,7 +157,7 @@ function AppViewModel() {
 
   self.confirmShower = function() {
     myApp.confirm("Are you sure?", "Kennel Keeper", function() {
-        self.showerDog();
-      });
+      self.showerDog();
+    });
   };
 }
