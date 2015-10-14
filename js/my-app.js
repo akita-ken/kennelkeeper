@@ -28,8 +28,6 @@ var mainView = myApp.addView('.view-main', {
 var appViewModel = new AppViewModel();
 ko.applyBindings(appViewModel);
 
-var mySwiper = new myApp.swiper(".swiper-container");
-
 // Put JS that you want to run when the page is loaded in Page Callbacks
 // because if you put it in the page fragments, they don't get run.
 //
