@@ -164,9 +164,11 @@ function AppViewModel() {
   };
 
   self.endWalkFromIndex = function(dog) {
-    self.findDogAndLoad(dog.name);
-    self.walkButton();
-    dog.visibleFromIndex(false);
-    mainView.router.reloadPage("index.html");
+    myApp.confirm("Are you sure?", "Kennel Keeper", function() {
+      self.findDogAndLoad(dog.name);
+      self.walkButton();
+      dog.visibleFromIndex(false);
+      mainView.router.reloadPage("index.html");
+    });
   };
 }
