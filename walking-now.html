@@ -28,8 +28,8 @@
       Nothing found!
     </div>
     <div class="list-block media-list list-block-search searchbar-found" style="margin-top: 0;">
-      <ul class="dogs-list" data-bind="foreach: dog">
-        <li data-bind="if: $parent.isWalking($data)">
+      <ul class="dogs-list" data-bind="foreach: walking">
+        <li>
           <a href="dog.html" class="item-link" data-bind="click: $parent.retrieveDog">
             <div class="item-content">
               <div class="item-media"><img src="http://placehold.it/48x48"></div>
@@ -37,7 +37,7 @@
                 <div class="item-title-row">
                   <div class="item-title"><span data-bind="text: name"></span></div>
                 </div>
-                <div class="item-subtitle">Out since x:yypm (zz min ago)</div>
+                <div class="item-subtitle"><span data-bind="text: $parent.walkingRelativeTimeAndDuration($data)"></span></div>
               </div>
             </div>
           </a>

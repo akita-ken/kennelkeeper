@@ -119,6 +119,12 @@ function AppViewModel() {
     }
   };
 
+  self.walkingRelativeTimeAndDuration = function(walkingDog) {
+    var mins = moment().diff(walkingDog.started, "minutes");
+    var timeString = moment(walkingDog.started).format("h:mm a");
+    return "Out since " + timeString + " (" + mins +" min ago)";
+  }
+
   self.showerBadge = function(dog) {
     // dogs all need showers when at least 1 month
     return moment().diff(dog.showered(), 'months') >= 1;
