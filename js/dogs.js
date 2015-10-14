@@ -136,7 +136,7 @@ function AppViewModel() {
   };
 
   self.constructImgPath = function(dog) {
-    return "img/Dogs/" + dog.name + "/0.png";
+    return "img/dogs/" + dog.name + "/0.png";
   }
 
   self.confirmWalk = function() {
