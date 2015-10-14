@@ -119,7 +119,7 @@ function AppViewModel() {
   self.walkingRelativeTimeAndDuration = function(walkingDog) {
     var mins = moment().diff(walkingDog.started, "minutes");
     var timeString = moment(walkingDog.started).format("h:mm a");
-    return "Out since " + timeString + " (" + mins +" min ago)";
+    return "Walking since " + timeString + " (" + mins +" min ago)";
   }
 
   self.showerBadge = function(dog) {
