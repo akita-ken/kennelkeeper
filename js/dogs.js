@@ -72,8 +72,6 @@ function AppViewModel() {
       }).indexOf(self.activeDog.name);
       self.walking.splice(pos, 1);
       self.activeDog.walked("Yes");
-    } else {
-      alert("Dog has already been walked. Let it rest.");
     }
   };
 
@@ -147,9 +145,13 @@ function AppViewModel() {
 
   self.confirmWalk = function() {
     if(self.activeDog.walked() != "Yes") {
+      // either to start walk or to end walk
       myApp.confirm("Are you sure?", "KennelKeeper", function() {
         self.walkButton();
       });
+    } else {
+      // already walked
+      myApp.alert("Dog has already been walked. Let it rest.", "KennelKeeper");
     }
   };
 
