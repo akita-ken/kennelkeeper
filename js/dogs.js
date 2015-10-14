@@ -167,5 +167,6 @@ function AppViewModel() {
     self.findDogAndLoad(dog.name);
     self.walkButton();
     dog.visibleFromIndex(false);
+    mainView.router.reloadPage("index.html");
   };
 }
