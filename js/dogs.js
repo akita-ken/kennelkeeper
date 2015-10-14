@@ -146,17 +146,17 @@ function AppViewModel() {
   self.confirmWalk = function() {
     if(self.activeDog.walked() != "Yes") {
       // either to start walk or to end walk
-      myApp.confirm("Are you sure?", "KennelKeeper", function() {
+      myApp.confirm("Are you sure?", "Kennel Keeper", function() {
         self.walkButton();
       });
     } else {
       // already walked
-      myApp.alert("Dog has already been walked. Let it rest.", "KennelKeeper");
+      myApp.alert("Dog has already been walked. Let it rest.", "Kennel Keeper");
     }
   };
 
   self.confirmShower = function() {
-    myApp.confirm("Are you sure?", "KennelKeeper", function() {
+    myApp.confirm("Are you sure?", "Kennel Keeper", function() {
         self.showerDog();
       });
   };
