@@ -66,7 +66,6 @@ function AppViewModel() {
         behaviour: self.activeDog.behaviour,
         photos: self.activeDog.photos
       });
-      alert("Dog is happy, let's go! :3");
     } else if (self.activeDog.walked() == "Walking") {
       pos = self.walking.map(function(e) {
         return e.name; 
