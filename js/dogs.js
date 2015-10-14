@@ -135,10 +135,6 @@ function AppViewModel() {
     return dog.walked() == "Walking";
   };
 
-  self.constructImgPath = function(dog) {
-    return "img/dogs/" + dog.name + "/0.png";
-  }
-
   self.confirmWalk = function() {
     if(self.activeDog.walked() != "Yes") {
       myApp.confirm("Are you sure?", "KennelKeeper", function() {
