@@ -4,7 +4,7 @@ var dogs = ko.observableArray([
     name: "Candy",
     gender: 0,
     kennel: 14,
-    showered: ko.observable(new Date("2015-08-02T18:25:43+08:00")),
+    showered: ko.observable(new Date("2015-09-02T18:25:43+08:00")),
     walked: ko.observable("Yes"),
     lastWalked: ko.observable(new Date("2015-08-02T18:25:43+08:00")),
     behaviour: "",
@@ -19,7 +19,7 @@ var dogs = ko.observableArray([
     kennel: 4,
     showered: ko.observable(new Date("2015-08-02T18:25:43+08:00")),
     walked: ko.observable("No"),
-    lastWalked: ko.observable(new Date("2015-08-02T18:25:43+08:00")),
+    lastWalked: ko.observable(new Date("2015-10-13T14:25:43+08:00")),
     behaviour: "Aggressive towards cyclists. Attacks other dogs.",
     medical: "Limb injury. If she starts limping again, please feed her with 25mg of metacam, that can be found in the medical box labelled 1A in the kitchen.",
     incident: [
