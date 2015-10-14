@@ -28,6 +28,8 @@ var mainView = myApp.addView('.view-main', {
 var appViewModel = new AppViewModel();
 ko.applyBindings(appViewModel);
 
+var mySwiper = new myApp.swiper(".swiper-container");
+
 // Put JS that you want to run when the page is loaded in Page Callbacks
 // because if you put it in the page fragments, they don't get run.
 //
@@ -41,6 +43,18 @@ var pages = ['index', 'dog', 'all-dogs', 'create-dog', 'edit-dog', 'showerme',
     'walkme', 'walkingnow', 'dog-incidents'];
 pages.forEach(function(page) {
   myApp.onPageInit(page, applyKoBindings);
+});
+
+myApp.onPageInit('index', function(page) {
+  myApp.swiper(".swiper-container", {
+    pagination: ".swiper-pagination"
+  });
+});
+
+myApp.onPageInit('dog', function(page) {
+  myApp.swiper(".swiper-container", {
+    pagination: ".swiper-pagination"
+  });
 });
 
 myApp.onPageInit('kennelmap', function(page) {

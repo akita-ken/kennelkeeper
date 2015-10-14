@@ -133,13 +133,15 @@
                 </div>
                 <div class="card">
                   <div class="card-header color-white bg-blue"><span data-bind="text: name"></span></div>
+
                   <!-- Slider container -->
-                  <div class="swiper-container swiper-init" data-pagination=".swiper-pagination">
+                  <div class="swiper-container" data-pagination=".swiper-pagination">
                     <div class="swiper-wrapper" data-bind="foreach: photos">
                       <div class="swiper-slide"><img data-bind="attr: { src: $data }" width="100%"></div>
                     </div>
                     <div class="swiper-pagination"></div><!-- populated automatically -->
                   </div>
+
                   <div class="card-content">
                     <div class="card-content-inner">
                       <p><strong>Behaviour Notes</strong></p>
