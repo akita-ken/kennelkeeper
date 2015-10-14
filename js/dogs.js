@@ -64,7 +64,8 @@ function AppViewModel() {
         started: Date.now(),
         walker: "TestUser",
         behaviour: self.activeDog.behaviour,
-        photos: self.activeDog.photos
+        photos: self.activeDog.photos,
+        visibleFromIndex: ko.observable(true)
       });
     } else if (self.activeDog.walked() == "Walking") {
       pos = self.walking.map(function(e) {
@@ -159,5 +160,11 @@ function AppViewModel() {
     myApp.confirm("Are you sure?", "Kennel Keeper", function() {
       self.showerDog();
     });
+  };
+
+  self.endWalkFromIndex = function(dog) {
+    self.findDogAndLoad(dog.name);
+    self.walkButton();
+    dog.visibleFromIndex(false);
   };
 }

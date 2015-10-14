@@ -126,8 +126,10 @@
                 <div class="card-content">
                   <div class="card-content-inner">
                     <div data-bind="foreach: walking">
-                      <p><span data-bind="text: $parent.walkingRelativeTimeAndDuration($data, true)"></span></p>
-                      <p><a href="#" class="button button-fill button-raised color-red">End walk</a></p>
+                      <div data-bind="visible: visibleFromIndex">
+                        <p><span data-bind="text: $parent.walkingRelativeTimeAndDuration($data, true)"></span></p>
+                        <p><a href="#" class="button button-fill button-raised color-red" data-bind="click: $parent.endWalkFromIndex">End walk</a></p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -160,7 +162,7 @@
                 <div class="card-header color-white bg-blue">Ongoing tasks</div>
                 <div class="card-content">
                   <div class="card-content-inner">
-                    <p>No ongoing tasks, get to work! >:(</p>
+                    <p>No ongoing tasks.</p>
                     <p><a href="walk-me.html" class="button button-fill button-raised color-teal">Walk a dog</a></p>
                     <p><a href="shower-me.html" class="button button-fill button-raised color-indigo">Shower a dog</a></p>
                   </div>
