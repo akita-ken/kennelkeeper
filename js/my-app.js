@@ -37,7 +37,8 @@ function applyKoBindings(page) {
   ko.applyBindings(appViewModel, pageElement);
 }
 
-var pages = ['index', 'dog', 'all-dogs', 'create-dog', 'edit-dog', 'showerme', 'walkme', 'walkingnow'];
+var pages = ['index', 'dog', 'all-dogs', 'create-dog', 'edit-dog', 'showerme', 
+    'walkme', 'walkingnow', 'dog-incidents'];
 pages.forEach(function(page) {
   myApp.onPageInit(page, applyKoBindings);
 });

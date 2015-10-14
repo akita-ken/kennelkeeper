@@ -32,6 +32,11 @@ var dogs = ko.observableArray([
         log: "Suddenly jumped out at a passing cyclist, causing him to swerve and nearly fall! Short leash and keep her away from cyclists.",
         date: new Date("2015-05-07T14:47:43+08:00"),
         submitter: "Alex"
+      },
+      {
+        log: "Testing!",
+        date: new Date("2015-05-01T00:00:00+08:00"),
+        submitter: "Admin"
       }
     ]
   },

@@ -1,0 +1,30 @@
+<div data-page="dog-incidents" class="page">
+  <!-- Top Navbar-->
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="left"><a href="#" class="back link icon-only"><i class="icon icon-back"></i></a></div>
+      <div class="center"><span data-bind="text: activeDog.name"></span></div>
+    </div>
+  </div>
+
+  <!-- Page content -->
+  <div class="page-content">
+    <!-- Incident logs -->
+    <div class="content-block-title color-black"><strong>Incident Log</strong></div>
+    <div data-bind="foreach: activeDog.incident">
+      <div class="card">
+        <div class="card-content">
+          <div class="card-content-inner">
+            <span data-bind="text: log"></span>
+          </div>
+        </div>
+        <div class="card-footer"><span data-bind="text: submitter"></span>&nbsp;posted on&nbsp;<span data-bind="text: moment(date).calendar()"></span></div>
+      </div>
+    </div>
+    <div class="card" data-bind="if: activeDog.incident.length == 0">
+      <div class="card-footer">
+        <p>None yet!</p>
+      </div>
+    </div>
+  </div>
+</div>
