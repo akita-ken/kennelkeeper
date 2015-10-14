@@ -120,17 +120,20 @@
 
             <!-- Scrollable page content -->
             <div class="page-content">
-              <!-- Display this if user is currently walking dog(s) -->
-              <div data-bind="foreach: walking">
-                <div class="card">
-                  <div class="card-header color-white bg-blue">Ongoing tasks</div>
-                  <div class="card-content">
-                    <div class="card-content-inner">
+              <!-- Display summary if user is currently walking dog(s) -->
+              <div class="card" data-bind="if: walking.length > 0">
+                <div class="card-header color-white bg-blue">Ongoing tasks</div>
+                <div class="card-content">
+                  <div class="card-content-inner">
+                    <div data-bind="foreach: walking">
                       <p><span data-bind="text: $parent.walkingRelativeTimeAndDuration($data, true)"></span></p>
                       <p><a href="#" class="button button-fill button-raised color-red">End walk</a></p>
                     </div>
                   </div>
                 </div>
+              </div>
+              <!-- Display one card per dog if user is currently walking dog(s) -->
+              <div data-bind="foreach: walking">
                 <div class="card">
                   <div class="card-header color-white bg-blue"><span data-bind="text: name"></span></div>
                   <!-- Slider container -->
