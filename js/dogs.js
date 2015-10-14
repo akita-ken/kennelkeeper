@@ -121,6 +121,10 @@ function AppViewModel() {
     return false;
   }
 
+  self.isWalking = function(dog) {
+    return dog.walked() == "Walking";
+  }
+
   self.addIncident = function() {
     var newIncident = {
       log: self.createIncidentLog,
