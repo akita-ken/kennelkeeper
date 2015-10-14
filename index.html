@@ -120,50 +120,62 @@
 
             <!-- Scrollable page content -->
             <div class="page-content">
-              <div class="card">
+              <!-- Display this if user is currently walking dog(s) -->
+              <div data-bind="foreach: walking">
+                <div class="card">
+                  <div class="card-header color-white bg-blue">Ongoing tasks</div>
+                  <div class="card-content">
+                    <div class="card-content-inner">
+                      <p>Walking <span data-bind="text: name"></span> since 2.27pm (14 min ago)</p>
+                      <p><a href="#" class="button button-fill button-raised color-red">End walk</a></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header color-white bg-blue"><span data-bind="text: name"></span></div>
+                  <!-- Slider container -->
+                  <div class="swiper-container swiper-init" data-pagination=".swiper-pagination">
+                    <div class="swiper-wrapper">
+                      <div class="swiper-slide"><img src="http://i284.photobucket.com/albums/ll2/clement20/Dog_0013.jpg" width="100%"></div>
+                      <div class="swiper-slide">Slide 2</div>
+                      <div class="swiper-slide"><img src="http://placehold.it/400x300" width="100%"></div>
+                    </div>
+                    <div class="swiper-pagination"></div><!-- populated automatically -->
+                  </div>
+                  <div class="card-content">
+                    <div class="card-content-inner">
+                      <p><strong>Behaviour Notes</strong></p>
+                      <p><span data-bind="text: behaviour"></span></p>
+                      <a href="dog.html" class="button button-fill button-raised" data-bind="click: $parent.findDogAndLoad(name)">View profile</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Display this if user is not walking any dog(s) -->
+              <div class="card" data-bind="if: walking.length == 0">
                 <div class="card-header color-white bg-blue">Ongoing tasks</div>
                 <div class="card-content">
                   <div class="card-content-inner">
-                    <p>Walking Coco since 2.27pm (14 min ago)</p>
-                    <p><a href="#" class="button button-fill button-raised color-red">End walk</a></p>
+                    <p>No ongoing tasks, get to work! >:(</p>
+                    <p><a href="walk-me.html" class="button button-fill button-raised color-teal">Walk a dog</a></p>
+                    <p><a href="shower-me.html" class="button button-fill button-raised color-indigo">Shower a dog</a></p>
                   </div>
                 </div>
               </div>
-              <div class="card">
-                <div class="card-header color-white bg-blue">Coco</div>
-                <!-- Slider container -->
-                <div class="swiper-container swiper-init" data-pagination=".swiper-pagination">
-                  <div class="swiper-wrapper">
-                    <div class="swiper-slide"><img src="http://i284.photobucket.com/albums/ll2/clement20/Dog_0013.jpg" width="100%"></div>
-                    <div class="swiper-slide">Slide 2</div>
-                    <div class="swiper-slide"><img src="http://placehold.it/400x300" width="100%"></div>
-                  </div>
-                  <div class="swiper-pagination"></div><!-- populated automatically -->
-                </div>
-                <div class="card-content">
-                  <div class="card-content-inner">
-                    <p><strong>Behaviour Notes</strong></p>
-                    <p>Aggressive towards cyclists. Attacks other dogs.</p>
-                    <a href="dog.html" class="button button-fill button-raised ">View profile</a>
-                  </div>
-                </div>
-              </div>
+
             </div>
           </div>
         </div>
       </div>
     </div>
-    <!-- Path to Framework7 Library JS-->
+    <!-- libraries -->
     <script type="text/javascript" src="js/framework7.js"></script>
-    <!-- Path to your leaflet js-->
-    <script src="js/leaflet.js"></script>
-    <!-- Path to KnockoutJS data-binding framework -->
+    <script type="text/javascript" src="js/leaflet.js"></script>
     <script type="text/javascript" src="js/knockout-3.3.0.js"></script>
-    <!-- Path to dog data -->
-    <script type="text/javascript" src="js/data.js"></script>
-    <!-- Path to dog viewmodel -->
-    <script type="text/javascript" src="js/dogs.js"></script>
-    <!-- Path to your app js-->
-    <script type="text/javascript" src="js/my-app.js"></script>
+    <script type="text/javascript" src="js/moment.js"></script>
+    <script type="text/javascript" src="js/data.js"></script><!-- dog data -->
+    <script type="text/javascript" src="js/dogs.js"></script><!-- dog viewmodel -->
+    <script type="text/javascript" src="js/my-app.js"></script><!-- app js for framework7 -->
   </body>
 </html>

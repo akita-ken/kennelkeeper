@@ -4,7 +4,6 @@ function AppViewModel() {
   self.activeDog = null;
   self.dog = dogs;
   self.justAddedDog = false;
-
   self.walking = [];
 
   self.initVars = function() {
@@ -17,9 +16,9 @@ function AppViewModel() {
     self.createIncidentLog = ko.observable("");
     self.createIncidentSubmitter = "Tester"; // hardcoded for the moment
   }
-
   self.initVars();
 
+  /* ===== ACTIONS ===== */
   self.addDog = function() {
     var newDog = {
       name: self.createDogName,
@@ -29,7 +28,7 @@ function AppViewModel() {
       walked: ko.observable("No"),
       behaviour: self.createDogBehaviour,
       medical: self.createDogMedical,
-      incident: []
+      incident: ko.observableArray()
     }
     self.dog.push(newDog);
     self.activeDog = newDog;
@@ -55,7 +54,7 @@ function AppViewModel() {
     self.activeDog = self.dog()[self.dog().map(function(e) {
         return e.name; 
       }).indexOf(name)];
-  }
+  };
 
   self.walkButton = function() {
     if (self.activeDog.walked() == "No") {
@@ -63,10 +62,11 @@ function AppViewModel() {
       self.walking.push({
         name: self.activeDog.name,
         started: Date.now(),
-        walker: "TestUser"
-      })
-    } else if (self.activeDog.walked() == "Walking") {
+        walker: "TestUser",
+        behaviour: self.activeDog.behaviour
+      });
       alert("Dog is happy, let's go! :3");
+    } else if (self.activeDog.walked() == "Walking") {
       pos = self.walking.map(function(e) {
         return e.name; 
       }).indexOf(self.activeDog.name);
@@ -77,38 +77,35 @@ function AppViewModel() {
     }
   };
 
-  self.walkStatus = ko.computed({
-    read: function() {
-      if (self.activeDog.walked() == "No") {
-        return "Walk";
-      } else if (self.activeDog.walked() == "Walking") {
-        return "End walk";
-      } else {
-        return "Walked";
-      }
-    },
-    deferEvaluation: true
-  });
-
   self.showerDog = function() {
-    console.log("hey");
     self.activeDog.showered(new Date());
-  }
+  };
 
-  self.showerAbsoluteDate = function() {
-    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-    var date = self.activeDog.showered();
-    return date.getDay() + " " + months[date.getMonth()];
-  }
+  self.addIncident = function() {
+    var newIncident = {
+      log: self.createIncidentLog(),
+      date: Date.now(),
+      submitter: self.createIncidentSubmitter
+    }
+    self.activeDog.incident.unshift(newIncident);
+    self.createIncidentLog("");
+    self.initVars();
+  };
 
-  self.showerRelativeDate = function() {
-    var now = new Date();
-    var date = self.activeDog.showered();
+  /* ===== DISPLAY HELPERS ===== */
+  self.walkStatus = function() {
+    if (self.activeDog.walked() == "No") {
+      return "Walk";
+    } else if (self.activeDog.walked() == "Walking") {
+      return "End walk";
+    } else {
+      return "Walked";
+    }
+  };
 
-    // compute difference in days, using the milliseconds since epoch
-    var days = (now.getTime() - date.getTime()) / (1000 * 60 * 60 * 24);
-    // round off to integer
-    days = Math.round(days);
+  self.daysAgoFromNow = function(date) {
+    // compute difference in days
+    var days = moment().diff(date, 'days');
 
     if (days == 0) {
       return "today";
@@ -117,27 +114,38 @@ function AppViewModel() {
     } else {
       return days + " days ago"
     }
+  };
+
+  self.walkingRelativeTimeAndDuration = function(walkingDog) {
+    var mins = moment().diff(walkingDog.started, "minutes");
+    var timeString = moment(walkingDog.started).format("h:mm a");
+    return "Walking since " + timeString + " (" + mins +" min ago)";
   }
 
   self.showerBadge = function(dog) {
-    // insert shower date duration calculation logic here
-    return false;
-  }
+    // dogs all need showers when at least 1 month
+    return moment().diff(dog.showered(), 'months') >= 1;
+  };
 
   self.walkBadge = function(dog) {
-    if (dog.walked() == "No") {
-      return true;
+    return dog.walked() == "No";
+  };
+
+  self.isWalking = function(dog) {
+    return dog.walked() == "Walking";
+  };
+
+  self.confirmWalk = function() {
+    if(self.activeDog.walked() != "Yes") {
+      myApp.confirm("Are you sure?", "KennelKeeper", function() {
+        self.walkButton();
+      });
     }
-    return false;
   }
 
-  self.addIncident = function() {
-    var newIncident = {
-      log: self.createIncidentLog,
-      date: Date.now(),
-      submitter: self.createIncidentSubmitter
-    }
-    self.activeDog.incident.push(newIncident);
-    self.initVars();
+  self.confirmShower = function() {
+    myApp.confirm("Are you sure?", "KennelKeeper", function() {
+        self.showerDog();
+      });
   }
 }

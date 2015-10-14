@@ -29,23 +29,23 @@
     </div>
     <div class="list-block media-list list-block-search searchbar-found" style="margin-top: 0;">
       <ul class="dogs-list" data-bind="foreach: dog">
-
         <li>
-          <a href="dog.html" class="item-link" data-bind="click: $parent.retrieveDog"><!-- dog.html?id={{id}} -->
+          <a href="dog.html" class="item-link" data-bind="click: $parent.retrieveDog">
             <div class="item-content">
-              <div class="item-media"><img src="http://placehold.it/48x48"></div>
+              <div class="item-media"><img data-bind="attr: { src: $parent.constructImgPath($data), width: '48px' }"></div>
               <div class="item-inner">
                 <div class="item-title-row">
                   <div class="item-title"><span data-bind="text: name"></span></div>
-                  <div class="item-after"><span class="badge bg-indigo" data-bind="visible: $parent.showerBadge($data)">S</span></div>
-                  <div class="item-after"><span class="badge bg-teal" data-bind="visible: $parent.walkBadge($data)">W</span></div>
+                  <div class="item-after">
+                    <span class="badge bg-indigo" data-bind="visible: $parent.showerBadge($data)">S</span> &nbsp;
+                    <span class="badge bg-teal" data-bind="visible: $parent.walkBadge($data)">W</span>
+                  </div>
                 </div>
                 <div class="item-subtitle">Kennel <span data-bind="text: kennel"></span></div>
               </div>
             </div>
           </a>
         </li>
-
     </div>
   </div>
 </div>

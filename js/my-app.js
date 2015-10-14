@@ -1,3 +1,15 @@
+// Configure moment.js
+moment.locale('en', {
+  calendar: {
+    lastDay: '[yesterday at] LT',   // switch these three to initial lowercase
+    sameDay: '[today at] LT',       //
+    nextDay: '[tomorrow at] LT',    //
+    lastWeek: '[last] dddd [at] LT',
+    nextWeek: 'dddd [at] LT',
+    sameElse: 'L'
+  }
+});
+
 // Initialize your app
 var myApp = new Framework7({
     material: true, // enable Material theme
@@ -14,6 +26,7 @@ var mainView = myApp.addView('.view-main', {
 });
 
 var appViewModel = new AppViewModel();
+ko.applyBindings(appViewModel);
 
 // Put JS that you want to run when the page is loaded in Page Callbacks
 // because if you put it in the page fragments, they don't get run.
@@ -24,14 +37,15 @@ function applyKoBindings(page) {
   ko.applyBindings(appViewModel, pageElement);
 }
 
-var pages = ['dog', 'all-dogs', 'create-dig', 'edit-dog', 'showerme', 'walkme', 'walking now'];
+var pages = ['index', 'dog', 'all-dogs', 'create-dog', 'edit-dog', 'showerme', 
+    'walkme', 'walkingnow', 'dog-incidents'];
 pages.forEach(function(page) {
   myApp.onPageInit(page, applyKoBindings);
 });
 
 myApp.onPageInit('kennelmap', function(page) {
   var map = L.map('map', {
-    center: [0, 0],
+    center: [-140, -50],
     zoom: 1.5,
     minZoom: 1.5,
     maxZoom: 1.5,
@@ -100,7 +114,7 @@ myApp.onPageInit('kennelmap', function(page) {
   pingpong.on('click', function(e) {
     appViewModel.findDogAndLoad('Ping Pong');
     mainView.router.loadPage('dog.html');
-  })
+  });
 
   ccd.on('click', function(e) {
     var buttons = [

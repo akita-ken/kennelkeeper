@@ -15,10 +15,8 @@
   <div class="page-content">
     <!-- Image carousel -->
     <div class="swiper-container swiper-init" data-pagination=".swiper-pagination">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="http://placehold.it/400x300" width="100%"></div>
-        <div class="swiper-slide">Slide 2</div>
-        <div class="swiper-slide"><img src="http://placehold.it/400x300" width="100%"></div>
+      <div class="swiper-wrapper" data-bind="foreach: activeDog.photos">
+        <div class="swiper-slide"><img data-bind="attr: { src: $data }" width="100%"></div>
       </div>
       <div class="swiper-pagination"></div><!-- populated automatically -->
     </div>
@@ -32,8 +30,8 @@
           <span data-bind="text: activeDog.walked">No</span>
         </div>
         <div class="col-30">
-          <a href="#" class="button button-raised button-fill color-teal" style="text-transform: none" data-bind="click: walkButton, visible: activeDog.walked() != 'Yes'"><span data-bind="text: walkStatus"></span></a>
-          <a href="#" class="button button-raised button-fill color-gray" style="text-transform: none" data-bind="click: walkButton, visible: activeDog.walked() == 'Yes'"><span data-bind="text: walkStatus"></span></a>
+          <a href="#" class="button button-raised button-fill color-teal" style="text-transform: none" data-bind="click: confirmWalk, visible: activeDog.walked() != 'Yes'"><span data-bind="text: walkStatus()"></span></a>
+          <a href="#" class="button button-raised button-fill color-gray" style="text-transform: none" data-bind="click: confirmWalk, visible: activeDog.walked() == 'Yes'"><span data-bind="text: walkStatus()"></span></a>
         </div>
       </div>
       <div class="row">
@@ -41,10 +39,10 @@
           <strong>Last showered</strong>
         </div>
         <div class="col-30" style="height: 36px; line-height: 1.1; text-align: center;">
-          <span data-bind="text: showerAbsoluteDate()"></span><br><span class="color-gray" data-bind="text: showerRelativeDate()">44 days ago</span>
+          <span data-bind="text: moment(activeDog.showered()).format('D MMM')"></span><br><span class="color-gray" data-bind="text: daysAgoFromNow(activeDog.showered())"></span>
         </div>
         <div class="col-30">
-          <a href="#" class="button button-raised button-fill color-indigo" style="text-transform: none" data-bind="click: showerDog">Shower</a>
+          <a href="#" class="button button-raised button-fill color-indigo" style="text-transform: none" data-bind="click: confirmShower">Shower</a>
         </div>
       </div>
     </div>
@@ -60,20 +58,40 @@
     </div>
     <!-- Incident logs -->
     <div class="content-block-title color-black"><strong>Incident Log</strong></div>
-    <div data-bind="foreach: activeDog.incident">
+    <div data-bind="foreach: activeDog.incident().slice(0, 2)">
       <div class="card">
         <div class="card-content">
           <div class="card-content-inner">
             <span data-bind="text: log"></span>
           </div>
         </div>
-        <div class="card-footer"><span data-bind="text: submitter"></span> posted on <span data-bind="text: date"></span></div>
+        <div class="card-footer"><span data-bind="text: submitter"></span> posted on <span data-bind="text: moment(date).calendar()"></span></div>
       </div>
     </div>
-    <div class="card">
-      <!-- TODO: handle create all-incidents list page -->
-      <div class="card-footer"><a href="#">View more incidents...</a></div>
+    <div class="card" data-bind="if: activeDog.incident().length > 2">
+      <div class="card-footer"><a href="dog-incidents.html">View more incidents...</a></div>
     </div>
-    <!-- TODO: add form to for create new incident log -->
+    <div class="card" data-bind="if: activeDog.incident().length == 0">
+      <div class="card-footer">
+        <p>None yet!</p>
+      </div>
+    </div>
+    <div class="content-block-title color-black"><strong>Add Incident Log</strong></div>
+    <div class="list-block card">
+    <ul>
+      <li>
+        <div class="item-content">
+          <div class="item-inner">
+            <div class="item-input">
+              <textarea placeholder="Incident Log message" data-bind="textInput: createIncidentLog"></textarea>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <a href="#" class="button button-raised button-fill" style="border: 0;" data-bind="click: addIncident">Save</a>
+      </li>
+    </ul>
+    </div>
   </div>
 </div>
