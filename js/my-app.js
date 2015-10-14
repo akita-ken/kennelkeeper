@@ -104,7 +104,7 @@ myApp.onPageInit('kennelmap', function(page) {
   */
 
   var mentos = L.polygon(computeBounds(-79, -98, 0, 35), { fillOpacity: 0.0 }).addTo(map);
-  var pingpong = L.polygon(computeBounds(-138, -159, 0, 35), { fillOpacity: 0.0 }).addTo(map);
+  var crunch = L.polygon(computeBounds(-138, -159, 0, 35), { fillOpacity: 0.0 }).addTo(map);
   var ccd = L.polygon(computeBounds(-159, -180, 0, 35), { fillOpacity: 0.0 }).addTo(map);
   var lucky = L.polygon(computeBounds(-180, -200, 0, 35), { fillOpacity: 0.0 }).addTo(map);
   var harry = L.polygon(computeBounds(-202, -223, 0, 35), { fillOpacity: 0.0 }).addTo(map);
@@ -123,7 +123,7 @@ myApp.onPageInit('kennelmap', function(page) {
     mainView.router.loadPage('dog.html');
   });
 
-  pingpong.on('click', function(e) {
+  crunch.on('click', function(e) {
     appViewModel.findDogAndLoad('Ping Pong');
     mainView.router.loadPage('dog.html');
   });
