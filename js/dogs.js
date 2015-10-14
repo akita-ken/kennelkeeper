@@ -63,7 +63,8 @@ function AppViewModel() {
         name: self.activeDog.name,
         started: Date.now(),
         walker: "TestUser",
-        behaviour: self.activeDog.behaviour
+        behaviour: self.activeDog.behaviour,
+        photos: self.activeDog.photos
       });
       alert("Dog is happy, let's go! :3");
     } else if (self.activeDog.walked() == "Walking") {
