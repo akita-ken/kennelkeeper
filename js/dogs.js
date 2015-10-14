@@ -120,7 +120,7 @@ function AppViewModel() {
     var mins = moment().diff(walkingDog.started, "minutes");
     var timeString = moment(walkingDog.started).format("h:mm a");
     return "Walking since " + timeString + " (" + mins +" min ago)";
-  }
+  };
 
   self.showerBadge = function(dog) {
     // dogs all need showers when at least 1 month
@@ -141,11 +141,11 @@ function AppViewModel() {
         self.walkButton();
       });
     }
-  }
+  };
 
   self.confirmShower = function() {
     myApp.confirm("Are you sure?", "KennelKeeper", function() {
         self.showerDog();
       });
-  }
+  };
 }
