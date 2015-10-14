@@ -30,14 +30,14 @@
     <div class="list-block media-list list-block-search searchbar-found" style="margin-top: 0;">
       <ul class="dogs-list" data-bind="foreach: dog">
         <li data-bind="if: $parent.walkBadge($data)">
-          <a href="dog.html" class="item-link" data-bind="click: $parent.retrieveDog"><!-- dog.html?id={{id}} -->
+          <a href="dog.html" class="item-link" data-bind="click: $parent.retrieveDog">
             <div class="item-content">
               <div class="item-media"><img src="http://placehold.it/48x48"></div>
               <div class="item-inner">
                 <div class="item-title-row">
                   <div class="item-title"><span data-bind="text: name"></span></div>
                 </div>
-                <div class="item-subtitle">Last walked 4 Aug (1 day ago)</div>
+                <div class="item-subtitle"></div>
               </div>
             </div>
           </a>
