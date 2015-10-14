@@ -70,9 +70,14 @@
         <div class="card-footer"><span data-bind="text: submitter"></span> posted on <span data-bind="text: moment(date).calendar()"></span></div>
       </div>
     </div>
-    <div class="card">
+    <div class="card" data-bind="if: activeDog.incident.length > 0">
       <!-- TODO: handle create all-incidents list page -->
       <div class="card-footer"><a href="#">View more incidents...</a></div>
+    </div>
+    <div class="card" data-bind="if: activeDog.incident.length == 0">
+      <div class="card-footer">
+        <p>None yet!</p>
+      </div>
     </div>
     <!-- TODO: add form to for create new incident log -->
   </div>
