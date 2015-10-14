@@ -54,7 +54,7 @@ function AppViewModel() {
     self.activeDog = self.dog()[self.dog().map(function(e) {
         return e.name; 
       }).indexOf(name)];
-  }
+  };
 
   self.walkButton = function() {
     if (self.activeDog.walked() == "No") {
@@ -80,7 +80,7 @@ function AppViewModel() {
   self.showerDog = function() {
     console.log("hey");
     self.activeDog.showered(new Date());
-  }
+  };
 
   self.addIncident = function() {
     var newIncident = {
@@ -90,7 +90,7 @@ function AppViewModel() {
     }
     self.activeDog.incident.push(newIncident);
     self.initVars();
-  }
+  };
 
   /* ===== DISPLAY HELPERS ===== */
   self.walkStatus = function() {
@@ -101,7 +101,7 @@ function AppViewModel() {
     } else {
       return "Walked";
     }
-  }
+  };
 
   self.showerRelativeDate = function() {
     var now = new Date();
@@ -117,19 +117,19 @@ function AppViewModel() {
     } else {
       return days + " days ago"
     }
-  }
+  };
 
   self.showerBadge = function(dog) {
     // dogs all need showers when at least 1 month
     return moment().diff(dog.showered(), 'months') >= 1;
-  }
+  };
 
   self.walkBadge = function(dog) {
     return dog.walked() == "No";
-  }
+  };
 
   self.isWalking = function(dog) {
     return dog.walked() == "Walking";
-  }
+  };
 
 }
