@@ -135,10 +135,8 @@
                   <div class="card-header color-white bg-blue"><span data-bind="text: name"></span></div>
                   <!-- Slider container -->
                   <div class="swiper-container swiper-init" data-pagination=".swiper-pagination">
-                    <div class="swiper-wrapper">
-                      <div class="swiper-slide"><img src="http://i284.photobucket.com/albums/ll2/clement20/Dog_0013.jpg" width="100%"></div>
-                      <div class="swiper-slide">Slide 2</div>
-                      <div class="swiper-slide"><img src="http://placehold.it/400x300" width="100%"></div>
+                    <div class="swiper-wrapper" data-bind="foreach: activeDog.photos">
+                      <div class="swiper-slide"><img data-bind="attr: { src: $data }" width="100%"></div>
                     </div>
                     <div class="swiper-pagination"></div><!-- populated automatically -->
                   </div>
