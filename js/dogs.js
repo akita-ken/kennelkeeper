@@ -5,6 +5,7 @@ function AppViewModel() {
   self.dog = dogs;
   self.justAddedDog = false;
   self.walking = [];
+  self.occupiedKennels = [];
 
   self.initVars = function() {
     self.availableGenders = ['Male', 'Female'];
@@ -17,11 +18,21 @@ function AppViewModel() {
     self.createIncidentSubmitter = "Tester"; // hardcoded for the moment
   }
 
+  self.populateKennels = function() {
+    self.dog().forEach(function(dog) {
+      self.occupiedKennels.push(dog.kennel);
+    });
+  };
+
+  /* === FIRST-RUN SETUP === */
+
   self.dog.sort(function(a, b) {
     return nameComparator(a, b);
   });
 
   self.initVars();
+
+  self.populateKennels();
 
   /* ===== ACTIONS ===== */
   self.addDog = function() {
