@@ -116,9 +116,19 @@ function AppViewModel() {
     }
   };
 
-  self.walkingRelativeTimeAndDuration = function(walkingDog) {
+  self.walkingRelativeTimeAndDuration = function(walkingDog, includeDogName) {
+    // by default, don't include dog name (for backward compatibility with
+    // Walking now page)
+    if (includeDogName === undefined) {
+      includeDogName = false;
+    }
+
     var mins = moment().diff(walkingDog.started, "minutes");
     var timeString = moment(walkingDog.started).format("h:mm a");
+
+    if (includeDogName) {
+      return "Walking " + walkingDog.name + " since " + timeString + " (" + mins +" min ago)";
+    }
     return "Walking since " + timeString + " (" + mins +" min ago)";
   };
 

@@ -126,7 +126,7 @@
                   <div class="card-header color-white bg-blue">Ongoing tasks</div>
                   <div class="card-content">
                     <div class="card-content-inner">
-                      <p>Walking <span data-bind="text: name"></span> since 2.27pm (14 min ago)</p>
+                      <p><span data-bind="text: $parent.walkingRelativeTimeAndDuration($data, true)"></span></p>
                       <p><a href="#" class="button button-fill button-raised color-red">End walk</a></p>
                     </div>
                   </div>
