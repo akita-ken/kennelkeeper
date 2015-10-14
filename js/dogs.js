@@ -16,6 +16,11 @@ function AppViewModel() {
     self.createIncidentLog = ko.observable("");
     self.createIncidentSubmitter = "Tester"; // hardcoded for the moment
   }
+
+  self.dog.sort(function(a, b) {
+    return nameComparator(a, b);
+  });
+
   self.initVars();
 
   /* ===== ACTIONS ===== */
@@ -34,6 +39,9 @@ function AppViewModel() {
     self.activeDog = newDog;
     self.initVars();
     self.justAddedDog = true;
+    self.dog.sort(function(a, b) {
+      nameComparator(a, b);
+    });
     return true;
   };
 
@@ -170,5 +178,15 @@ function AppViewModel() {
       dog.visibleFromIndex(false);
       mainView.router.reloadPage("index.html");
     });
+  };
+
+  function nameComparator(a, b) {
+    if(a.name.toLowerCase() < b.name.toLowerCase()) {
+      return -1;
+    } else if(a.name.toLowerCase() > b.name.toLowerCase()) {
+      return 1;
+    } else {
+      return 0;
+    }
   };
 }
