@@ -4,7 +4,6 @@ function AppViewModel() {
   self.activeDog = null;
   self.dog = dogs;
   self.justAddedDog = false;
-
   self.walking = [];
 
   self.initVars = function() {
@@ -17,9 +16,9 @@ function AppViewModel() {
     self.createIncidentLog = ko.observable("");
     self.createIncidentSubmitter = "Tester"; // hardcoded for the moment
   }
-
   self.initVars();
 
+  /* ===== ACTIONS ===== */
   self.addDog = function() {
     var newDog = {
       name: self.createDogName,
@@ -78,6 +77,22 @@ function AppViewModel() {
     }
   };
 
+  self.showerDog = function() {
+    console.log("hey");
+    self.activeDog.showered(new Date());
+  }
+
+  self.addIncident = function() {
+    var newIncident = {
+      log: self.createIncidentLog,
+      date: Date.now(),
+      submitter: self.createIncidentSubmitter
+    }
+    self.activeDog.incident.push(newIncident);
+    self.initVars();
+  }
+
+  /* ===== DISPLAY HELPERS ===== */
   self.walkStatus = function() {
     if (self.activeDog.walked() == "No") {
       return "Walk";
@@ -86,11 +101,6 @@ function AppViewModel() {
     } else {
       return "Walked";
     }
-  }
-
-  self.showerDog = function() {
-    console.log("hey");
-    self.activeDog.showered(new Date());
   }
 
   self.showerRelativeDate = function() {
@@ -123,16 +133,6 @@ function AppViewModel() {
 
   self.isWalking = function(dog) {
     return dog.walked() == "Walking";
-  }
-
-  self.addIncident = function() {
-    var newIncident = {
-      log: self.createIncidentLog,
-      date: Date.now(),
-      submitter: self.createIncidentSubmitter
-    }
-    self.activeDog.incident.push(newIncident);
-    self.initVars();
   }
 
 }
