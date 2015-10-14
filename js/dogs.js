@@ -28,7 +28,7 @@ function AppViewModel() {
       walked: ko.observable("No"),
       behaviour: self.createDogBehaviour,
       medical: self.createDogMedical,
-      incident: []
+      incident: ko.observableArray()
     }
     self.dog.push(newDog);
     self.activeDog = newDog;
@@ -84,11 +84,11 @@ function AppViewModel() {
 
   self.addIncident = function() {
     var newIncident = {
-      log: self.createIncidentLog,
+      log: self.createIncidentLog(),
       date: Date.now(),
       submitter: self.createIncidentSubmitter
     }
-    self.activeDog.incident.push(newIncident);
+    self.activeDog.incident.unshift(newIncident);
     self.initVars();
   };
 

@@ -9,9 +9,9 @@ var dogs = ko.observableArray([
     lastWalked: ko.observable(new Date("2015-08-02T18:25:43+08:00")),
     behaviour: "",
     medical: "",
-    incident: [
-      
-    ]
+    incident: ko.observableArray([
+
+    ])
   },
   { 
     name: "Coco",
@@ -22,7 +22,7 @@ var dogs = ko.observableArray([
     lastWalked: ko.observable(new Date("2015-10-13T14:25:43+08:00")),
     behaviour: "Aggressive towards cyclists. Attacks other dogs.",
     medical: "Limb injury. If she starts limping again, please feed her with 25mg of metacam, that can be found in the medical box labelled 1A in the kitchen.",
-    incident: [
+    incident: ko.observableArray([
       {
         log: "Attacked a passer-by, who got scratched quite badly. Be careful!",
         date: new Date("2015-06-18T13:50:43+08:00"),
@@ -38,7 +38,7 @@ var dogs = ko.observableArray([
         date: new Date("2015-05-01T00:00:00+08:00"),
         submitter: "Admin"
       }
-    ]
+    ])
   },
   { 
     name: "Donut", 
@@ -49,9 +49,9 @@ var dogs = ko.observableArray([
     lastWalked: ko.observable(new Date("2015-08-02T18:25:43+08:00")),
     behaviour: "",
     medical: "",
-    incident: [
-      
-    ]
+    incident: ko.observableArray([
+
+    ])
   },
   { 
     name: "Lego", 
@@ -62,9 +62,9 @@ var dogs = ko.observableArray([
     lastWalked: ko.observable(new Date("2015-08-02T18:25:43+08:00")),
     behaviour: "",
     medical: "",
-    incident: [
-      
-    ]
+    incident: ko.observableArray([
+
+    ])
   },
   { 
     name: "Ginger", 
@@ -75,9 +75,9 @@ var dogs = ko.observableArray([
     lastWalked: ko.observable(new Date("2015-08-02T18:25:43+08:00")),
     behaviour: "",
     medical: "",
-    incident: [
-      
-    ]
+    incident: ko.observableArray([
+
+    ])
   },
   { 
     name: "Lucky", 
@@ -88,9 +88,9 @@ var dogs = ko.observableArray([
     lastWalked: ko.observable(new Date("2015-08-02T18:25:43+08:00")),
     behaviour: "",
     medical: "",
-    incident: [
-      
-    ]
+    incident: ko.observableArray([
+
+    ])
   },
   { 
     name: "Mentos", 
@@ -101,9 +101,9 @@ var dogs = ko.observableArray([
     lastWalked: ko.observable(new Date("2015-08-02T18:25:43+08:00")),
     behaviour: "",
     medical: "",
-    incident: [
-      
-    ] 
+    incident: ko.observableArray([
+
+    ]) 
   },
   { 
     name: "Charlie", 
@@ -114,9 +114,9 @@ var dogs = ko.observableArray([
     lastWalked: ko.observable(new Date("2015-08-02T18:25:43+08:00")),
     behaviour: "",
     medical: "",
-    incident: [
-      
-    ]
+    incident: ko.observableArray([
+
+    ])
   },
   { 
     name: "Pringles", 
@@ -127,9 +127,9 @@ var dogs = ko.observableArray([
     lastWalked: ko.observable(new Date("2015-08-02T18:25:43+08:00")),
     behaviour: "",
     medical: "",
-    incident: [
-      
-    ]
+    incident: ko.observableArray([
+
+    ])
   },
   { 
     name: "Ris", 
@@ -140,9 +140,9 @@ var dogs = ko.observableArray([
     lastWalked: ko.observable(new Date("2015-08-02T18:25:43+08:00")),
     behaviour: "",
     medical: "",
-    incident: [
-      
-    ]
+    incident: ko.observableArray([
+
+    ])
   },
   { 
     name: "Kyoto", 
@@ -153,9 +153,9 @@ var dogs = ko.observableArray([
     lastWalked: ko.observable(new Date("2015-08-02T18:25:43+08:00")),
     behaviour: "",
     medical: "",
-    incident: [
-      
-    ]
+    incident: ko.observableArray([
+
+    ])
   },
   { 
     name: "Muthu", 
@@ -166,9 +166,9 @@ var dogs = ko.observableArray([
     lastWalked: ko.observable(new Date("2015-08-02T18:25:43+08:00")),
     behaviour: "",
     medical: "",
-    incident: [
-      
-    ]
+    incident: ko.observableArray([
+
+    ])
   },
   { 
     name: "Pappy", 
@@ -179,8 +179,8 @@ var dogs = ko.observableArray([
     lastWalked: ko.observable(new Date("2015-08-02T18:25:43+08:00")),
     behaviour: "",
     medical: "",
-    incident: [
-      
-    ]
+    incident: ko.observableArray([
+
+    ])
   }
 ]);
