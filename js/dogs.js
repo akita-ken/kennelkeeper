@@ -47,6 +47,7 @@ function AppViewModel() {
       incident: ko.observableArray()
     }
     self.dog.push(newDog);
+    self.occupiedKennels.push(999) // replace with output from kennel allocator function
     self.activeDog = newDog;
     self.initVars();
     self.justAddedDog = true;
