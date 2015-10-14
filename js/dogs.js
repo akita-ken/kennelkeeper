@@ -78,7 +78,6 @@ function AppViewModel() {
   };
 
   self.showerDog = function() {
-    console.log("hey");
     self.activeDog.showered(new Date());
   };
 
@@ -89,6 +88,7 @@ function AppViewModel() {
       submitter: self.createIncidentSubmitter
     }
     self.activeDog.incident.unshift(newIncident);
+    self.createIncidentLog("");
     self.initVars();
   };
 
@@ -139,4 +139,17 @@ function AppViewModel() {
     return "img/Dogs/" + dog.name + "/0.png";
   }
 
+  self.confirmWalk = function() {
+    if(self.activeDog.walked() != "Yes") {
+      myApp.confirm("Are you sure?", "KennelKeeper", function() {
+        self.walkButton();
+      });
+    }
+  }
+
+  self.confirmShower = function() {
+    myApp.confirm("Are you sure?", "KennelKeeper", function() {
+        self.showerDog();
+      });
+  }
 }
