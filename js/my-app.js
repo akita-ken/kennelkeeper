@@ -101,7 +101,7 @@ myApp.onPageInit('kennelmap', function(page) {
   pingpong.on('click', function(e) {
     appViewModel.findDogAndLoad('Ping Pong');
     mainView.router.loadPage('dog.html');
-  })
+  });
 
   ccd.on('click', function(e) {
     var buttons = [
