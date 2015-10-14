@@ -1,3 +1,15 @@
+// Configure moment.js
+moment.locale('en', {
+  calendar: {
+    lastDay: '[yesterday at] LT',   // switch these three to initial lowercase
+    sameDay: '[today at] LT',       //
+    nextDay: '[tomorrow at] LT',    //
+    lastWeek: '[last] dddd [at] LT',
+    nextWeek: 'dddd [at] LT',
+    sameElse: 'L'
+  }
+});
+
 // Initialize your app
 var myApp = new Framework7({
     material: true, // enable Material theme
