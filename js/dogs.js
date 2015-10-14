@@ -125,10 +125,7 @@ function AppViewModel() {
   }
 
   self.walkBadge = function(dog) {
-    if (dog.walked() == "No") {
-      return true;
-    }
-    return false;
+    return dog.walked() == "No";
   }
 
   self.isWalking = function(dog) {
