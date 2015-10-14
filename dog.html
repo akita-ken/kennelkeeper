@@ -41,7 +41,7 @@
           <strong>Last showered</strong>
         </div>
         <div class="col-30" style="height: 36px; line-height: 1.1; text-align: center;">
-          <span data-bind="text: moment(activeDog.showered()).format('D MMM')"></span><br><span class="color-gray" data-bind="text: showerRelativeDate(activeDog)"></span>
+          <span data-bind="text: moment(activeDog.showered()).format('D MMM')"></span><br><span class="color-gray" data-bind="text: daysAgoFromNow(activeDog.showered())"></span>
         </div>
         <div class="col-30">
           <a href="#" class="button button-raised button-fill color-indigo" style="text-transform: none" data-bind="click: showerDog">Shower</a>

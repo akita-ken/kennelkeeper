@@ -103,9 +103,9 @@ function AppViewModel() {
     }
   };
 
-  self.showerRelativeDate = function(dog) {
+  self.daysAgoFromNow = function(date) {
     // compute difference in days
-    var days = moment().diff(dog.showered(), 'days');
+    var days = moment().diff(date, 'days');
 
     if (days == 0) {
       return "today";
