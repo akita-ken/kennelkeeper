@@ -149,6 +149,7 @@ function AppViewModel() {
       // either to start walk or to end walk
       myApp.confirm("Are you sure?", "Kennel Keeper", function() {
         self.walkButton();
+        mainView.router.loadPage("index.html");
       });
     } else {
       // already walked
