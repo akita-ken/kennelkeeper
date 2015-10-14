@@ -104,10 +104,7 @@ function AppViewModel() {
   };
 
   self.showerRelativeDate = function() {
-    var now = new Date();
-    var date = self.activeDog.showered();
-
-    // compute difference in days, using the milliseconds since epoch
+    // compute difference in days
     var days = moment().diff(self.activeDog.showered(), 'days');
 
     if (days == 0) {
