@@ -135,4 +135,8 @@ function AppViewModel() {
     return dog.walked() == "Walking";
   };
 
+  self.constructImgPath = function(dog) {
+    return "img/Dogs/" + dog.name + "/0.png";
+  }
+
 }
