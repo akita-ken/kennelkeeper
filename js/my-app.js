@@ -117,6 +117,35 @@ myApp.onPageInit('kennelmap', function(page) {
 
   var ginger = L.polygon(computeBounds(-92, -131, 242, 268), { fillOpacity: 0.0 }).addTo(map);
 
+  var centers = {
+    'Mentos': computeCenter(-79, -98, 0, 35),
+    'Crunch': computeCenter(-138, -159, 0, 35),
+    'ccd': computeCenter(-159, -180, 0, 35),
+    'Lucky': computeCenter(-180, -200, 0, 35),
+    'Harry': computeCenter(-202, -223, 0, 35),
+    'Pringles': computeCenter(-79, -98, 80, 113),
+    'Ris': computeCenter(-98, -120, 80, 113),
+    'kpm': computeCenter(-138, -159, 80, 113),
+    'Candy': computeCenter(-58, -98, 176, 208),
+    'Lego': computeCenter(-120, -160, 176, 208),
+    'Ginger': computeCenter(-92, -131, 242, 268)
+  }
+
+  if (appViewModel.activeDog !== null) {
+    var name = appViewModel.activeDog.name;
+    var center;
+
+    if (name === 'Coco' || name === 'Charlie' || name === 'Donut') {
+      center = centers['ccd'];
+    } else if (name === 'Kyoto' || name === 'Pappy' || name === 'Muthu') {
+      center = centers['kpm'];
+    } else {
+      center = centers[name];
+    }
+
+    map.panTo(center);
+  }
+
   mentos.on('click', function(e) {
     appViewModel.findDogAndLoad('Mentos');
     mainView.router.loadPage('dog.html');
@@ -243,6 +272,12 @@ myApp.onPageInit('kennelmap', function(page) {
   // and from y1 to y2
   function computeBounds(x1, x2, y1, y2) {
     return [[x1, y1], [x2, y1], [x2, y2], [x1,y2]];
+  }
+
+  function computeCenter(x1, x2, y1, y2) {
+    var x = (x1 + x2) / 2;
+    var y = (y1 + y2) / 2;
+    return [x, y];
   }
 
 });

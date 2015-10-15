@@ -107,6 +107,10 @@ function AppViewModel() {
     self.initVars();
   };
 
+  self.viewInMap = function(dog) {
+    mainView.router.loadPage("kennel-map.html");
+  };
+
   /* ===== DISPLAY HELPERS ===== */
   self.walkStatus = function() {
     if (self.activeDog.walked() == "No") {
