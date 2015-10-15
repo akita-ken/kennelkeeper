@@ -105,14 +105,21 @@ function AppViewModel() {
   };
 
   self.addIncident = function() {
-    var newIncident = {
-      log: self.createIncidentLog(),
-      date: Date.now(),
-      submitter: self.createIncidentSubmitter
+    var log = self.createIncidentLog();
+    if (log.trim() === "") {
+      myApp.alert("Please fill in your message.", "Kennel Keeper");
+    } else {
+      myApp.confirm("Are you sure?", "Kennel Keeper", function() {
+        var newIncident = {
+          log: self.createIncidentLog(),
+          date: Date.now(),
+          submitter: self.createIncidentSubmitter
+        }
+        self.activeDog.incident.unshift(newIncident);
+        self.createIncidentLog("");
+        self.initVars();
+      });
     }
-    self.activeDog.incident.unshift(newIncident);
-    self.createIncidentLog("");
-    self.initVars();
   };
 
   self.viewInMap = function(dog) {
