@@ -278,7 +278,7 @@ function AppViewModel() {
   };
 
   self.getUnoccupiedKennel = function() {
-    for(i = 1; i <= 100; i++) {
+    for(i = 5; i <= 100; i++) {
       if(self.occupiedKennels.indexOf(i) == -1) {
         return i;
       }
