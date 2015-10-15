@@ -60,4 +60,6 @@ app.closePanel.
 }
 
 /* set height otherwise the map seems to disappear? */
-#map { height: 100%; }
+#map { height: 100%;
+       width: 100%;
+     }
