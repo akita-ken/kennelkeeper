@@ -35,26 +35,34 @@ function AppViewModel() {
 
   /* ===== ACTIONS ===== */
   self.addDog = function() {
-    var newDog = {
-      name: self.createDogName(),
-      gender: self.createDogGender(),
-      kennel: self.getUnoccupiedKennel(),
-      showered: ko.observable(null),
-      walked: ko.observable("No"),
-      behaviour: self.createDogBehaviour(),
-      medical: self.createDogMedical(),
-      incident: ko.observableArray(),
-      photos: [
-      "img/dogs/NewDog/0.png"
-      ]
+    var name = self.createDogName().trim();
+    if (name === "") {
+      myApp.alert("Please fill in dog's name.", "Kennel Keeper");
+    } else {
+      myApp.confirm("Are you sure?", "Kennel Keeper", function() {
+        var newDog = {
+          name: name,
+          gender: self.createDogGender(),
+          kennel: self.getUnoccupiedKennel(),
+          showered: ko.observable(null),
+          walked: ko.observable("No"),
+          behaviour: self.createDogBehaviour(),
+          medical: self.createDogMedical(),
+          incident: ko.observableArray(),
+          photos: [
+          "img/dogs/NewDog/0.png"
+          ]
+        }
+        self.dog.push(newDog);
+        self.occupiedKennels.push(newDog.kennel);
+        self.activeDog = newDog;
+        self.initVars();
+        self.justAddedDog = true;
+        self.dog.sort(nameComparator);
+        mainView.router.loadPage("dog.html");
+        return true;
+      });
     }
-    self.dog.push(newDog);
-    self.occupiedKennels.push(newDog.kennel);
-    self.activeDog = newDog;
-    self.initVars();
-    self.justAddedDog = true;
-    self.dog.sort(nameComparator);
-    return true;
   };
 
   self.resetViewInMap = function() {
