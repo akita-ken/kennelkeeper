@@ -65,6 +65,17 @@ function AppViewModel() {
     }
   };
 
+  self.updateDog = function() {
+    var name = self.activeDog.name.trim();
+    if (name === "") {
+      myApp.alert("Please fill in dog's name.", "Kennel Keeper");
+    } else {
+      myApp.confirm("Are you sure?", "Kennel Keeper", function() {
+        mainView.router.loadPage("dog.html");
+      });
+    }
+  };
+
   self.resetViewInMap = function() {
     self.isViewInMap = false;
   };
