@@ -18,7 +18,7 @@
             <span data-bind="text: log"></span>
           </div>
         </div>
-        <div class="card-footer"><span data-bind="text: submitter"></span>&nbsp;posted on&nbsp;<span data-bind="text: moment(date).calendar()"></span></div>
+        <div class="card-footer"><span data-bind="text: 'Posted by ' + submitter"></span> <span data-bind="text: moment(date).calendar()"></span></div>
       </div>
     </div>
     <div class="card" data-bind="if: activeDog.incident().length == 0">
