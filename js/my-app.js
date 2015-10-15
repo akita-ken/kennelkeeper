@@ -33,8 +33,7 @@ ko.applyBindings(appViewModel);
 //
 // apply knockout.js bindings on all these page inits
 function applyKoBindings(page) {
-  var pageElement = $$('.page[data-page="' + page.name + '"]')[0];
-  ko.applyBindings(appViewModel, pageElement);
+  ko.applyBindings(appViewModel, page.container);
 }
 
 var pages = ['index', 'dog', 'all-dogs', 'create-dog', 'edit-dog', 'showerme', 
