@@ -35,13 +35,13 @@ function AppViewModel() {
   /* ===== ACTIONS ===== */
   self.addDog = function() {
     var newDog = {
-      name: self.createDogName,
-      gender: self.createDogGender,
+      name: self.createDogName(),
+      gender: self.createDogGender(),
       kennel: self.getUnoccupiedKennel(),
       showered: ko.observable(null),
       walked: ko.observable("No"),
-      behaviour: self.createDogBehaviour,
-      medical: self.createDogMedical,
+      behaviour: self.createDogBehaviour(),
+      medical: self.createDogMedical(),
       incident: ko.observableArray(),
       photos: [
       "img/dogs/NewDog/0.png"
