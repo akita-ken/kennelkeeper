@@ -3,7 +3,7 @@ var dogs = ko.observableArray([
   { 
     name: "Candy",
     gender: 0,
-    kennel: 14,
+    kennel: 22,
     showered: ko.observable(new Date("2015-09-02T18:25:43+08:00")),
     walked: ko.observable("Yes"),
     lastWalked: ko.observable(new Date("2015-08-02T18:25:43+08:00")),
@@ -50,7 +50,7 @@ var dogs = ko.observableArray([
   { 
     name: "Donut", 
     gender: 0,
-    kennel: 18,
+    kennel: 3,
     showered: ko.observable(new Date("2015-08-02T18:25:43+08:00")),
     walked: ko.observable("Yes"),
     lastWalked: ko.observable(new Date("2015-08-02T18:25:43+08:00")),
@@ -66,7 +66,7 @@ var dogs = ko.observableArray([
   { 
     name: "Lego", 
     gender: 1,
-    kennel: 20,
+    kennel: 21,
     showered: ko.observable(new Date("2015-08-02T18:25:43+08:00")),
     walked: ko.observable("No"),
     lastWalked: ko.observable(new Date("2015-08-02T18:25:43+08:00")),
@@ -82,7 +82,7 @@ var dogs = ko.observableArray([
   { 
     name: "Ginger", 
     gender: 0,
-    kennel: 12,
+    kennel: 24,
     showered: ko.observable(new Date("2015-08-02T18:25:43+08:00")),
     walked: ko.observable("Yes"),
     lastWalked: ko.observable(new Date("2015-08-02T18:25:43+08:00")),
@@ -98,7 +98,7 @@ var dogs = ko.observableArray([
   { 
     name: "Lucky", 
     gender: 1,
-    kennel: 14,
+    kennel: 2,
     showered: ko.observable(new Date("2015-08-02T18:25:43+08:00")),
     walked: ko.observable("Yes"),
     lastWalked: ko.observable(new Date("2015-08-02T18:25:43+08:00")),
@@ -114,7 +114,7 @@ var dogs = ko.observableArray([
   { 
     name: "Mentos", 
     gender: 1,
-    kennel: 16,
+    kennel: 8,
     showered: ko.observable(new Date("2015-08-02T18:25:43+08:00")),
     walked: ko.observable("Yes"),
     lastWalked: ko.observable(new Date("2015-08-02T18:25:43+08:00")),
@@ -130,7 +130,7 @@ var dogs = ko.observableArray([
   { 
     name: "Charlie", 
     gender: 1,
-    kennel: 2,
+    kennel: 3,
     showered: ko.observable(new Date("2015-08-02T18:25:43+08:00")),
     walked: ko.observable("Yes"),
     lastWalked: ko.observable(new Date("2015-08-02T18:25:43+08:00")),
@@ -146,7 +146,7 @@ var dogs = ko.observableArray([
   { 
     name: "Pringles", 
     gender: 1,
-    kennel: 20,
+    kennel: 11,
     showered: ko.observable(new Date("2015-08-02T18:25:43+08:00")),
     walked: ko.observable("Yes"),
     lastWalked: ko.observable(new Date("2015-08-02T18:25:43+08:00")),
@@ -162,7 +162,7 @@ var dogs = ko.observableArray([
   { 
     name: "Ris", 
     gender: 1,
-    kennel: 2,
+    kennel: 12,
     showered: ko.observable(new Date("2015-08-02T18:25:43+08:00")),
     walked: ko.observable("Yes"),
     lastWalked: ko.observable(new Date("2015-08-02T18:25:43+08:00")),
@@ -178,7 +178,7 @@ var dogs = ko.observableArray([
   { 
     name: "Kyoto", 
     gender: 1,
-    kennel: 19,
+    kennel: 14,
     showered: ko.observable(new Date("2015-08-02T18:25:43+08:00")),
     walked: ko.observable("Yes"),
     lastWalked: ko.observable(new Date("2015-08-02T18:25:43+08:00")),
@@ -194,7 +194,7 @@ var dogs = ko.observableArray([
   { 
     name: "Muthu", 
     gender: 1,
-    kennel: 21,
+    kennel: 15,
     showered: ko.observable(new Date("2015-08-02T18:25:43+08:00")),
     walked: ko.observable("Yes"),
     lastWalked: ko.observable(new Date("2015-08-02T18:25:43+08:00")),
@@ -210,7 +210,7 @@ var dogs = ko.observableArray([
   { 
     name: "Pappy", 
     gender: 1,
-    kennel: 17,
+    kennel: 14,
     showered: ko.observable(new Date("2015-08-02T18:25:43+08:00")),
     walked: ko.observable("Yes"),
     lastWalked: ko.observable(new Date("2015-08-02T18:25:43+08:00")),
