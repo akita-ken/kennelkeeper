@@ -4,7 +4,7 @@ function AppViewModel() {
   self.activeDog = null;
   self.dog = dogs;
   self.justAddedDog = false;
-  self.walking = [];
+  self.walking = ko.observableArray();
   self.occupiedKennels = [];
 
   self.initVars = function() {
@@ -87,7 +87,7 @@ function AppViewModel() {
         visibleFromIndex: ko.observable(true)
       });
     } else if (self.activeDog.walked() == "Walking") {
-      pos = self.walking.map(function(e) {
+      pos = self.walking().map(function(e) {
         return e.name; 
       }).indexOf(self.activeDog.name);
       self.walking.splice(pos, 1);
@@ -191,7 +191,6 @@ function AppViewModel() {
       self.findDogAndLoad(dog.name);
       self.walkButton();
       dog.visibleFromIndex(false);
-      mainView.router.reloadPage("index.html");
     });
   };
 
