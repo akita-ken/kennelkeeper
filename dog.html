@@ -58,8 +58,8 @@
         <div class="col-40" style="line-height: 36px;">
           <strong>Walked today?</strong>
         </div>
-        <div class="col-30" style="line-height: 36px; text-align: center;">
-          <span data-bind="text: activeDog.walked"></span>
+        <div class="col-30" style="height: 36px; line-height: 36px; text-align: center;" data-bind="style: { lineHeight: activeDog.walked() == 'Walking' ? '1.1' : '36px' }">
+          <span data-bind="text: activeDog.walked"></span><span data-bind="if: activeDog.walked() == 'Walking'"><br><span class="color-gray" data-bind="text: moment().diff(walking().filter(function(e) { return e.name == activeDog.name })[0].started(), 'minutes') + ' min ago'"></span></span>
         </div>
         <div class="col-30">
           <a href="#" class="button button-raised button-fill color-teal" style="text-transform: none" data-bind="click: confirmWalk, visible: activeDog.walked() != 'Yes'"><span data-bind="text: walkStatus()"></span></a>
