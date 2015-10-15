@@ -33,7 +33,7 @@
           <strong>Walked today?</strong>
         </div>
         <div class="col-30" style="line-height: 36px; text-align: center;">
-          <span data-bind="text: activeDog.walked">No</span>
+          <span data-bind="text: activeDog.walked"></span>
         </div>
         <div class="col-30">
           <a href="#" class="button button-raised button-fill color-teal" style="text-transform: none" data-bind="click: confirmWalk, visible: activeDog.walked() != 'Yes'"><span data-bind="text: walkStatus()"></span></a>
