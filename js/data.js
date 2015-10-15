@@ -6,7 +6,7 @@ var dogs = ko.observableArray([
     kennel: 22,
     showered: ko.observable(moment().subtract(11, 'days')),
     walked: ko.observable("Yes"),
-    lastWalked: ko.observable(new Date("2015-08-02T18:25:43+08:00")),
+    lastWalked: ko.observable(moment().subtract(1, 'days').hours(10).minutes(23).seconds(30)),
     behaviour: "",
     medical: "",
     photos: [
@@ -53,7 +53,7 @@ var dogs = ko.observableArray([
     kennel: 3,
     showered: ko.observable(moment().subtract(13, 'days')),
     walked: ko.observable("Yes"),
-    lastWalked: ko.observable(new Date("2015-08-02T18:25:43+08:00")),
+    lastWalked: ko.observable(moment().subtract(1, 'days').hours(10).minutes(42).seconds(30)),
     behaviour: "",
     medical: "",
     photos: [
@@ -85,7 +85,7 @@ var dogs = ko.observableArray([
     kennel: 24,
     showered: ko.observable(moment().subtract(13, 'days')),
     walked: ko.observable("Yes"),
-    lastWalked: ko.observable(new Date("2015-08-02T18:25:43+08:00")),
+    lastWalked: ko.observable(moment().subtract(1, 'days').hours(11).minutes(34).seconds(30)),
     behaviour: "",
     medical: "",
     photos: [
@@ -116,8 +116,8 @@ var dogs = ko.observableArray([
     gender: 1,
     kennel: 8,
     showered: ko.observable(moment().subtract(34, 'days')),
-    walked: ko.observable("Yes"),
-    lastWalked: ko.observable(new Date("2015-08-02T18:25:43+08:00")),
+    walked: ko.observable("No"),
+    lastWalked: ko.observable(moment().subtract(1, 'days').hours(9).minutes(12).seconds(30)),
     behaviour: "",
     medical: "",
     photos: [
@@ -133,7 +133,7 @@ var dogs = ko.observableArray([
     kennel: 3,
     showered: ko.observable(moment().subtract(7, 'days')),
     walked: ko.observable("Yes"),
-    lastWalked: ko.observable(new Date("2015-08-02T18:25:43+08:00")),
+    lastWalked: ko.observable(moment().subtract(1, 'days').hours(11).minutes(54).seconds(30)),
     behaviour: "",
     medical: "",
     photos: [
@@ -149,7 +149,7 @@ var dogs = ko.observableArray([
     kennel: 11,
     showered: ko.observable(moment().subtract(35, 'days')),
     walked: ko.observable("Yes"),
-    lastWalked: ko.observable(new Date("2015-08-02T18:25:43+08:00")),
+    lastWalked: ko.observable(moment().subtract(1, 'days').hours(12).minutes(05).seconds(30)),
     behaviour: "",
     medical: "",
     photos: [
@@ -164,8 +164,8 @@ var dogs = ko.observableArray([
     gender: 1,
     kennel: 12,
     showered: ko.observable(moment().subtract(13, 'days')),
-    walked: ko.observable("Yes"),
-    lastWalked: ko.observable(new Date("2015-08-02T18:25:43+08:00")),
+    walked: ko.observable("No"),
+    lastWalked: ko.observable(moment().subtract(1, 'days').hours(12).minutes(27).seconds(30)),
     behaviour: "",
     medical: "",
     photos: [
@@ -181,7 +181,7 @@ var dogs = ko.observableArray([
     kennel: 14,
     showered: ko.observable(moment().subtract(13, 'days')),
     walked: ko.observable("Yes"),
-    lastWalked: ko.observable(new Date("2015-08-02T18:25:43+08:00")),
+    lastWalked: ko.observable(moment().subtract(1, 'days').hours(12).minutes(41).seconds(30)),
     behaviour: "",
     medical: "",
     photos: [
@@ -197,7 +197,7 @@ var dogs = ko.observableArray([
     kennel: 15,
     showered: ko.observable(moment().subtract(13, 'days')),
     walked: ko.observable("Yes"),
-    lastWalked: ko.observable(new Date("2015-08-02T18:25:43+08:00")),
+    lastWalked: ko.observable(moment().subtract(1, 'days').hours(12).minutes(55).seconds(30)),
     behaviour: "",
     medical: "",
     photos: [
@@ -213,7 +213,7 @@ var dogs = ko.observableArray([
     kennel: 14,
     showered: ko.observable(moment().subtract(13, 'days')),
     walked: ko.observable("Yes"),
-    lastWalked: ko.observable(new Date("2015-08-02T18:25:43+08:00")),
+    lastWalked: ko.observable(moment().subtract(1, 'days').hours(13).minutes(20).seconds(30)),
     behaviour: "",
     medical: "",
     photos: [
