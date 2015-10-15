@@ -151,7 +151,7 @@ myApp.onPageInit('kennelmap', function(page) {
   });
 
   crunch.on('click', function(e) {
-    appViewModel.findDogAndLoad('Ping Pong');
+    appViewModel.findDogAndLoad('Crunch');
     mainView.router.loadPage('dog.html');
   });
 
