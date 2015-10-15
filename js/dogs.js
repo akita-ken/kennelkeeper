@@ -105,13 +105,13 @@ function AppViewModel() {
   };
 
   self.addIncident = function() {
-    var log = self.createIncidentLog();
-    if (log.trim() === "") {
+    var log = self.createIncidentLog().trim();
+    if (log === "") {
       myApp.alert("Please fill in your message.", "Kennel Keeper");
     } else {
       myApp.confirm("Are you sure?", "Kennel Keeper", function() {
         var newIncident = {
-          log: self.createIncidentLog(),
+          log: log,
           date: Date.now(),
           submitter: self.createIncidentSubmitter
         }
