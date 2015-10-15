@@ -26,9 +26,7 @@ function AppViewModel() {
 
   /* === FIRST-RUN SETUP === */
 
-  self.dog.sort(function(a, b) {
-    return nameComparator(a, b);
-  });
+  self.dog.sort(nameComparator);
 
   self.initVars();
 
@@ -51,9 +49,7 @@ function AppViewModel() {
     self.activeDog = newDog;
     self.initVars();
     self.justAddedDog = true;
-    self.dog.sort(function(a, b) {
-      nameComparator(a, b);
-    });
+    self.dog.sort(nameComparator);
     return true;
   };
 
