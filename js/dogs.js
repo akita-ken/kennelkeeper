@@ -37,15 +37,18 @@ function AppViewModel() {
     var newDog = {
       name: self.createDogName,
       gender: self.createDogGender,
-      kennel: 0, // this needs to be changed to a function
+      kennel: self.getUnoccupiedKennel(),
       showered: ko.observable(null),
       walked: ko.observable("No"),
       behaviour: self.createDogBehaviour,
       medical: self.createDogMedical,
-      incident: ko.observableArray()
+      incident: ko.observableArray(),
+      photos: [
+      "img/dogs/NewDog/0.png"
+      ]
     }
     self.dog.push(newDog);
-    self.occupiedKennels.push(999) // replace with output from kennel allocator function
+    self.occupiedKennels.push(newDog.kennel);
     self.activeDog = newDog;
     self.initVars();
     self.justAddedDog = true;
@@ -191,6 +194,14 @@ function AppViewModel() {
       mainView.router.reloadPage("index.html");
     });
   };
+
+  self.getUnoccupiedKennel = function() {
+    for(i = 1; i <= 100; i++) {
+      if(self.occupiedKennels.indexOf(i) == -1) {
+        return i;
+      }
+    }
+  }
 
   /* ===== COMPARATORS ===== */
 
