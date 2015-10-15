@@ -114,7 +114,7 @@ function AppViewModel() {
       self.activeDog.walked("Walking");
       self.walking.push({
         name: self.activeDog.name,
-        started: Date.now(),
+        started: moment(),
         walker: "Kevin",
         behaviour: self.activeDog.behaviour,
         photos: self.activeDog.photos,
