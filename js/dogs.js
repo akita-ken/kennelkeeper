@@ -126,6 +126,10 @@ function AppViewModel() {
   };
 
   self.daysAgoFromNow = function(date) {
+    // newly created dogs have a null date
+    if (date == null) {
+      return "";
+    }
     // compute difference in days
     var days = moment().diff(date, 'days');
 
@@ -136,6 +140,15 @@ function AppViewModel() {
     } else {
       return days + " days ago"
     }
+  };
+
+  self.dateOrNever = function(date) {
+    // newly created dogs have a null date
+    if (date == null) {
+      return "Never";
+    }
+
+    return moment(date).format('D MMM');
   };
 
   self.walkingRelativeTimeAndDuration = function(walkingDog, includeDogName) {

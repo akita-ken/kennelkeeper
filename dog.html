@@ -44,8 +44,8 @@
         <div class="col-40" style="line-height: 36px;">
           <strong>Last showered</strong>
         </div>
-        <div class="col-30" style="height: 36px; line-height: 1.1; text-align: center;">
-          <span data-bind="text: moment(activeDog.showered()).format('D MMM')"></span><br><span class="color-gray" data-bind="text: daysAgoFromNow(activeDog.showered())"></span>
+        <div class="col-30" style="height: 36px; line-height: 1.1; text-align: center;" data-bind="style: { lineHeight: activeDog.showered() == null ? '36px' : '1.1' }">
+          <span data-bind="text: dateOrNever(activeDog.showered())"></span><span data-bind="if: activeDog.showered() != null"><br><span class="color-gray" data-bind="text: daysAgoFromNow(activeDog.showered())"></span></span>
         </div>
         <div class="col-30">
           <a href="#" class="button button-raised button-fill color-indigo" style="text-transform: none" data-bind="click: confirmShower">Shower</a>
