@@ -54,6 +54,16 @@ myApp.onPageInit('dog', function(page) {
   });
 });
 
+myApp.onPageInit('walkingnow', function(page) {
+  // special case for Lucky so that she is always walked since 45 min ago
+  var results = appViewModel.walking().filter(function(e) {
+    return e.name == "Lucky"
+  });
+  if (results.length > 0) {
+    results[0].started(moment().subtract(45, 'minutes'));
+  }
+});
+
 var hasCrunchBeenAdded = false;
 
 myApp.onPageInit('kennelmap', function(page) {
