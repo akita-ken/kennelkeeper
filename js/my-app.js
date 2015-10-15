@@ -142,7 +142,11 @@ myApp.onPageInit('kennelmap', function(page) {
       center = centers[name];
     }
 
-    map.panTo(center);
+    if (center === undefined) {
+      map.center = [-140, -50];
+    } else {
+      map.panTo(center);
+    }
   }
 
   mentos.on('click', function(e) {
