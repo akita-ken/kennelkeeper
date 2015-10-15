@@ -14,11 +14,17 @@
   <!-- Page content -->
   <div class="page-content">
     <!-- Image carousel -->
-    <div class="swiper-container swiper-init" data-pagination=".swiper-pagination">
+    <div class="swiper-container">
       <div class="swiper-wrapper" data-bind="foreach: activeDog.photos">
-        <div class="swiper-slide"><img data-bind="attr: { src: $data }" width="100%"></div>
+        <div class="swiper-slide">
+          <img data-bind="attr: { src: $data }" width="100%">
+        </div>
       </div>
       <div class="swiper-pagination"></div><!-- populated automatically -->
+    </div>
+    <!-- View in map -->
+    <div class="content-block">
+      <a href="#" class="button button-raised button-fill" data-bind="click: viewInMap(activeDog)">View in Map</a>
     </div>
     <!-- Walk and shower -->
     <div class="content-block">
@@ -38,8 +44,8 @@
         <div class="col-40" style="line-height: 36px;">
           <strong>Last showered</strong>
         </div>
-        <div class="col-30" style="height: 36px; line-height: 1.1; text-align: center;">
-          <span data-bind="text: moment(activeDog.showered()).format('D MMM')"></span><br><span class="color-gray" data-bind="text: daysAgoFromNow(activeDog.showered())"></span>
+        <div class="col-30" style="height: 36px; line-height: 1.1; text-align: center;" data-bind="style: { lineHeight: activeDog.showered() == null ? '36px' : '1.1' }">
+          <span data-bind="text: dateOrNever(activeDog.showered())"></span><span data-bind="if: activeDog.showered() != null"><br><span class="color-gray" data-bind="text: daysAgoFromNow(activeDog.showered())"></span></span>
         </div>
         <div class="col-30">
           <a href="#" class="button button-raised button-fill color-indigo" style="text-transform: none" data-bind="click: confirmShower">Shower</a>

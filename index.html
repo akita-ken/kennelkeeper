@@ -8,7 +8,7 @@
     <!-- Color theme for statusbar -->
     <meta name="theme-color" content="#2196f3">
     <!-- Your app title -->
-    <title>KennelKeeper</title>
+    <title>Kennel Keeper</title>
     <!-- Path to Framework7 Library CSS, Material Theme -->
     <link rel="stylesheet" href="css/framework7.material.min.css">
     <!-- Path to Framework7 color related styles, Material Theme -->
@@ -115,33 +115,41 @@
               <div class="navbar-inner">
                 <div class="left"><a href="#" class="link icon-only open-panel"><i class="icon icon-bars"></i></a></div>
                 <div class="center">Home</div>
+                <div class="right">
+                  <a href="create-dog.html" class="link icon-only"> <i class="icon icon-plus"></i></a>
+                </div>
               </div>
             </div>
 
             <!-- Scrollable page content -->
             <div class="page-content">
-              <!-- Display this if user is currently walking dog(s) -->
-              <div data-bind="foreach: walking">
-                <div class="card">
-                  <div class="card-header color-white bg-blue">Ongoing tasks</div>
-                  <div class="card-content">
-                    <div class="card-content-inner">
-                      <p>Walking <span data-bind="text: name"></span> since 2.27pm (14 min ago)</p>
-                      <p><a href="#" class="button button-fill button-raised color-red">End walk</a></p>
+              <!-- Display summary if user is currently walking dog(s) -->
+              <div class="card" data-bind="if: walking().length > 0">
+                <div class="card-header color-white bg-blue">Ongoing tasks</div>
+                <div class="card-content">
+                  <div class="card-content-inner">
+                    <div data-bind="foreach: walking">
+                      <div data-bind="visible: visibleFromIndex">
+                        <p><span data-bind="text: $parent.walkingRelativeTimeAndDuration($data, true)"></span></p>
+                        <p><a href="#" class="button button-fill button-raised color-red" data-bind="click: $parent.endWalkFromIndex">End walk</a></p>
+                      </div>
                     </div>
                   </div>
                 </div>
+              </div>
+              <!-- Display one card per dog if user is currently walking dog(s) -->
+              <div data-bind="foreach: walking">
                 <div class="card">
                   <div class="card-header color-white bg-blue"><span data-bind="text: name"></span></div>
+
                   <!-- Slider container -->
-                  <div class="swiper-container swiper-init" data-pagination=".swiper-pagination">
-                    <div class="swiper-wrapper">
-                      <div class="swiper-slide"><img src="http://i284.photobucket.com/albums/ll2/clement20/Dog_0013.jpg" width="100%"></div>
-                      <div class="swiper-slide">Slide 2</div>
-                      <div class="swiper-slide"><img src="http://placehold.it/400x300" width="100%"></div>
+                  <div class="swiper-container">
+                    <div class="swiper-wrapper" data-bind="foreach: photos">
+                      <div class="swiper-slide"><img data-bind="attr: { src: $data }" width="100%"></div>
                     </div>
                     <div class="swiper-pagination"></div><!-- populated automatically -->
                   </div>
+
                   <div class="card-content">
                     <div class="card-content-inner">
                       <p><strong>Behaviour Notes</strong></p>
@@ -153,11 +161,11 @@
               </div>
 
               <!-- Display this if user is not walking any dog(s) -->
-              <div class="card" data-bind="if: walking.length == 0">
+              <div class="card" data-bind="if: walking().length == 0">
                 <div class="card-header color-white bg-blue">Ongoing tasks</div>
                 <div class="card-content">
                   <div class="card-content-inner">
-                    <p>No ongoing tasks, get to work! >:(</p>
+                    <p>No ongoing tasks.</p>
                     <p><a href="walk-me.html" class="button button-fill button-raised color-teal">Walk a dog</a></p>
                     <p><a href="shower-me.html" class="button button-fill button-raised color-indigo">Shower a dog</a></p>
                   </div>

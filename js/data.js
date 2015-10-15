@@ -68,7 +68,7 @@ var dogs = ko.observableArray([
     gender: 1,
     kennel: 20,
     showered: ko.observable(new Date("2015-08-02T18:25:43+08:00")),
-    walked: ko.observable("Yes"),
+    walked: ko.observable("No"),
     lastWalked: ko.observable(new Date("2015-08-02T18:25:43+08:00")),
     behaviour: "",
     medical: "",

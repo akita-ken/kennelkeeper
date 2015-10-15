@@ -32,7 +32,7 @@
         <li data-bind="if: $parent.showerBadge($data)">
           <a href="dog.html" class="item-link" data-bind="click: $parent.retrieveDog">
             <div class="item-content">
-              <div class="item-media"><img data-bind="attr: { src: $parent.constructImgPath($data), width: '48px' }"></div>
+              <div class="item-media"><img data-bind="attr: { src: $data.photos[0], width: '48px' }"></div>
               <div class="item-inner">
                 <div class="item-title-row">
                   <div class="item-title"><span data-bind="text: name"></span></div>
