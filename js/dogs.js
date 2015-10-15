@@ -62,6 +62,7 @@ function AppViewModel() {
           kennel: self.getUnoccupiedKennel(),
           showered: ko.observable(null),
           walked: ko.observable("No"),
+          lastWalked: ko.observable(null),
           behaviour: self.createDogBehaviour(),
           medical: self.createDogMedical(),
           incident: ko.observableArray(),
