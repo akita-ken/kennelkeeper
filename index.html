@@ -115,16 +115,13 @@
               <div class="navbar-inner">
                 <div class="left"><a href="#" class="link icon-only open-panel"><i class="icon icon-bars"></i></a></div>
                 <div class="center">Home</div>
-                <div class="right">
-                  <a href="create-dog.html" class="link icon-only"> <i class="icon icon-plus"></i></a>
-                </div>
               </div>
             </div>
 
             <!-- Scrollable page content -->
             <div class="page-content">
               <!-- Display summary if user is currently walking dog(s) -->
-              <div class="card" data-bind="if: walking().length > 0">
+              <div class="card" data-bind="if: walking().filter(function(e) { return e.visibleFromIndex() == true }).length > 0">
                 <div class="card-header color-white bg-blue">Ongoing tasks</div>
                 <div class="card-content">
                   <div class="card-content-inner">
@@ -138,7 +135,7 @@
                 </div>
               </div>
               <!-- Display one card per dog if user is currently walking dog(s) -->
-              <div data-bind="foreach: walking">
+              <div data-bind="foreach: walking().filter(function(e) { return e.visibleFromIndex() == true })">
                 <div class="card">
                   <div class="card-header color-white bg-blue"><span data-bind="text: name"></span></div>
 
@@ -161,7 +158,7 @@
               </div>
 
               <!-- Display this if user is not walking any dog(s) -->
-              <div class="card" data-bind="if: walking().length == 0">
+              <div class="card" data-bind="if: walking().filter(function(e) { return e.visibleFromIndex() == true }).length == 0">
                 <div class="card-header color-white bg-blue">Ongoing tasks</div>
                 <div class="card-content">
                   <div class="card-content-inner">

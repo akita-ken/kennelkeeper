@@ -53,9 +53,19 @@
           </div>
         </li>
         <!--TODO: Photo Browser goes here -->
-        <div class="list-block card">
+        <li>
+          <div class="item-content">
+            <div class="item-inner">
+              <div class="item-title label">Photos</div>
+              <div class="item-input">
+                <img data-bind="attr: { src: createDogPicture }, click: picturePicker" width="100%"></img>
+              </div>
+            </div>
+          </div>
+        </li>
+        <div class="content-block">
           <li>
-            <a href="dog.html" class="button button-raised button-fill" style="border: 0;" data-bind="click: addDog">Save</a>
+            <a href="#" class="button button-raised button-fill" style="border: 0;" data-bind="click: addDog">Save</a>
           </li>
         </div>
       </ul>

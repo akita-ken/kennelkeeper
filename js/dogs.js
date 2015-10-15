@@ -2,12 +2,24 @@ function AppViewModel() {
   var self = this;
   
   self.activeDog = null;
+  self.activeIncident = null;
   self.dog = dogs;
   self.justAddedDog = false;
-  self.walking = ko.observableArray();
+  self.isViewInMap = false;
+  self.walking = ko.observableArray([
+    {
+      name: "Lucky",
+      started: moment().subtract(40, 'minutes'),
+      walker: "Alex",
+      behaviour: "",
+      photos: ["img/dogs/Lucky/0.png"],
+      visibleFromIndex: ko.observable(false)
+    }
+  ]);
   self.occupiedKennels = [];
 
   self.initVars = function() {
+    self.createDogPicture = ko.observable("img/choose_picture.png");
     self.availableGenders = ['Male', 'Female'];
     self.createDogGender = ko.observable("");
     self.createDogName = ko.observable("");
@@ -15,7 +27,7 @@ function AppViewModel() {
     self.createDogMedical = ko.observable("");
 
     self.createIncidentLog = ko.observable("");
-    self.createIncidentSubmitter = "Tester"; // hardcoded for the moment
+    self.createIncidentSubmitter = "Kristine"; // hardcoded for the moment
   }
 
   self.populateKennels = function() {
@@ -34,26 +46,56 @@ function AppViewModel() {
 
   /* ===== ACTIONS ===== */
   self.addDog = function() {
-    var newDog = {
-      name: self.createDogName(),
-      gender: self.createDogGender(),
-      kennel: self.getUnoccupiedKennel(),
-      showered: ko.observable(null),
-      walked: ko.observable("No"),
-      behaviour: self.createDogBehaviour(),
-      medical: self.createDogMedical(),
-      incident: ko.observableArray(),
-      photos: [
-      "img/dogs/NewDog/0.png"
-      ]
+    var name = self.createDogName().trim();
+    if (name === "") {
+      myApp.alert("Please fill in dog's name.", "Kennel Keeper");
+    } else if (self.createDogPicture() !== "img/chosen_pictures.png") {
+      myApp.alert("Please select at at least 1 photo.", "Kennel Keeper");
+    } else {
+      myApp.confirm("Are you sure?", "Kennel Keeper", function() {
+        var newDog = {
+          name: name,
+          gender: self.createDogGender(),
+          kennel: self.getUnoccupiedKennel(),
+          showered: ko.observable(null),
+          walked: ko.observable("No"),
+          behaviour: self.createDogBehaviour(),
+          medical: self.createDogMedical(),
+          incident: ko.observableArray(),
+          photos: [
+          "img/dogs/NewDog/0.png",
+          "img/dogs/NewDog/1.png"
+          ]
+        }
+        self.dog.push(newDog);
+        self.occupiedKennels.push(newDog.kennel);
+        self.activeDog = newDog;
+        self.initVars();
+        self.justAddedDog = true;
+        self.dog.sort(nameComparator);
+        mainView.router.loadPage("dog.html");
+        return true;
+      });
     }
-    self.dog.push(newDog);
-    self.occupiedKennels.push(newDog.kennel);
-    self.activeDog = newDog;
-    self.initVars();
-    self.justAddedDog = true;
-    self.dog.sort(nameComparator);
-    return true;
+  };
+
+  self.picturePicker = function() {
+    self.createDogPicture("img/chosen_pictures.png");
+  };
+
+  self.updateDog = function() {
+    var name = self.activeDog.name.trim();
+    if (name === "") {
+      myApp.alert("Please fill in dog's name.", "Kennel Keeper");
+    } else {
+      myApp.confirm("Are you sure?", "Kennel Keeper", function() {
+        mainView.router.loadPage("dog.html");
+      });
+    }
+  };
+
+  self.resetViewInMap = function() {
+    self.isViewInMap = false;
   };
 
   self.resetButton = function() {
@@ -80,8 +122,8 @@ function AppViewModel() {
       self.activeDog.walked("Walking");
       self.walking.push({
         name: self.activeDog.name,
-        started: Date.now(),
-        walker: "TestUser",
+        started: moment(),
+        walker: "Kevin",
         behaviour: self.activeDog.behaviour,
         photos: self.activeDog.photos,
         visibleFromIndex: ko.observable(true)
@@ -100,17 +142,40 @@ function AppViewModel() {
   };
 
   self.addIncident = function() {
-    var newIncident = {
-      log: self.createIncidentLog(),
-      date: Date.now(),
-      submitter: self.createIncidentSubmitter
+    var log = self.createIncidentLog().trim();
+    if (log === "") {
+      myApp.alert("Please fill in your message.", "Kennel Keeper");
+    } else {
+      myApp.confirm("Are you sure?", "Kennel Keeper", function() {
+        var newIncident = {
+          log: log,
+          date: Date.now(),
+          submitter: self.createIncidentSubmitter
+        }
+        self.activeDog.incident.unshift(newIncident);
+        self.createIncidentLog("");
+        self.initVars();
+      });
     }
-    self.activeDog.incident.unshift(newIncident);
-    self.createIncidentLog("");
-    self.initVars();
+  };
+
+  self.setActiveIncident = function(log) {
+    self.activeIncident = log;
+  };
+
+  self.updateIncident = function() {
+    var log = self.activeIncident.log.trim();
+    if (log === "") {
+      myApp.alert("Please fill in message.", "Kennel Keeper");
+    } else {
+      myApp.confirm("Are you sure?", "Kennel Keeper", function() {
+        mainView.router.loadPage("dog.html");
+      });
+    }
   };
 
   self.viewInMap = function(dog) {
+    self.isViewInMap = true;
     mainView.router.loadPage("kennel-map.html");
   };
 

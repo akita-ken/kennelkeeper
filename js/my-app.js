@@ -37,7 +37,7 @@ function applyKoBindings(page) {
 }
 
 var pages = ['index', 'dog', 'all-dogs', 'create-dog', 'edit-dog', 'showerme', 
-    'walkme', 'walkingnow', 'dog-incidents'];
+    'walkme', 'walkingnow', 'dog-incidents', 'kennelmap', 'edit-incident'];
 pages.forEach(function(page) {
   myApp.onPageInit(page, applyKoBindings);
 });
@@ -106,7 +106,6 @@ myApp.onPageInit('kennelmap', function(page) {
   var crunch = L.polygon(computeBounds(-138, -159, 0, 35), { fillOpacity: 0.0 }).addTo(map);
   var ccd = L.polygon(computeBounds(-159, -180, 0, 35), { fillOpacity: 0.0 }).addTo(map);
   var lucky = L.polygon(computeBounds(-180, -200, 0, 35), { fillOpacity: 0.0 }).addTo(map);
-  var harry = L.polygon(computeBounds(-202, -223, 0, 35), { fillOpacity: 0.0 }).addTo(map);
 
   var pringles = L.polygon(computeBounds(-79, -98, 80, 113), { fillOpacity: 0.0 }).addTo(map);
   var ris = L.polygon(computeBounds(-98, -120, 80, 113), { fillOpacity: 0.0 }).addTo(map);
@@ -143,7 +142,11 @@ myApp.onPageInit('kennelmap', function(page) {
       center = centers[name];
     }
 
-    map.panTo(center);
+    if (center === undefined) {
+      map.center = [-140, -50];
+    } else {
+      map.panTo(center);
+    }
   }
 
   mentos.on('click', function(e) {
@@ -152,7 +155,7 @@ myApp.onPageInit('kennelmap', function(page) {
   });
 
   crunch.on('click', function(e) {
-    appViewModel.findDogAndLoad('Ping Pong');
+    appViewModel.findDogAndLoad('Crunch');
     mainView.router.loadPage('dog.html');
   });
 
@@ -193,11 +196,6 @@ myApp.onPageInit('kennelmap', function(page) {
 
   lucky.on('click', function(e) {
     appViewModel.findDogAndLoad('Lucky');
-    mainView.router.loadPage('dog.html');
-  });
-
-  harry.on('click', function(e) {
-    appViewModel.findDogAndLoad('Harry');
     mainView.router.loadPage('dog.html');
   });
 
