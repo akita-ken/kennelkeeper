@@ -9,7 +9,7 @@ function AppViewModel() {
   self.walking = ko.observableArray([
     {
       name: "Lucky",
-      started: moment().subtract(40, 'minutes'),
+      started: ko.observable(moment().subtract(40, 'minutes')),
       walker: "Alex",
       behaviour: "",
       photos: ["img/dogs/Lucky/0.png"],
@@ -125,7 +125,7 @@ function AppViewModel() {
       self.activeDog.walked("Walking");
       self.walking.push({
         name: self.activeDog.name,
-        started: moment(),
+        started: ko.observable(moment()),
         walker: "Kevin",
         behaviour: self.activeDog.behaviour,
         photos: self.activeDog.photos,
@@ -226,8 +226,8 @@ function AppViewModel() {
       includeDogName = false;
     }
 
-    var mins = moment().diff(walkingDog.started, "minutes");
-    var timeString = moment(walkingDog.started).format("h:mm a");
+    var mins = moment().diff(walkingDog.started(), "minutes");
+    var timeString = moment(walkingDog.started()).format("h:mm a");
 
     if (includeDogName) {
       return "Walking " + walkingDog.name + " since " + timeString + " (" + mins + " min ago)";
@@ -278,7 +278,7 @@ function AppViewModel() {
   };
 
   self.getUnoccupiedKennel = function() {
-    for(i = 1; i <= 100; i++) {
+    for(i = 5; i <= 100; i++) {
       if(self.occupiedKennels.indexOf(i) == -1) {
         return i;
       }

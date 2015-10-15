@@ -24,7 +24,7 @@ var dogs = ko.observableArray([
     walked: ko.observable("No"),
     lastWalked: ko.observable(moment().subtract(1, 'days').hours(11).minutes(29).seconds(5)),
     behaviour: "Aggressive towards cyclists. Attacks other dogs.",
-    medical: "Limb injury. If she starts limping again, please feed her with 25mg of metacam, that can be found in the medical box labelled 1A in the kitchen.",
+    medical: "Limb injury. If she starts limping again, please feed her with a tablet of Metacam 2.5mg, which can be found in the medicine box labelled 1A in the kitchen.",
     photos: [
       "img/dogs/Coco/0.png",
       "img/dogs/Donut/0.png"
