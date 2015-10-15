@@ -31,12 +31,12 @@ var dogs = ko.observableArray([
     ],
     incident: ko.observableArray([
       {
-        log: "Attacked a passer-by, who got scratched quite badly. Be careful!",
+        log: ko.observable("Attacked a passer-by, who got scratched quite badly. Be careful!"),
         date: new Date("2015-06-18T13:50:43+08:00"),
         submitter: "Kristine"
       },
       {
-        log: "Suddenly jumped out at a passing cyclist, causing him to swerve and nearly fall! Short leash and keep her away from cyclists.",
+        log: ko.observable("Suddenly jumped out at a passing cyclist, causing him to swerve and nearly fall! Short leash and keep her away from cyclists."),
         date: new Date("2015-05-07T14:47:43+08:00"),
         submitter: "Alex"
       }

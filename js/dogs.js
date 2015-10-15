@@ -93,7 +93,9 @@ function AppViewModel() {
       myApp.alert("Please fill in dog's name.", "Kennel Keeper");
     } else {
       myApp.confirm("Are you sure?", "Kennel Keeper", function() {
-        mainView.router.loadPage("dog.html");
+        mainView.router.back({
+          reloadPrevious: true
+        });
       });
     }
   };
@@ -152,7 +154,7 @@ function AppViewModel() {
     } else {
       myApp.confirm("Are you sure?", "Kennel Keeper", function() {
         var newIncident = {
-          log: log,
+          log: ko.observable(log),
           date: Date.now(),
           submitter: self.createIncidentSubmitter
         }
@@ -168,12 +170,14 @@ function AppViewModel() {
   };
 
   self.updateIncident = function() {
-    var log = self.activeIncident.log.trim();
+    var log = self.activeIncident.log().trim();
     if (log === "") {
       myApp.alert("Please fill in message.", "Kennel Keeper");
     } else {
       myApp.confirm("Are you sure?", "Kennel Keeper", function() {
-        mainView.router.loadPage("dog.html");
+        mainView.router.back({
+          reloadPrevious: true
+        });
       });
     }
   };
