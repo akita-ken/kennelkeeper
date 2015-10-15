@@ -121,7 +121,7 @@
             <!-- Scrollable page content -->
             <div class="page-content">
               <!-- Display summary if user is currently walking dog(s) -->
-              <div class="card" data-bind="if: walking.length > 0">
+              <div class="card" data-bind="if: walking().length > 0">
                 <div class="card-header color-white bg-blue">Ongoing tasks</div>
                 <div class="card-content">
                   <div class="card-content-inner">
@@ -158,7 +158,7 @@
               </div>
 
               <!-- Display this if user is not walking any dog(s) -->
-              <div class="card" data-bind="if: walking.length == 0">
+              <div class="card" data-bind="if: walking().length == 0">
                 <div class="card-header color-white bg-blue">Ongoing tasks</div>
                 <div class="card-content">
                   <div class="card-content-inner">

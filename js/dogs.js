@@ -5,7 +5,7 @@ function AppViewModel() {
   self.dog = dogs;
   self.justAddedDog = false;
   self.isViewInMap = false;
-  self.walking = [];
+  self.walking = ko.observableArray();
   self.occupiedKennels = [];
 
   self.initVars = function() {
@@ -36,13 +36,13 @@ function AppViewModel() {
   /* ===== ACTIONS ===== */
   self.addDog = function() {
     var newDog = {
-      name: self.createDogName,
-      gender: self.createDogGender,
+      name: self.createDogName(),
+      gender: self.createDogGender(),
       kennel: self.getUnoccupiedKennel(),
       showered: ko.observable(null),
       walked: ko.observable("No"),
-      behaviour: self.createDogBehaviour,
-      medical: self.createDogMedical,
+      behaviour: self.createDogBehaviour(),
+      medical: self.createDogMedical(),
       incident: ko.observableArray(),
       photos: [
       "img/dogs/NewDog/0.png"
@@ -92,7 +92,7 @@ function AppViewModel() {
         visibleFromIndex: ko.observable(true)
       });
     } else if (self.activeDog.walked() == "Walking") {
-      pos = self.walking.map(function(e) {
+      pos = self.walking().map(function(e) {
         return e.name; 
       }).indexOf(self.activeDog.name);
       self.walking.splice(pos, 1);
@@ -132,6 +132,10 @@ function AppViewModel() {
   };
 
   self.daysAgoFromNow = function(date) {
+    // newly created dogs have a null date
+    if (date == null) {
+      return "";
+    }
     // compute difference in days
     var days = moment().diff(date, 'days');
 
@@ -142,6 +146,15 @@ function AppViewModel() {
     } else {
       return days + " days ago"
     }
+  };
+
+  self.dateOrNever = function(date) {
+    // newly created dogs have a null date
+    if (date == null) {
+      return "Never";
+    }
+
+    return moment(date).format('D MMM');
   };
 
   self.walkingRelativeTimeAndDuration = function(walkingDog, includeDogName) {
@@ -197,7 +210,6 @@ function AppViewModel() {
       self.findDogAndLoad(dog.name);
       self.walkButton();
       dog.visibleFromIndex(false);
-      mainView.router.reloadPage("index.html");
     });
   };
 
