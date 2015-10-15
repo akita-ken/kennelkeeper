@@ -70,8 +70,8 @@ var dogs = ko.observableArray([
     showered: ko.observable(moment().subtract(13, 'days')),
     walked: ko.observable("No"),
     lastWalked: ko.observable(moment().subtract(1, 'days').hours(11).minutes(7).seconds(44)),
-    behaviour: "",
-    medical: "",
+    behaviour: "Lego is a shy dog, he may be startled by large vehicles. Walkers should be firm with him and give him confidence to continue walking. He has a low risk of biting.",
+    medical: "Used to have heartworm but has since recovered since January 2015.",
     photos: [
       "img/dogs/Lego/0.png"
     ],
@@ -102,7 +102,7 @@ var dogs = ko.observableArray([
     showered: ko.observable(moment().subtract(13, 'days')),
     walked: ko.observable("Walking"),
     lastWalked: ko.observable(moment().subtract(1, 'days').hours(13).minutes(15).seconds(0)),
-    behaviour: "",
+    behaviour: "A peaceful dog.",
     medical: "",
     photos: [
       "img/dogs/Lucky/0.png"
@@ -118,7 +118,7 @@ var dogs = ko.observableArray([
     showered: ko.observable(moment().subtract(34, 'days')),
     walked: ko.observable("No"),
     lastWalked: ko.observable(moment().subtract(1, 'days').hours(9).minutes(12).seconds(30)),
-    behaviour: "",
+    behaviour: "Mentos is an active and playful dog, do keep him safe when walking near large drains.",
     medical: "",
     photos: [
       "img/dogs/Mentos/0.png"
@@ -145,12 +145,12 @@ var dogs = ko.observableArray([
   },
   { 
     name: "Pringles", 
-    gender: 1,
+    gender: 0,
     kennel: 11,
     showered: ko.observable(moment().subtract(35, 'days')),
     walked: ko.observable("Yes"),
     lastWalked: ko.observable(moment().subtract(1, 'days').hours(12).minutes(05).seconds(30)),
-    behaviour: "",
+    behaviour: "Pringles responds very well to physical touch, walkers are encouraged to play with her so that she can be comfortable with humans.",
     medical: "",
     photos: [
       "img/dogs/Pringles/0.png"
