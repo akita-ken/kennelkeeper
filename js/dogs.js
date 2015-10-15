@@ -47,6 +47,9 @@ function AppViewModel() {
   /* ===== ACTIONS ===== */
   self.addDog = function() {
     var name = self.createDogName().trim();
+    if (name == "Crunch")
+      hasCrunchBeenAdded = true;
+
     if (name === "") {
       myApp.alert("Please fill in dog's name.", "Kennel Keeper");
     } else if (self.createDogPicture() !== "img/chosen_pictures.png") {

@@ -54,6 +54,8 @@ myApp.onPageInit('dog', function(page) {
   });
 });
 
+var hasCrunchBeenAdded = false;
+
 myApp.onPageInit('kennelmap', function(page) {
   var map = L.map('map', {
     center: [-140, -50],
@@ -74,7 +76,13 @@ myApp.onPageInit('kennelmap', function(page) {
 
   var w = 2331,
       h = 2331,
-      url = 'img/kennel-map.png';
+      url;
+
+  if (!hasCrunchBeenAdded) {
+    url = 'img/kennel-map.png';
+  } else {
+    url = 'img/kennel-map-crunch.png'
+  }
 
   // unproject() takes in a Point (and zoom level), and returns a LatLng
   // "unproject" the image x/y coordinates to map lat/long coordinates
