@@ -6,7 +6,16 @@ function AppViewModel() {
   self.dog = dogs;
   self.justAddedDog = false;
   self.isViewInMap = false;
-  self.walking = ko.observableArray();
+  self.walking = ko.observableArray([
+    {
+      name: "Lucky",
+      started: moment().subtract(40, 'minutes'),
+      walker: "Alex",
+      behaviour: "",
+      photos: ["img/dogs/Lucky/0.png"],
+      visibleFromIndex: ko.observable(false)
+    }
+  ]);
   self.occupiedKennels = [];
 
   self.initVars = function() {
