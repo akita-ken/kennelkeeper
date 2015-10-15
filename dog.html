@@ -101,7 +101,10 @@
             <span data-bind="text: log"></span>
           </div>
         </div>
-        <div class="card-footer"><span data-bind="text: 'Posted by ' + submitter"></span> <span data-bind="text: moment(date).calendar()"></span></div>
+        <div class="card-footer">
+          <span><a href="edit-incident.html" data-bind="if: submitter === 'Kristine', click: $parent.setActiveIncident($data)"><i class="fa fa-pencil"> Edit</i></a></span>
+          <span data-bind="text: submitter + ', ' + moment(date).calendar()"></span>
+        </div>
       </div>
     </div>
     <div class="card" data-bind="if: activeDog.incident().length > 2">

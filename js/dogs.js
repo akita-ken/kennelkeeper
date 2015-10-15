@@ -2,6 +2,7 @@ function AppViewModel() {
   var self = this;
   
   self.activeDog = null;
+  self.activeIncident = null;
   self.dog = dogs;
   self.justAddedDog = false;
   self.isViewInMap = false;
@@ -137,6 +138,21 @@ function AppViewModel() {
         self.activeDog.incident.unshift(newIncident);
         self.createIncidentLog("");
         self.initVars();
+      });
+    }
+  };
+
+  self.setActiveIncident = function(log) {
+    self.activeIncident = log;
+  };
+
+  self.updateIncident = function() {
+    var log = self.activeIncident.log.trim();
+    if (log === "") {
+      myApp.alert("Please fill in message.", "Kennel Keeper");
+    } else {
+      myApp.confirm("Are you sure?", "Kennel Keeper", function() {
+        mainView.router.loadPage("dog.html");
       });
     }
   };
