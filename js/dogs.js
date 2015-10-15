@@ -16,7 +16,7 @@ function AppViewModel() {
     self.createDogMedical = ko.observable("");
 
     self.createIncidentLog = ko.observable("");
-    self.createIncidentSubmitter = "Tester"; // hardcoded for the moment
+    self.createIncidentSubmitter = "Kristine"; // hardcoded for the moment
   }
 
   self.populateKennels = function() {
@@ -86,7 +86,7 @@ function AppViewModel() {
       self.walking.push({
         name: self.activeDog.name,
         started: Date.now(),
-        walker: "TestUser",
+        walker: "Kevin",
         behaviour: self.activeDog.behaviour,
         photos: self.activeDog.photos,
         visibleFromIndex: ko.observable(true)
