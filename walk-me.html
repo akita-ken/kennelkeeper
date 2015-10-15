@@ -34,7 +34,7 @@
                 <div class="item-title-row">
                   <div class="item-title"><span data-bind="text: name"></span></div>
                 </div>
-                <div class="item-subtitle"><span data-bind="text: 'Last walked ' + moment($data.lastWalked()).calendar()"></span></div>
+                <div class="item-subtitle"><span data-bind="text: 'Last walked ' + ($data.lastWalked() == null ? 'never' : moment($data.lastWalked()).calendar())"></span></div>
               </div>
             </div>
           </a>
