@@ -54,6 +54,18 @@ myApp.onPageInit('dog', function(page) {
   });
 });
 
+myApp.onPageInit('walkingnow', function(page) {
+  // special case for Lucky so that she is always walked since 45 min ago
+  var results = appViewModel.walking().filter(function(e) {
+    return e.name == "Lucky"
+  });
+  if (results.length > 0) {
+    results[0].started(moment().subtract(45, 'minutes'));
+  }
+});
+
+var hasCrunchBeenAdded = false;
+
 myApp.onPageInit('kennelmap', function(page) {
   var map = L.map('map', {
     center: [-140, -50],
@@ -74,7 +86,13 @@ myApp.onPageInit('kennelmap', function(page) {
 
   var w = 2331,
       h = 2331,
-      url = 'img/kennel-map.png';
+      url;
+
+  if (!hasCrunchBeenAdded) {
+    url = 'img/kennel-map.png';
+  } else {
+    url = 'img/kennel-map-crunch.png'
+  }
 
   // unproject() takes in a Point (and zoom level), and returns a LatLng
   // "unproject" the image x/y coordinates to map lat/long coordinates

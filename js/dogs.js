@@ -9,7 +9,7 @@ function AppViewModel() {
   self.walking = ko.observableArray([
     {
       name: "Lucky",
-      started: moment().subtract(40, 'minutes'),
+      started: ko.observable(moment().subtract(40, 'minutes')),
       walker: "Alex",
       behaviour: "",
       photos: ["img/dogs/Lucky/0.png"],
@@ -47,6 +47,9 @@ function AppViewModel() {
   /* ===== ACTIONS ===== */
   self.addDog = function() {
     var name = self.createDogName().trim();
+    if (name == "Crunch")
+      hasCrunchBeenAdded = true;
+
     if (name === "") {
       myApp.alert("Please fill in dog's name.", "Kennel Keeper");
     } else if (self.createDogPicture() !== "img/chosen_pictures.png") {
@@ -59,6 +62,7 @@ function AppViewModel() {
           kennel: self.getUnoccupiedKennel(),
           showered: ko.observable(null),
           walked: ko.observable("No"),
+          lastWalked: ko.observable(null),
           behaviour: self.createDogBehaviour(),
           medical: self.createDogMedical(),
           incident: ko.observableArray(),
@@ -89,7 +93,9 @@ function AppViewModel() {
       myApp.alert("Please fill in dog's name.", "Kennel Keeper");
     } else {
       myApp.confirm("Are you sure?", "Kennel Keeper", function() {
-        mainView.router.loadPage("dog.html");
+        mainView.router.back({
+          reloadPrevious: true
+        });
       });
     }
   };
@@ -122,7 +128,7 @@ function AppViewModel() {
       self.activeDog.walked("Walking");
       self.walking.push({
         name: self.activeDog.name,
-        started: moment(),
+        started: ko.observable(moment()),
         walker: "Kevin",
         behaviour: self.activeDog.behaviour,
         photos: self.activeDog.photos,
@@ -148,7 +154,7 @@ function AppViewModel() {
     } else {
       myApp.confirm("Are you sure?", "Kennel Keeper", function() {
         var newIncident = {
-          log: log,
+          log: ko.observable(log),
           date: Date.now(),
           submitter: self.createIncidentSubmitter
         }
@@ -164,12 +170,14 @@ function AppViewModel() {
   };
 
   self.updateIncident = function() {
-    var log = self.activeIncident.log.trim();
+    var log = self.activeIncident.log().trim();
     if (log === "") {
       myApp.alert("Please fill in message.", "Kennel Keeper");
     } else {
       myApp.confirm("Are you sure?", "Kennel Keeper", function() {
-        mainView.router.loadPage("dog.html");
+        mainView.router.back({
+          reloadPrevious: true
+        });
       });
     }
   };
@@ -223,8 +231,8 @@ function AppViewModel() {
       includeDogName = false;
     }
 
-    var mins = moment().diff(walkingDog.started, "minutes");
-    var timeString = moment(walkingDog.started).format("h:mm a");
+    var mins = moment().diff(walkingDog.started(), "minutes");
+    var timeString = moment(walkingDog.started()).format("h:mm a");
 
     if (includeDogName) {
       return "Walking " + walkingDog.name + " since " + timeString + " (" + mins + " min ago)";
@@ -250,7 +258,9 @@ function AppViewModel() {
       // either to start walk or to end walk
       myApp.confirm("Are you sure?", "Kennel Keeper", function() {
         self.walkButton();
-        mainView.router.loadPage("index.html");
+        if (self.activeDog.walked() === "Walking") {
+          mainView.router.loadPage("index.html");
+        }
       });
     } else {
       // already walked
@@ -273,7 +283,7 @@ function AppViewModel() {
   };
 
   self.getUnoccupiedKennel = function() {
-    for(i = 1; i <= 100; i++) {
+    for(i = 5; i <= 100; i++) {
       if(self.occupiedKennels.indexOf(i) == -1) {
         return i;
       }
