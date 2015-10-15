@@ -4,6 +4,7 @@ function AppViewModel() {
   self.activeDog = null;
   self.dog = dogs;
   self.justAddedDog = false;
+  self.isViewInMap = false;
   self.walking = ko.observableArray();
   self.occupiedKennels = [];
 
@@ -54,6 +55,10 @@ function AppViewModel() {
     self.justAddedDog = true;
     self.dog.sort(nameComparator);
     return true;
+  };
+
+  self.resetViewInMap = function() {
+    self.isViewInMap = false;
   };
 
   self.resetButton = function() {
@@ -111,6 +116,7 @@ function AppViewModel() {
   };
 
   self.viewInMap = function(dog) {
+    self.isViewInMap = true;
     mainView.router.loadPage("kennel-map.html");
   };
 

@@ -22,11 +22,36 @@
       </div>
       <div class="swiper-pagination"></div><!-- populated automatically -->
     </div>
-    <!-- View in map -->
+
+    <!-- Gender -->
     <div class="content-block">
-      <a href="#" class="button button-raised button-fill" data-bind="click: viewInMap(activeDog)">View in Map</a>
+      <div class="row">
+        <div class="col-70" style="line-height: 36px;">
+          <strong>Gender</strong>
+        </div>
+        <div class="col-30" style="line-height: 36px; text-align: center;">
+          <span data-bind="if: activeDog.gender == 0">Male</span>
+          <span data-bind="if: activeDog.gender == 1">Female</span>
+        </div>
+      </div>
     </div>
-    <!-- Walk and shower -->
+
+    <!-- Kennel Number -->
+    <div class="content-block">
+      <div class="row">
+        <div class="col-40" style="line-height: 36px;">
+          <strong>Kennel Number</strong>
+        </div>
+        <div class="col-30" style="line-height: 36px; text-align: center;">
+          <span data-bind="text: activeDog.kennel"></span>
+        </div>
+        <div class="col-30">
+          <a href="#" class="button button-raised button-fill" style="text-transform: none" data-bind="click: viewInMap(activeDog)">Location</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Walk -->
     <div class="content-block">
       <div class="row">
         <div class="col-40" style="line-height: 36px;">
@@ -40,6 +65,10 @@
           <a href="#" class="button button-raised button-fill color-gray" style="text-transform: none" data-bind="click: confirmWalk, visible: activeDog.walked() == 'Yes'"><span data-bind="text: walkStatus()"></span></a>
         </div>
       </div>
+    </div>
+
+    <!-- Shower -->
+    <div class="content-block">
       <div class="row">
         <div class="col-40" style="line-height: 36px;">
           <strong>Last showered</strong>
