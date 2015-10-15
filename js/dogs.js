@@ -195,9 +195,9 @@ function AppViewModel() {
   /* ===== COMPARATORS ===== */
 
   function nameComparator(a, b) {
-    if(a.name.toLowerCase() < b.name.toLowerCase()) {
+    if (a.name.toLowerCase() < b.name.toLowerCase()) {
       return -1;
-    } else if(a.name.toLowerCase() > b.name.toLowerCase()) {
+    } else if (a.name.toLowerCase() > b.name.toLowerCase()) {
       return 1;
     } else {
       return 0;
