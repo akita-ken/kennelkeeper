@@ -10,6 +10,7 @@ function AppViewModel() {
   self.occupiedKennels = [];
 
   self.initVars = function() {
+    self.createDogPicture = ko.observable("img/choose_picture.png");
     self.availableGenders = ['Male', 'Female'];
     self.createDogGender = ko.observable("");
     self.createDogName = ko.observable("");
@@ -39,6 +40,8 @@ function AppViewModel() {
     var name = self.createDogName().trim();
     if (name === "") {
       myApp.alert("Please fill in dog's name.", "Kennel Keeper");
+    } else if (self.createDogPicture() !== "img/chosen_pictures.png") {
+      myApp.alert("Please select at at least 1 photo.", "Kennel Keeper");
     } else {
       myApp.confirm("Are you sure?", "Kennel Keeper", function() {
         var newDog = {
@@ -51,7 +54,8 @@ function AppViewModel() {
           medical: self.createDogMedical(),
           incident: ko.observableArray(),
           photos: [
-          "img/dogs/NewDog/0.png"
+          "img/dogs/NewDog/0.png",
+          "img/dogs/NewDog/1.png"
           ]
         }
         self.dog.push(newDog);
@@ -64,6 +68,10 @@ function AppViewModel() {
         return true;
       });
     }
+  };
+
+  self.picturePicker = function() {
+    self.createDogPicture("img/chosen_pictures.png");
   };
 
   self.updateDog = function() {
