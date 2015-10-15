@@ -125,7 +125,6 @@ function AppViewModel() {
 
   self.walkButton = function() {
     if (self.activeDog.walked() == "No") {
-      self.activeDog.walked("Walking");
       self.walking.push({
         name: self.activeDog.name,
         started: ko.observable(moment()),
@@ -134,6 +133,7 @@ function AppViewModel() {
         photos: self.activeDog.photos,
         visibleFromIndex: ko.observable(true)
       });
+      self.activeDog.walked("Walking");
     } else if (self.activeDog.walked() == "Walking") {
       pos = self.walking().map(function(e) {
         return e.name; 
