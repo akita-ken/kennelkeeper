@@ -224,6 +224,12 @@ function AppViewModel() {
     return moment(date).format('D MMM');
   };
 
+  self.isDateToday = function(date) {
+    var today = moment();
+    var date = moment(date);
+    return today.format("YYYY-MM-DD") === date.format("YYYY-MM-DD");
+  };
+
   self.walkingRelativeTimeAndDuration = function(walkingDog, includeDogName) {
     // by default, don't include dog name (for backward compatibility with
     // Walking now page)

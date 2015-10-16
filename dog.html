@@ -77,7 +77,8 @@
           <span data-bind="text: dateOrNever(activeDog.showered())"></span><span data-bind="if: activeDog.showered() != null"><br><span class="color-gray" data-bind="text: daysAgoFromNow(activeDog.showered())"></span></span>
         </div>
         <div class="col-30">
-          <a href="#" class="button button-raised button-fill color-indigo" style="text-transform: none" data-bind="click: confirmShower">Shower</a>
+          <a href="#" class="button button-raised button-fill color-indigo" style="text-transform: none" data-bind="click: confirmShower, visible: !isDateToday(activeDog.showered())">Shower</a>
+          <a href="#" class="button button-raised button-fill color-gray" style="text-transform: none" data-bind="click: confirmShower, visible: isDateToday(activeDog.showered())">Shower</a>
         </div>
       </div>
     </div>
