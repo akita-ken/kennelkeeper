@@ -11,7 +11,7 @@ function AppViewModel() {
       name: "Lucky",
       started: ko.observable(moment().subtract(40, 'minutes')),
       walker: "Alex",
-      behaviour: "",
+      behaviour: ko.observable(""),
       photos: ["img/dogs/Lucky/0.png"],
       visibleFromIndex: ko.observable(false)
     }
@@ -63,7 +63,7 @@ function AppViewModel() {
           showered: ko.observable(null),
           walked: ko.observable("No"),
           lastWalked: ko.observable(null),
-          behaviour: self.createDogBehaviour(),
+          behaviour: ko.observable(self.createDogBehaviour()),
           medical: self.createDogMedical(),
           incident: ko.observableArray(),
           photos: [

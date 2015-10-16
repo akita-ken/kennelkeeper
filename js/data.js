@@ -7,7 +7,7 @@ var dogs = ko.observableArray([
     showered: ko.observable(moment().subtract(11, 'days')),
     walked: ko.observable("Yes"),
     lastWalked: ko.observable(moment().subtract(1, 'days').hours(10).minutes(23).seconds(30)),
-    behaviour: "",
+    behaviour: ko.observable(""),
     medical: "",
     photos: [
       "img/dogs/Candy/0.png"
@@ -23,7 +23,7 @@ var dogs = ko.observableArray([
     showered: ko.observable(moment().subtract(22, 'days')),
     walked: ko.observable("No"),
     lastWalked: ko.observable(moment().subtract(1, 'days').hours(11).minutes(29).seconds(5)),
-    behaviour: "Aggressive towards cyclists. Attacks other dogs.",
+    behaviour: ko.observable("Aggressive towards cyclists. Attacks other dogs."),
     medical: "Limb injury. If she starts limping again, please feed her with a tablet of Metacam 2.5mg, which can be found in the medicine box labelled 1A in the kitchen.",
     photos: [
       "img/dogs/Coco/0.png",
