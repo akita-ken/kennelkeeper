@@ -135,11 +135,11 @@ function AppViewModel() {
       });
       self.activeDog.walked("Walking");
     } else if (self.activeDog.walked() == "Walking") {
+      self.activeDog.walked("Yes");
       pos = self.walking().map(function(e) {
         return e.name; 
       }).indexOf(self.activeDog.name);
       self.walking.splice(pos, 1);
-      self.activeDog.walked("Yes");
     }
   };
 
