@@ -65,13 +65,15 @@ myApp.onPageInit('walkingnow', function(page) {
 });
 
 var hasCrunchBeenAdded = false;
+var mapCenter = [-140, -50];
 
 myApp.onPageInit('kennelmap', function(page) {
   var map = L.map('map', {
-    center: [-140, -50],
-    zoom: 1.5,
-    minZoom: 1.5,
+    center: mapCenter,
+    zoom: 0,
+    minZoom: 0,
     maxZoom: 1.5,
+    zoomAnimation: true,
     /*touchZoom: false,
     scrollWheelZoom: false,
     doubleClickZoom: false,
@@ -148,7 +150,6 @@ myApp.onPageInit('kennelmap', function(page) {
     'Ginger': computeCenter(-92, -131, 242, 268)
   }
 
-  if (appViewModel.activeDog !== null) {
   if (appViewModel.isViewInMap && appViewModel.activeDog !== null) {
     var name = appViewModel.activeDog.name;
     var center;
@@ -162,13 +163,26 @@ myApp.onPageInit('kennelmap', function(page) {
     }
 
     if (center === undefined) {
-      map.center = [-140, -50];
+      map.center = mapCenter;
     } else {
+      map.zoomIn(1.5, {
+        animate: false
+      });
+
       map.panTo(center, {
         animate: true,
-        duration: 0.5
+        duration: 1
       });
     }
+  } else {
+    map.setZoomAround([-135, 2331], 1.5, {
+      animate: false
+    });
+
+    map.panTo(mapCenter, {
+      animate: true,
+      duration: 1.5
+    });
   }
 
   mentos.on('click', function(e) {
