@@ -163,7 +163,10 @@ myApp.onPageInit('kennelmap', function(page) {
     if (center === undefined) {
       map.center = [-140, -50];
     } else {
-      map.panTo(center);
+      map.panTo(center, {
+        animate: true,
+        duration: 0.5
+      });
     }
   }
 
