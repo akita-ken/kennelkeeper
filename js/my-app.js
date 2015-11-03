@@ -149,6 +149,7 @@ myApp.onPageInit('kennelmap', function(page) {
   }
 
   if (appViewModel.activeDog !== null) {
+  if (appViewModel.isViewInMap && appViewModel.activeDog !== null) {
     var name = appViewModel.activeDog.name;
     var center;
 
