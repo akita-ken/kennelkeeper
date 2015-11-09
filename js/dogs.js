@@ -60,7 +60,7 @@ function AppViewModel() {
     if (name === "") {
       myApp.alert("Please fill in dog's name.", "Kennel Keeper");
     } else if (self.createDogPicture() !== "img/chosen_pictures.png") {
-      myApp.alert("Please select at at least 1 photo.", "Kennel Keeper");
+      myApp.alert("Please select at least 1 photo.", "Kennel Keeper");
     } else {
       myApp.confirm("Are you sure?", "Kennel Keeper", function() {
         var newDog = {
