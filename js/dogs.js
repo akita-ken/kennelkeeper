@@ -16,6 +16,7 @@ function AppViewModel() {
       visibleFromIndex: ko.observable(false)
     }
   ]);
+  self.recent = ko.observableArray();
   self.occupiedKennels = [];
 
   self.initVars = function() {
@@ -136,15 +137,30 @@ function AppViewModel() {
       self.activeDog.walked("Walking");
     } else if (self.activeDog.walked() == "Walking") {
       self.activeDog.walked("Yes");
+      // remove from walking list
       pos = self.walking().map(function(e) {
         return e.name;
       }).indexOf(self.activeDog.name);
       self.walking.splice(pos, 1);
+
+      // add to recent activity list
+      self.recent.unshift({
+        name: self.activeDog.name,
+        photos: self.activeDog.photos,
+        activity: "Walked at " + moment().format("h:mm a")
+      });
     }
   };
 
   self.showerDog = function() {
     self.activeDog.showered(new Date());
+
+    // add to recent activity list
+    self.recent.unshift({
+      name: self.activeDog.name,
+      photos: self.activeDog.photos,
+      activity: "Showered at " + moment().format("h:mm a")
+    });
   };
 
   self.addIncident = function() {
