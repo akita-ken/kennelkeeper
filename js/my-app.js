@@ -54,6 +54,18 @@ myApp.onPageInit('dog', function(page) {
   });
 });
 
+myApp.onPageInit('all-dogs', function(page) {
+  appViewModel.nameSort();
+});
+
+myApp.onPageInit('walkme', function(page) {
+  appViewModel.walkSort();
+});
+
+myApp.onPageInit('showerme', function(page) {
+  appViewModel.showerSort();
+});
+
 myApp.onPageInit('walkingnow', function(page) {
   // special case for Lucky so that she is always walked since 45 min ago
   var results = appViewModel.walking().filter(function(e) {
