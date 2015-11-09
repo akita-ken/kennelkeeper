@@ -1,6 +1,6 @@
 function AppViewModel() {
   var self = this;
-  
+
   self.activeDog = null;
   self.activeIncident = null;
   self.dog = dogs;
@@ -14,6 +14,13 @@ function AppViewModel() {
       behaviour: ko.observable(""),
       photos: ["img/dogs/Lucky/0.png"],
       visibleFromIndex: ko.observable(false)
+    }
+  ]);
+  self.recent = ko.observableArray([
+    {
+      name: "Pappy",
+      photos: ["img/dogs/Pappy/0.png"],
+      activity: "Walked at " + moment().subtract(30, 'minutes').format("h:mm a")
     }
   ]);
   self.occupiedKennels = [];
@@ -51,7 +58,7 @@ function AppViewModel() {
     if (name === "") {
       myApp.alert("Please fill in dog's name.", "Kennel Keeper");
     } else if (self.createDogPicture() !== "img/chosen_pictures.png") {
-      myApp.alert("Please select at at least 1 photo.", "Kennel Keeper");
+      myApp.alert("Please select at least 1 photo.", "Kennel Keeper");
     } else {
       myApp.confirm("Are you sure?", "Kennel Keeper", function() {
         var newDog = {
@@ -117,7 +124,7 @@ function AppViewModel() {
 
   self.findDogAndLoad = function(name) {
     self.activeDog = self.dog()[self.dog().map(function(e) {
-        return e.name; 
+        return e.name;
       }).indexOf(name)];
   };
 
@@ -134,15 +141,30 @@ function AppViewModel() {
       self.activeDog.walked("Walking");
     } else if (self.activeDog.walked() == "Walking") {
       self.activeDog.walked("Yes");
+      // remove from walking list
       pos = self.walking().map(function(e) {
-        return e.name; 
+        return e.name;
       }).indexOf(self.activeDog.name);
       self.walking.splice(pos, 1);
+
+      // add to recent activity list
+      self.recent.unshift({
+        name: self.activeDog.name,
+        photos: self.activeDog.photos,
+        activity: "Walked at " + moment().format("h:mm a")
+      });
     }
   };
 
   self.showerDog = function() {
     self.activeDog.showered(new Date());
+
+    // add to recent activity list
+    self.recent.unshift({
+      name: self.activeDog.name,
+      photos: self.activeDog.photos,
+      activity: "Showered at " + moment().format("h:mm a")
+    });
   };
 
   self.addIncident = function() {

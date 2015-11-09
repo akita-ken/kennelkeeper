@@ -1,0 +1,29 @@
+<div data-page="recent" class="page">
+  <!-- Top Navbar-->
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="left"><a href="#" class="link back icon-only"><i class="icon icon-back"></i></a></div>
+      <div class="center">Recent Activity</div>
+    </div>
+  </div>
+
+  <!-- Page content -->
+  <div class="page-content">
+    <div class="list-block media-list list-block-search searchbar-found" style="margin-top: 0;">
+      <ul class="dogs-list" data-bind="foreach: recent">
+        <li>
+          <a href="dog.html" class="item-link" data-bind="click: $parent.findDogAndLoad(name)">
+            <div class="item-content">
+              <div class="item-media"><img data-bind="attr: { src: $data.photos[0], width: '48px' }"></div>
+              <div class="item-inner">
+                <div class="item-title-row">
+                  <div class="item-title"><span data-bind="text: name"></span></div>
+                </div>
+                <div class="item-subtitle"><span data-bind="text: activity"></span></div>
+              </div>
+            </div>
+          </a>
+        </li>
+    </div>
+  </div>
+</div>

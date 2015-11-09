@@ -1,7 +1,7 @@
 // Configure moment.js
 moment.locale('en', {
   calendar: {
-    lastDay: '[yesterday at] LT',   // switch these three to initial lowercase
+    lastDay: '[yesterday]',   // switch these three to initial lowercase
     sameDay: '[today at] LT',       //
     nextDay: '[tomorrow at] LT',    //
     lastWeek: '[last] dddd [at] LT',
@@ -36,8 +36,9 @@ function applyKoBindings(page) {
   ko.applyBindings(appViewModel, page.container);
 }
 
-var pages = ['index', 'dog', 'all-dogs', 'create-dog', 'edit-dog', 'showerme', 
-    'walkme', 'walkingnow', 'dog-incidents', 'kennelmap', 'edit-incident'];
+var pages = ['index', 'dog', 'all-dogs', 'create-dog', 'edit-dog', 'showerme',
+    'walkme', 'walkingnow', 'dog-incidents', 'kennelmap', 'edit-incident',
+    'recent'];
 pages.forEach(function(page) {
   myApp.onPageInit(page, applyKoBindings);
 });
@@ -117,8 +118,8 @@ myApp.onPageInit('kennelmap', function(page) {
   map.setMaxBounds(bounds);
   /*
   L.tileLayer('img/kennel-map.png', {
-    tileSize: 500, 
-    noWrap: true, 
+    tileSize: 500,
+    noWrap: true,
     continuousWorld: true,
     minZoom: 1,
     maxZoom: 1,
