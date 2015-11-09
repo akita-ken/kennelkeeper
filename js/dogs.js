@@ -295,9 +295,14 @@ function AppViewModel() {
   };
 
   self.confirmShower = function() {
-    myApp.confirm("Are you sure?", "Kennel Keeper", function() {
-      self.showerDog();
-    });
+    if (!self.isDateToday(self.activeDog.showered())) {
+      myApp.confirm("Are you sure?", "Kennel Keeper", function() {
+        self.showerDog();
+      });
+    } else {
+      // already showered
+      myApp.alert("Dog has already been showered today.", "Kennel Keeper");
+    }
   };
 
   self.endWalkFromIndex = function(dog) {
