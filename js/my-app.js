@@ -67,6 +67,10 @@ myApp.onPageInit('showerme', function(page) {
   appViewModel.showerSort();
 });
 
+myApp.onPageInit('tasks', function(page) {
+  appViewModel.walkSort();
+});
+
 myApp.onPageInit('walkingnow', function(page) {
   // special case for Lucky so that she is always walked since 45 min ago
   var results = appViewModel.walking().filter(function(e) {
