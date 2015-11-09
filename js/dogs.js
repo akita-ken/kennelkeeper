@@ -38,8 +38,6 @@ function AppViewModel() {
 
   /* === FIRST-RUN SETUP === */
 
-  self.dog.sort(nameComparator);
-
   self.initVars();
 
   self.populateKennels();
@@ -296,12 +294,44 @@ function AppViewModel() {
     }
   }
 
+  self.nameSort = function() {
+    self.dog.sort(nameComparator);
+  }
+
+  self.showerSort = function() {
+    self.dog.sort(showerComparator);
+  }
+
+  self.walkSort = function() {
+    self.dog.sort(walkComparator);
+  }
+
   /* ===== COMPARATORS ===== */
 
   function nameComparator(a, b) {
     if (a.name.toLowerCase() < b.name.toLowerCase()) {
       return -1;
     } else if (a.name.toLowerCase() > b.name.toLowerCase()) {
+      return 1;
+    } else {
+      return 0;
+    }
+  };
+
+  function walkComparator(a, b) {
+    if (a.lastWalked() < b.lastWalked()) {
+      return -1;
+    } else if (a.lastWalked() > b.lastWalked()) {
+      return 1;
+    } else {
+      return 0;
+    }
+  };
+
+  function showerComparator(a, b) {
+    if (a.showered() < b.showered()) {
+      return -1;
+    } else if (a.showered() > b.showered()) {
       return 1;
     } else {
       return 0;
