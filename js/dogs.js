@@ -1,6 +1,6 @@
 function AppViewModel() {
   var self = this;
-  
+
   self.activeDog = null;
   self.activeIncident = null;
   self.dog = dogs;
@@ -119,7 +119,7 @@ function AppViewModel() {
 
   self.findDogAndLoad = function(name) {
     self.activeDog = self.dog()[self.dog().map(function(e) {
-        return e.name; 
+        return e.name;
       }).indexOf(name)];
   };
 
@@ -137,7 +137,7 @@ function AppViewModel() {
     } else if (self.activeDog.walked() == "Walking") {
       self.activeDog.walked("Yes");
       pos = self.walking().map(function(e) {
-        return e.name; 
+        return e.name;
       }).indexOf(self.activeDog.name);
       self.walking.splice(pos, 1);
     }

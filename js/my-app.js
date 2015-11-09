@@ -36,7 +36,7 @@ function applyKoBindings(page) {
   ko.applyBindings(appViewModel, page.container);
 }
 
-var pages = ['index', 'dog', 'all-dogs', 'create-dog', 'edit-dog', 'showerme', 
+var pages = ['index', 'dog', 'all-dogs', 'create-dog', 'edit-dog', 'showerme',
     'walkme', 'walkingnow', 'dog-incidents', 'kennelmap', 'edit-incident'];
 pages.forEach(function(page) {
   myApp.onPageInit(page, applyKoBindings);
@@ -105,8 +105,8 @@ myApp.onPageInit('kennelmap', function(page) {
   map.setMaxBounds(bounds);
   /*
   L.tileLayer('img/kennel-map.png', {
-    tileSize: 500, 
-    noWrap: true, 
+    tileSize: 500,
+    noWrap: true,
     continuousWorld: true,
     minZoom: 1,
     maxZoom: 1,

@@ -1,6 +1,6 @@
 // This observable array contains hardcoded dogs
 var dogs = ko.observableArray([
-  { 
+  {
     name: "Candy",
     gender: "Female",
     kennel: 22,
@@ -16,7 +16,7 @@ var dogs = ko.observableArray([
 
     ])
   },
-  { 
+  {
     name: "Coco",
     gender: "Female",
     kennel: 4,
@@ -42,8 +42,8 @@ var dogs = ko.observableArray([
       }
     ])
   },
-  { 
-    name: "Donut", 
+  {
+    name: "Donut",
     gender: "Female",
     kennel: 3,
     showered: ko.observable(moment().subtract(13, 'days')),
@@ -58,8 +58,8 @@ var dogs = ko.observableArray([
 
     ])
   },
-  { 
-    name: "Lego", 
+  {
+    name: "Lego",
     gender: "Male",
     kennel: 21,
     showered: ko.observable(moment().subtract(13, 'days')),
@@ -74,8 +74,8 @@ var dogs = ko.observableArray([
 
     ])
   },
-  { 
-    name: "Ginger", 
+  {
+    name: "Ginger",
     gender: "Female",
     kennel: 24,
     showered: ko.observable(moment().subtract(13, 'days')),
@@ -90,8 +90,8 @@ var dogs = ko.observableArray([
 
     ])
   },
-  { 
-    name: "Lucky", 
+  {
+    name: "Lucky",
     gender: "Male",
     kennel: 2,
     showered: ko.observable(moment().subtract(13, 'days')),
@@ -106,8 +106,8 @@ var dogs = ko.observableArray([
 
     ])
   },
-  { 
-    name: "Mentos", 
+  {
+    name: "Mentos",
     gender: "Male",
     kennel: 8,
     showered: ko.observable(moment().subtract(34, 'days')),
@@ -120,10 +120,10 @@ var dogs = ko.observableArray([
     ],
     incident: ko.observableArray([
 
-    ]) 
+    ])
   },
-  { 
-    name: "Charlie", 
+  {
+    name: "Charlie",
     gender: "Male",
     kennel: 3,
     showered: ko.observable(moment().subtract(7, 'days')),
@@ -138,8 +138,8 @@ var dogs = ko.observableArray([
 
     ])
   },
-  { 
-    name: "Pringles", 
+  {
+    name: "Pringles",
     gender: "Female",
     kennel: 11,
     showered: ko.observable(moment().subtract(35, 'days')),
@@ -154,8 +154,8 @@ var dogs = ko.observableArray([
 
     ])
   },
-  { 
-    name: "Ris", 
+  {
+    name: "Ris",
     gender: "Male",
     kennel: 12,
     showered: ko.observable(moment().subtract(13, 'days')),
@@ -170,8 +170,8 @@ var dogs = ko.observableArray([
 
     ])
   },
-  { 
-    name: "Kyoto", 
+  {
+    name: "Kyoto",
     gender: "Male",
     kennel: 14,
     showered: ko.observable(moment().subtract(13, 'days')),
@@ -186,8 +186,8 @@ var dogs = ko.observableArray([
 
     ])
   },
-  { 
-    name: "Muthu", 
+  {
+    name: "Muthu",
     gender: "Male",
     kennel: 15,
     showered: ko.observable(moment().subtract(13, 'days')),
@@ -202,8 +202,8 @@ var dogs = ko.observableArray([
 
     ])
   },
-  { 
-    name: "Pappy", 
+  {
+    name: "Pappy",
     gender: "Male",
     kennel: 14,
     showered: ko.observable(moment().subtract(13, 'days')),
