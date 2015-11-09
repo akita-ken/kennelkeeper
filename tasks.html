@@ -1,0 +1,59 @@
+<div data-page="tasks" class="page with-subnavbar">
+  <!-- Top Navbar-->
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="left"><a href="#" class="link icon-only open-panel"><i class="icon icon-bars"></i></a></div>
+      <div class="center">Tasks</div>
+    </div>
+  </div>
+  <div class="toolbar tabbar">
+    <div class="toolbar-inner">
+      <a href="#tab-walkme" class="active tab-link">Walk me</a>
+      <a href="#tab-showerme" class="tab-link">Shower me</a>
+    </div>
+  </div>
+
+  <!-- Page content -->
+  <div class="page-content">
+    <div class="tabs">
+      <div id="tab-walkme" class="tab active">
+        <div class="list-block media-list" style="margin-top: 0;">
+          <ul class="dogs-list" data-bind="foreach: dog">
+            <li data-bind="if: $parent.walkBadge($data)">
+              <a href="dog.html" class="item-link" data-bind="click: $parent.retrieveDog">
+                <div class="item-content">
+                  <div class="item-media"><img data-bind="attr: { src: $data.photos[0], width: '48px' }"></div>
+                  <div class="item-inner">
+                    <div class="item-title-row">
+                      <div class="item-title"><span data-bind="text: name"></span></div>
+                    </div>
+                    <div class="item-subtitle"><span data-bind="text: 'Last walked ' + ($data.lastWalked() == null ? 'never' : moment($data.lastWalked()).calendar())"></span></div>
+                  </div>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div id="tab-showerme" class="tab">
+        <div class="list-block media-list" style="margin-top: 0;">
+          <ul class="dogs-list" data-bind="foreach: dog">
+            <li data-bind="if: $parent.showerBadge($data)">
+              <a href="dog.html" class="item-link" data-bind="click: $parent.retrieveDog">
+                <div class="item-content">
+                  <div class="item-media"><img data-bind="attr: { src: $data.photos[0], width: '48px' }"></div>
+                  <div class="item-inner">
+                    <div class="item-title-row">
+                      <div class="item-title"><span data-bind="text: name"></span></div>
+                    </div>
+                    <div class="item-subtitle"><span data-bind="text: 'Last showered ' + $parent.daysAgoFromNow($data.showered())"></span></div>
+                  </div>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -20,6 +20,9 @@
 .button {
   text-transform: none;
 }
+.tabbar a.link, .tabbar a.tab-link {
+  text-transform: none;
+}
 
 /* Make badges rounder and bigger */
 .badge {
@@ -48,7 +51,7 @@
 	background-position: center;
 }
 
-/* 
+/*
 Override the default behaviour of reverting the active .panel element to
 display: none;, because that stops the transitionend event from firing.
 
