@@ -208,7 +208,7 @@ var dogs = ko.observableArray([
     kennel: 14,
     showered: ko.observable(moment().subtract(13, 'days')),
     walked: ko.observable("Yes"),
-    lastWalked: ko.observable(moment().subtract(1, 'days').hours(13).minutes(20).seconds(30)),
+    lastWalked: ko.observable(moment().subtract(30, 'minutes')),
     behaviour: ko.observable(""),
     medical: "",
     photos: [

@@ -16,7 +16,13 @@ function AppViewModel() {
       visibleFromIndex: ko.observable(false)
     }
   ]);
-  self.recent = ko.observableArray();
+  self.recent = ko.observableArray([
+    {
+      name: "Pappy",
+      photos: ["img/dogs/Pappy/0.png"],
+      activity: "Walked at " + moment().subtract(30, 'minutes').format("h:mm a")
+    }
+  ]);
   self.occupiedKennels = [];
 
   self.initVars = function() {
