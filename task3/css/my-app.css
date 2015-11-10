@@ -1,0 +1,76 @@
+/* Add 30-70 splits to layout grid */
+.row .col-30 {
+  width: 30%;
+  width: -webkit-calc((100% - 16px*2) / 3.333333333333334);
+  width: calc((100% - 16px*2) / 3.333333333333334);
+}
+.row.no-gutter .col-30 {
+  width: 30%;
+}
+.row .col-70 {
+  width: 70%;
+  width: -webkit-calc((100% - 16px*2) / 1.428573428571428);
+  width: calc((100% - 16px*2) / 1.428573428571428);
+}
+.row.no-gutter .col-70 {
+  width: 70%;
+}
+
+/* Don't uppercase all button text */
+.button {
+  text-transform: none;
+}
+
+/* Make badges rounder and bigger */
+.badge {
+  font-size: 13px;
+  border-radius: 12px;
+  padding: 3px 8px 0;
+}
+
+/* Reduce vertical space for content blocks */
+.content-block-title {
+  margin: 8px 16px;
+}
+.content-block {
+  margin: 8px 0;
+}
+
+/* Center icons in list-block items' media */
+.list-block .item-content .item-media > i {
+  margin: 0 auto;
+}
+
+/* Allow cards to have an image header (on top of the normal card header) */
+.card .card-header.card-image-header {
+	height: 40vw;
+	background-size: cover;
+	background-position: center;
+}
+
+/* 
+Override the default behaviour of reverting the active .panel element to
+display: none;, because that stops the transitionend event from firing.
+
+Either do this or comment out "activePanel.css({display: ''});" in framework7.js
+app.closePanel.
+*/
+.panel {
+  display: block;
+}
+
+/* set height otherwise the map seems to disappear? */
+#map { height: 100%;
+       width: 100%;
+     }
+
+/* Make the photo carousel pagination bullets bigger and darker (when inactive) */
+.swiper-pagination-bullet {
+    width: 16px;
+    height: 16px;
+    opacity: .5;
+}
+.swiper-pagination-bullet-active {
+    opacity: 1;
+    background: #007aff;
+}
