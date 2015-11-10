@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- Color theme for statusbar -->
+    <meta name="theme-color" content="#2196f3">
+    <!-- Your app title -->
+    <title>Kennel Keeper</title>
+    <!-- Path to Framework7 Library CSS, Material Theme -->
+    <link rel="stylesheet" href="css/framework7.material.min.css">
+    <!-- Path to Framework7 color related styles, Material Theme -->
+    <link rel="stylesheet" href="css/framework7.material.colors.min.css">
+    <!-- ionicons -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- Path to your custom app styles-->
+    <link rel="stylesheet" href="css/my-app.css">
+    <link rel="stylesheet" href="css/leaflet.css" />
+  </head>
+  <body>
+    <!-- Panel overlay to overlay app while panel is opened -->
+    <div class="panel-overlay"></div>
+    <!-- Left panel -->
+    <div class="panel panel-left panel-reveal">
+      <div class="view navbar-fixed">
+        <div class="pages">
+          <div data-page="panel-left" class="page">
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="center">Kennel Keeper</div>
+              </div>
+            </div>
+            <div class="page-content">
+              <div class="list-block">
+                <ul>
+                  <li>
+                    <a href="index.html" class="item-link close-panel">
+                      <div class="item-content">
+                        <div class="item-media"><img src="img/home.png" style="padding-left: 12px;"></div>
+                        <div class="item-inner">
+                          <div class="item-title">Home</div>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="all-dogs.html" class="item-link close-panel">
+                      <div class="item-content">
+                        <div class="item-media"><img src="img/alldogs.png" style="padding-left: 12px;"></div>
+                        <div class="item-inner">
+                          <div class="item-title">All Dogs</div>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="tasks.html" class="item-link close-panel">
+                      <div class="item-content">
+                        <div class="item-media"><img src="img/walking.png" style="padding-left: 12px;"></div>
+                        <div class="item-inner">
+                          <div class="item-title">Tasks</div>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="walking-now.html" class="item-link close-panel">
+                      <div class="item-content">
+                        <div class="item-media"><img src="img/dog68.png" style="padding-left: 12px;"></div>
+                        <div class="item-inner">
+                          <div class="item-title">Now walking</div>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="kennel-map.html" class="item-link close-panel">
+                      <div class="item-content">
+                        <div class="item-media"><img src="img/map.png" style="padding-left: 12px;"></div>
+                        <div class="item-inner">
+                          <div class="item-title">Kennel Map</div>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="create-dog.html" class="item-link close-panel">
+                      <div class="item-content">
+                        <div class="item-media"><i class="fa fa-plus" style="font-size: 26px; padding-left: 10px;"></i></div>
+                        <div class="item-inner">
+                          <div class="item-title">Create Profile</div>
+                        </div>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Views -->
+    <div class="views">
+      <!-- Your main view, should have "view-main" class -->
+      <div class="view view-main">
+        <!-- Pages container, because we use fixed navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages navbar-fixed">
+          <!-- Page, "data-page" contains page name -->
+          <div data-page="index" class="page">
+            <!-- Top Navbar. In Material theme it should be inside of the page-->
+            <div class="navbar">
+              <div class="navbar-inner">
+                <div class="left"><a href="#" class="link icon-only open-panel"><i class="icon icon-bars"></i></a></div>
+                <div class="center">Home</div>
+                <div class="right"><a href="recent.html" class="link icon-only"><i class="fa fa-clock-o"></i></a></div>
+              </div>
+            </div>
+
+            <!-- Scrollable page content -->
+            <div class="page-content">
+              <!-- Display summary if user is currently walking dog(s) -->
+              <div class="card" data-bind="if: walking().filter(function(e) { return e.visibleFromIndex() == true }).length > 0">
+                <div class="card-header color-white bg-blue">Ongoing tasks</div>
+                <div class="card-content">
+                  <div class="card-content-inner">
+                    <div data-bind="foreach: walking">
+                      <div data-bind="visible: visibleFromIndex">
+                        <p><span data-bind="text: $parent.walkingRelativeTimeAndDuration($data, true)"></span></p>
+                        <p><a href="#" class="button button-fill button-raised color-red" data-bind="click: $parent.endWalkFromIndex">End walk</a></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Display one card per dog if user is currently walking dog(s) -->
+              <div data-bind="foreach: walking().filter(function(e) { return e.visibleFromIndex() == true })">
+                <div class="card">
+                  <div class="card-header color-white bg-blue"><span data-bind="text: name"></span></div>
+
+                  <!-- Slider container -->
+                  <div class="swiper-container">
+                    <div class="swiper-wrapper" data-bind="foreach: photos">
+                      <div class="swiper-slide"><img data-bind="attr: { src: $data }" width="100%"></div>
+                    </div>
+                    <div class="swiper-pagination"></div><!-- populated automatically -->
+                  </div>
+
+                  <div class="card-content">
+                    <div class="card-content-inner">
+                      <p><strong>Behaviour Notes</strong></p>
+                      <p><span data-bind="text: behaviour"></span></p>
+                      <a href="dog.html" class="button button-fill button-raised" data-bind="click: $parent.findDogAndLoad(name)">View profile</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Display this if user is not walking any dog(s) -->
+              <div class="card" data-bind="if: walking().filter(function(e) { return e.visibleFromIndex() == true }).length == 0">
+                <div class="card-header color-white bg-blue">Ongoing tasks</div>
+                <div class="card-content">
+                  <div class="card-content-inner">
+                    <p>No ongoing tasks.</p>
+                    <p><a href="tasks.html" class="button button-fill button-raised color-cyan">Start new task</a></p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- libraries -->
+    <script type="text/javascript" src="js/framework7.js"></script>
+    <script type="text/javascript" src="js/leaflet.js"></script>
+    <script type="text/javascript" src="js/knockout-3.3.0.js"></script>
+    <script type="text/javascript" src="js/moment.js"></script>
+    <script type="text/javascript" src="js/data.js"></script><!-- dog data -->
+    <script type="text/javascript" src="js/dogs.js"></script><!-- dog viewmodel -->
+    <script type="text/javascript" src="js/my-app.js"></script><!-- app js for framework7 -->
+  </body>
+</html>
