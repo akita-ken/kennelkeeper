@@ -1,10 +1,10 @@
 // Configure moment.js
 moment.locale('en', {
   calendar: {
-    lastDay: '[yesterday at] LT',   // switch these three to initial lowercase
+    lastDay: '[yesterday]',   // switch these three to initial lowercase
     sameDay: '[today at] LT',       //
     nextDay: '[tomorrow at] LT',    //
-    lastWeek: '[last] dddd [at] LT',
+    lastWeek: '[last] dddd',
     nextWeek: 'dddd [at] LT',
     sameElse: 'D MMM YYYY'
   }
@@ -36,8 +36,9 @@ function applyKoBindings(page) {
   ko.applyBindings(appViewModel, page.container);
 }
 
-var pages = ['index', 'dog', 'all-dogs', 'create-dog', 'edit-dog', 'showerme', 
-    'walkme', 'walkingnow', 'dog-incidents', 'kennelmap', 'edit-incident'];
+var pages = ['index', 'dog', 'all-dogs', 'create-dog', 'edit-dog', 'showerme',
+    'walkme', 'walkingnow', 'dog-incidents', 'kennelmap', 'edit-incident',
+    'recent'];
 pages.forEach(function(page) {
   myApp.onPageInit(page, applyKoBindings);
 });
@@ -54,6 +55,18 @@ myApp.onPageInit('dog', function(page) {
   });
 });
 
+myApp.onPageInit('all-dogs', function(page) {
+  appViewModel.nameSort();
+});
+
+myApp.onPageInit('walkme', function(page) {
+  appViewModel.walkSort();
+});
+
+myApp.onPageInit('showerme', function(page) {
+  appViewModel.showerSort();
+});
+
 myApp.onPageInit('walkingnow', function(page) {
   // special case for Lucky so that she is always walked since 45 min ago
   var results = appViewModel.walking().filter(function(e) {
@@ -65,13 +78,15 @@ myApp.onPageInit('walkingnow', function(page) {
 });
 
 var hasCrunchBeenAdded = false;
+var mapCenter = [-140, -50];
 
 myApp.onPageInit('kennelmap', function(page) {
   var map = L.map('map', {
-    center: [-140, -50],
-    zoom: 1.5,
-    minZoom: 1.5,
+    center: mapCenter,
+    zoom: 0,
+    minZoom: 0,
     maxZoom: 1.5,
+    zoomAnimation: true,
     /*touchZoom: false,
     scrollWheelZoom: false,
     doubleClickZoom: false,
@@ -103,8 +118,8 @@ myApp.onPageInit('kennelmap', function(page) {
   map.setMaxBounds(bounds);
   /*
   L.tileLayer('img/kennel-map.png', {
-    tileSize: 500, 
-    noWrap: true, 
+    tileSize: 500,
+    noWrap: true,
     continuousWorld: true,
     minZoom: 1,
     maxZoom: 1,
@@ -148,7 +163,7 @@ myApp.onPageInit('kennelmap', function(page) {
     'Ginger': computeCenter(-92, -131, 242, 268)
   }
 
-  if (appViewModel.activeDog !== null) {
+  if (appViewModel.isViewInMap && appViewModel.activeDog !== null) {
     var name = appViewModel.activeDog.name;
     var center;
 
@@ -161,10 +176,26 @@ myApp.onPageInit('kennelmap', function(page) {
     }
 
     if (center === undefined) {
-      map.center = [-140, -50];
+      map.center = mapCenter;
     } else {
-      map.panTo(center);
+      map.zoomIn(1.5, {
+        animate: false
+      });
+
+      map.panTo(center, {
+        animate: true,
+        duration: 1
+      });
     }
+  } else {
+    map.setZoomAround([-135, 2331], 1.5, {
+      animate: false
+    });
+
+    map.panTo(mapCenter, {
+      animate: true,
+      duration: 1.5
+    });
   }
 
   mentos.on('click', function(e) {
