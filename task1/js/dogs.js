@@ -130,6 +130,11 @@ function AppViewModel() {
 
   self.walkButton = function() {
     if (self.activeDog.walked() == "No") {
+      // Task 1: managed to start walk on Coco
+      if (self.activeDog.name == "Coco") {
+        location.href = "task1-success.html";
+      }
+
       self.walking.push({
         name: self.activeDog.name,
         started: ko.observable(moment()),
