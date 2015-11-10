@@ -63,3 +63,14 @@ app.closePanel.
 #map { height: 100%;
        width: 100%;
      }
+
+/* Make the photo carousel pagination bullets bigger and darker (when inactive) */
+.swiper-pagination-bullet {
+    width: 16px;
+    height: 16px;
+    opacity: .5;
+}
+.swiper-pagination-bullet-active {
+    opacity: 1;
+    background: #007aff;
+}
