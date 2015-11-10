@@ -27,6 +27,9 @@
   border-radius: 12px;
   padding: 3px 8px 0;
 }
+.tabbar a.link, .tabbar a.tab-link {
+  text-transform: none;
+}
 
 /* Reduce vertical space for content blocks */
 .content-block-title {
@@ -48,7 +51,7 @@
 	background-position: center;
 }
 
-/* 
+/*
 Override the default behaviour of reverting the active .panel element to
 display: none;, because that stops the transitionend event from firing.
 
