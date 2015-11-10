@@ -203,6 +203,11 @@ function AppViewModel() {
   };
 
   self.viewInMap = function(dog) {
+    // Task 2
+    if (dog.name == "Lucky") {
+      location.href = "task2-success.html";
+    }
+
     self.isViewInMap = true;
     mainView.router.loadPage("kennel-map.html");
   };

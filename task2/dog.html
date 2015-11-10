@@ -46,7 +46,7 @@
           <span data-bind="text: activeDog.kennel"></span>
         </div>
         <div class="col-30">
-          <a href="#" class="button button-raised button-fill" style="text-transform: none" data-bind="click: viewInMap(activeDog)">Location</a>
+          <a href="#" class="button button-raised button-fill" style="text-transform: none" data-bind="click: function() { viewInMap(activeDog) }">Location</a>
         </div>
       </div>
     </div>
