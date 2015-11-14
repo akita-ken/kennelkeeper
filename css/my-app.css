@@ -27,6 +27,9 @@
   border-radius: 12px;
   padding: 3px 8px 0;
 }
+.tabbar a.link, .tabbar a.tab-link {
+  text-transform: none;
+}
 
 /* Reduce vertical space for content blocks */
 .content-block-title {
@@ -43,12 +46,12 @@
 
 /* Allow cards to have an image header (on top of the normal card header) */
 .card .card-header.card-image-header {
-	height: 40vw;
-	background-size: cover;
-	background-position: center;
+  height: 40vw;
+  background-size: cover;
+  background-position: center;
 }
 
-/* 
+/*
 Override the default behaviour of reverting the active .panel element to
 display: none;, because that stops the transitionend event from firing.
 
