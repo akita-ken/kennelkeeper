@@ -22,7 +22,7 @@ var dogs = ko.observableArray([
     kennel: 4,
     showered: ko.observable(moment().subtract(22, 'days')),
     walked: ko.observable("No"),
-    lastWalked: ko.observable(moment().subtract(1, 'days').hours(11).minutes(29).seconds(5)),
+    lastWalked: ko.observable(moment().subtract(1, 'days').hours(9).minutes(29).seconds(5)),
     behaviour: ko.observable("Aggressive towards cyclists. Attacks other dogs."),
     medical: "Limb injury. If she starts limping again, please feed her with a tablet of Metacam 2.5mg, which can be found in the medicine box labelled 1A in the kitchen.",
     photos: [
@@ -64,7 +64,7 @@ var dogs = ko.observableArray([
     kennel: 21,
     showered: ko.observable(moment().subtract(13, 'days')),
     walked: ko.observable("No"),
-    lastWalked: ko.observable(moment().subtract(1, 'days').hours(11).minutes(7).seconds(44)),
+    lastWalked: ko.observable(moment().subtract(1, 'days').hours(9).minutes(47).seconds(44)),
     behaviour: ko.observable("Lego is a shy dog, he may be startled by large vehicles. Walkers should be firm with him and give him confidence to continue walking. He has a low risk of biting."),
     medical: "Used to have heartworm but has since recovered since January 2015.",
     photos: [
@@ -110,9 +110,9 @@ var dogs = ko.observableArray([
     name: "Mentos",
     gender: "Male",
     kennel: 8,
-    showered: ko.observable(moment().subtract(34, 'days')),
+    showered: ko.observable(moment().subtract(35, 'days')),
     walked: ko.observable("No"),
-    lastWalked: ko.observable(moment().subtract(1, 'days').hours(9).minutes(12).seconds(30)),
+    lastWalked: ko.observable(moment().subtract(1, 'days').hours(11).minutes(12).seconds(30)),
     behaviour: ko.observable("Mentos is an active and playful dog, do keep him safe when walking near large drains."),
     medical: "",
     photos: [
@@ -142,7 +142,7 @@ var dogs = ko.observableArray([
     name: "Pringles",
     gender: "Female",
     kennel: 11,
-    showered: ko.observable(moment().subtract(35, 'days')),
+    showered: ko.observable(moment().subtract(34, 'days')),
     walked: ko.observable("Yes"),
     lastWalked: ko.observable(moment().subtract(1, 'days').hours(12).minutes(05).seconds(30)),
     behaviour: ko.observable("Pringles responds very well to physical touch, walkers are encouraged to play with her so that she can be comfortable with humans."),
